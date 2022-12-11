@@ -1,0 +1,31 @@
+a, a:hover, a:link {
+  color: #376BB2
+}
+
+.stats-modal {
+  position: absolute;
+  min-width: 130px;  
+  top: 0px;  
+  background: white;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  font-size: 14px;
+  transform: translate(45%)
+}
+
+@media (max-width: 600px) {
+  .stats-modal {
+    transform: none;
+    left: 5%;
+    right: 5%;
+  }
+}
+
+.list-group-item {
+  border: none
+}
+
+.max-scroll {
+  max-height: 20em;
+  overflow-y: auto;
+
+}

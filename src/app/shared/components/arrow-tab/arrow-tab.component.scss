@@ -1,0 +1,189 @@
+// .active-tab {
+//   background: #376BB2;
+//   color: white;
+//   font-weight: normal;
+//   border-right: none !important;
+// }
+
+// .not-active-tab {
+//   font-weight: normal;
+//   color: #888888;
+//   cursor: not-allowed;
+// }
+
+// .tab-container {
+//   .tab {
+//     border-right: 1px solid #ddd;
+//     cursor: pointer;
+
+//     &:last-child {
+//       border-right: none;
+//     }
+//   }
+// }
+// .greenbg {
+//   background: white;
+//   margin-left: -40px;
+// }
+
+// .greenbg:first-child {
+//   margin-left: 0px;
+// }
+
+// .greenbg>.arrowbtn,
+// .greenbg>.arrowmenudiv {
+//   background: white;
+// }
+
+
+
+// .fstbg {
+//   background: white;
+//   margin-left: -14px;
+// }
+
+// .fstbg:first-child {
+//   margin-left: 0px;
+// }
+
+// .fstbg>.arrowbtn,
+// .fstbg>.arrowmenudiv {
+//   background: white;
+//   font-size: 15px;
+// }
+
+
+// .fstbg:last-child>.arrowbtn {
+//   margin-left: 2px;
+//   width: 9rem !important;
+//   font-size: 15px;
+// }
+
+// .fstbg:last-child>.arrowmenudiv {
+//   margin-left: -1rem !important;
+// }
+
+// .arrowbtn {
+//   width: 160px;
+//   border-radius: 0%;
+// }
+
+// .rightbtn {}
+
+// .rightdiv {
+//   margin-left: -12px;
+// }
+
+// .arrowbuttongroup {
+//   border-top: 1px solid #F1F1F1;
+//   --bs-gutter-x: 0rem;
+//   border-bottom: 1px solid #F1F1F1;
+// }
+
+// .arrowmenudiv {
+//   width: 31px;
+//   transform: rotate(52deg);
+//   border-top-right-radius: 10px;
+//   border-top: 1px solid #F1F1F1;
+//   height: 25px;
+//   border-right: 1px solid #F1F1F1;
+//   margin-top: 6px;
+//   margin-left: -15px;
+// }
+
+
+// .fstbg>.arrowmenudiv {
+//   transform: rotate(45deg);
+//   margin-top: 4px;
+//   margin-left: -47px !important;
+//   height: 28px;
+//   border-top-left-radius: 6px;
+//   border-bottom-right-radius: 12px;
+//   margin-top: 2px;
+// }
+
+// .divflex {
+//   display: flex;
+// }
+
+// .fstbg>.arrowbtn {
+//   margin-left: 0px;
+// }
+
+// .fstbg.active-tab>.arrowbtn {
+//   margin-left: 0px;
+// }
+
+
+.arrowmenudiv,
+.arrowbtn {
+  background: white;
+}
+
+.greenbg.active-tab>.arrowbtn,
+.greenbg.active-tab>.arrowmenudiv {
+  background: #6DC47F;
+  color: white;
+}
+
+.fstbg.active-tab>.arrowbtn,
+.fstbg.active-tab>.arrowmenudiv {
+  background: #F1F1F1;
+  color: #6DC47F;
+}
+
+.divflex {
+  display: flex;
+}
+
+.fstbg {
+  background: white;
+}
+
+.fstbg.active-tab>.arrowbtn {
+  padding-right: 1rem;
+}
+
+.fstbg.active-tab>.arrowbtn,
+.fstbg.active-tab>.arrowmenudiv {
+  background: #F1F1F1;
+  color: #6DC47F;
+}
+
+.fstbg>.arrowbtn,
+.fstbg>.arrowmenudiv {
+  font-size: 15px;
+}
+
+.arrowbtn {
+  border-radius: 0%;
+}
+
+.arrowmenudiv {
+  width: 2em !important;
+  height: 2em;
+  margin-left: -1rem;
+  border-radius: 1rem;
+  border-top-right-radius: 5px;
+  transform: rotate(45deg);
+  border-top: 1px solid #F1F1F1;
+  border-right: 1px solid #F1F1F1;
+}
+
+.arrowbuttongroup {
+  border-top: 1px solid #F1F1F1;
+  --bs-gutter-x: 0rem;
+  border-bottom: 1px solid #F1F1F1;
+}
+
+.arrowbuttongroup>.divflex.gerneldiv {
+  margin-left: -1rem;
+}
+
+.arrowbuttongroup>.divflex.smalldiv {
+  margin-left: -2rem;
+}
+
+.arrowbuttongroup>.divflex:first-child {
+  margin-left: 0rem;
+}

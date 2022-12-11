@@ -1,0 +1,155 @@
+<!-- <div class="row information-wrap">
+  <div class="col-12 p-3">
+    <div class="information-wrap border-radius bg-white px-2 px-md-3 h-100">
+      <div class="row pt-3 p-3 align-items-center">
+        <div class="col-2 col-md-3 d-flex align-items-center">
+          <div class="col-10">
+            <p class="table-title careerstatehead fw-bold">{{player}} Matches Played</p>
+          </div>
+          <div class="col-2">
+            <app-selector [defaultValue]="yearFilters[1].value" [options]="yearFilters"
+              [formControl]="getFormControl('year')">
+            </app-selector>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+    <div class="row mt-3 mt-md-5">
+      <div class="col">
+        <h3 class="fw-bold text-center">Performance Breakdown
+          <app-profile-performance-year-picker [selectedYear]="currentYear" [years]="years"
+            (changeYear)="selectedYear($event); currentYear = $event"></app-profile-performance-year-picker>
+        </h3>
+      </div>
+    </div>
+
+    <div class="row mt-2 mt-md-3">
+      <div class="col-6 p-1 p-md-2">
+        <div class="d-flex justify-content-between">
+          <h5 class="table-title fw-bold">Tournament Level Breakdown</h5>
+          <h5 class="table-title table-header fw-bold">W/L</h5>
+        </div>
+        <app-short-table [height]="heightUpperTable" [headers]="tableHeaders" [data]="level[currentYear]">
+        </app-short-table>
+      </div>
+      <div class="col-6 p-1 p-md-2">
+        <div class="d-flex justify-content-between">
+          <h5 class="table-title fw-bold">Opponent Rank Breakdown</h5>
+          <h5 class="table-title table-header fw-bold">W/L</h5>
+        </div>
+        <app-short-table [height]="heightUpperTable" [headers]="tableHeaders" [data]="rank[currentYear]">
+        </app-short-table>
+      </div>
+    </div>
+
+    <div class="row mt-2 mt-md-3">
+      <div class="col-6 p-1 p-md-2">
+        <div class="d-flex justify-content-between">
+          <h5 class="table-title fw-bold">Surface Breakdown</h5>
+          <h5 class="table-title table-header fw-bold">W/L</h5>
+        </div>
+        <app-short-table [height]="heightLowerTable" [headers]="tableHeaders" [data]="surface[currentYear]">
+        </app-short-table>
+      </div>
+      <div class="col-6 p-1 p-md-2">
+        <div class="d-flex justify-content-between">
+          <h5 class="table-title fw-bold">Round Breakdown</h5>
+          <h5 class="table-title table-header fw-bold">W/L</h5>
+        </div>
+        <app-short-table [height]="heightLowerTable" [headers]="tableHeaders" [data]="round[currentYear]">
+        </app-short-table>
+      </div>
+    </div>
+    </div>
+    </div> -->
+
+
+
+<!-- <div class="row justify-content-center" *ngIf="yearFilters.length>1">
+      <div class="col col-md-2 p-1 p-md-2">
+        <app-selector [defaultValue]="yearFilters[1].value" [options]="yearFilters" [formControl]="getFormControl('year')"></app-selector>
+      </div>
+      <div class="col col-md-2 p-1 p-md-2">
+        <app-selector [options]="levelFilters" [formControl]="getFormControl('level')"></app-selector>
+      </div>
+      <div class="col col-md-2 p-1 p-md-2">
+        <app-selector [options]="surfaceFilters" [formControl]="getFormControl('court')"></app-selector>
+      </div>
+      <div class="col col-md-2 p-1 p-md-2">
+        <app-selector [options]="roundFilters" [formControl]="getFormControl('round')"></app-selector>
+      </div>
+    </div> -->
+
+
+<div class="row information-wrap">
+  <div class="col-12 p-3">
+    <div class="information-wrap border-radius bg-white px-2 px-md-3 h-100">
+      <div class="row pt-3 p-3 align-items-center">
+        <div class="col-10">
+          <p class="table-title careerstatehead fw-bold">{{player ?? 'Not Found'}} Performance Breackdown</p>
+        </div>
+        <div class="col-2">
+          <app-profile-performance-year-picker [selectedYear]="currentYear" [years]="years"
+            (changeYear)="selectedYear($event); currentYear = $event"></app-profile-performance-year-picker>
+        </div>
+      </div>
+      <div class="tablehead p-3 pt-2 pb-2">
+        Tournament Level Breakdown
+      </div>
+      <div *ngIf="level[currentYear]">
+        <app-short-table class="menubottom" [height]="heightUpperTable" [headers]="tableHeaders"
+          [data]="level[currentYear]">
+        </app-short-table>
+      </div>
+      <div class="tablehead p-3 pt-2 pb-2">
+        Opponent Rank Breakdown
+      </div>
+      <div>
+        <app-short-table class="menubottom" [height]="heightUpperTable" [headers]="tableHeaders"
+          [data]="rank[currentYear]"></app-short-table>
+      </div>
+      <div class="tablehead p-3 pt-2 pb-2">
+        Surface Breakdown
+      </div>
+      <div>
+        <app-short-table class="menubottom" [height]="heightUpperTable" [headers]="tableHeaders"
+          [data]="surface[currentYear]"></app-short-table>
+
+      </div>
+      <div class="tablehead p-3 pt-2 pb-2">
+        Round Breakdown
+      </div>
+      <div>
+        <app-short-table class="menubottom" [height]="heightUpperTable" [headers]="tableHeaders"
+          [data]="round[currentYear]"></app-short-table>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- <div class="row mt-3 mt-md-4" *ngIf="serveStats && returnStats">
+        <div class="col-6 p-1 p-md-2">
+          <h5 class="table-title fw-bold">Service Stats</h5>
+          <app-short-table [headers]="headers" [data]="serveStats"></app-short-table>
+        </div>
+    
+        <div class="col-6 p-1 p-md-2">
+          <h5 class="table-title fw-bold">Return Stats</h5>
+          <app-short-table [headers]="headers" [data]="returnStats"></app-short-table>
+        </div>
+      </div>
+    
+      <div class="row mt-3 mt-md-4" *ngIf="breakServe && breakRtn">
+        <div class="col-6 p-1 p-md-2">
+          <h5 class="table-title fw-bold">Break Points (Serve)</h5>
+          <app-short-table [headers]="headers" [data]="breakServe"></app-short-table>
+        </div>
+    
+        <div class="col-6 p-1 p-md-2">
+          <h5 class="table-title fw-bold">Break Points (Rtn)</h5>
+          <app-short-table [headers]="headers" [data]="breakRtn"></app-short-table>
+        </div>
+      </div> -->

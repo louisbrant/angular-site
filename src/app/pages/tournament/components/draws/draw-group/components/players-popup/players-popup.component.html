@@ -1,0 +1,186 @@
+<div class="container mt-1">
+    <div class="row d-flex">
+        <div class="col-12 col-md-12 modalcontainter  pt-2">
+            <ol>
+                <div class="p-3 modalcontainter">
+                    <div class="carddiv">
+                        <div class="header p-5 pt-4 row">
+                            <div class="col-6">
+                                <img [src]="data?.player1?.image"
+                                    onerror="this.onerror=null; this.src='assets/icons/sportsman-images/noprofile.bmp'"
+                                    class="w-100 playerimg">
+                            </div>
+                            <div class="col-6">
+                                <img [src]="data?.player2?.image"
+                                    onerror="this.onerror=null; this.src='assets/icons/sportsman-images/noprofile.bmp'"
+                                    class="w-100 playerimg">
+                            </div>
+                        </div>
+                        <table class="table text-center mb-1 text-nowrap">
+                            <tbody>
+                                <tr class="align-middle modaltr">
+                                    <td class="text-left text-left p-4 pt-2 pb-2">{{data?.player1?.name}}</td>
+                                    <td class="text-center">
+                                        Player
+                                    </td>
+                                    <td class="text-left">{{data?.player2?.name}}</td>
+                                </tr>
+                                <tr class="align-middle modaltr">
+                                    <td class="text-left text-left p-4 pt-2 pb-2">{{stServe1}}</td>
+                                    <td class="text-center">
+                                        1st Serve %
+                                    </td>
+                                    <td class="text-left">{{stServe2}}</td>
+                                </tr>
+                                <tr class="align-middle modaltr">
+                                    <td class="text-left text-left p-4 pt-2 pb-2">{{data?.player1?.stats?.aces}}</td>
+                                    <td class="text-center">
+                                        Aces
+                                    </td>
+                                    <td class="text-left">{{data?.player2?.stats?.aces}}</td>
+                                </tr>
+                                <tr class="align-middle modaltr">
+                                    <td class="text-left text-left p-4 pt-2 pb-2 redcolor redcolor">{{stServeWon1}}</td>
+                                    <td class="text-center">
+                                        1st Serve Won
+                                    </td>
+                                    <td class="text-left greencolor">{{stServeWon2}}</td>
+                                </tr>
+                                <tr class="align-middle modaltr">
+                                    <td class="text-left text-left p-4 pt-2 pb-2 redcolor">{{player1}}</td>
+                                    <td class="text-center">
+                                        Player
+                                    </td>
+                                    <td class="text-left greencolor">{{player2}}</td>
+                                </tr>
+                                <tr class="align-middle modaltr">
+                                    <td class="text-left text-left p-4 pt-2 pb-2 redcolor">{{ndServerWon1}}</td>
+                                    <td class="text-center">
+                                        2nd Serve Won
+                                    </td>
+                                    <td class="text-left greencolor">{{ndServerWon2}}</td>
+                                </tr>
+                                <tr class="align-middle modaltr">
+                                    <td class="text-left text-left p-4 pt-2 pb-2 redcolor">{{bPWon1}}</td>
+                                    <td class="text-center">
+                                        Break Points Won
+                                    </td>
+                                    <td class="text-left greencolor">{{bPWon2}}</td>
+                                </tr>
+                                <tr class="align-middle modaltr">
+                                    <td class="text-left text-left p-4 pt-2 pb-2 redcolor">{{rPWon1}}</td>
+                                    <td class="text-center">
+                                        Rtn Points Won
+                                    </td>
+                                    <td class="text-left greencolor">{{rPWon2}}</td>
+                                </tr>
+                                <tr class="align-middle modaltr">
+                                    <td class="text-left text-left p-4 pt-2 pb-2 redcolor">
+                                        {{data?.player1?.stats?.totalPointsWon}}</td>
+                                    <td class="text-center">
+                                        Total Points Won
+                                    </td>
+                                    <td class="text-left greencolor">{{data?.player2?.stats?.totalPointsWon}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="row mt-1 pb-2 mt-md-3">
+                            <div class="col justify-content-center align-items-center d-flex flex-column">
+                                <p class="greencolor fs12" style="cursor: pointer;">Show More<img
+                                        src="assets/icons/arrowdown-green.png" style="width: 0.8em"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- </div>
+    <div class="p-3">
+        <div class="carddiv">
+
+            <tbody>
+                <tr class="align-middle">
+                    <td class="ps-2"></td>
+                    <td class="text-left">
+                    </td>
+                    <td class="text-center">
+                    </td>
+
+                    <ng-template #noStat>
+                        <td>
+                            No Stat
+                        </td>
+                    </ng-template>
+
+                    <td class="text-left">
+                    </td>
+                    <td class="text-left"></td>
+                </tr>
+            </tbody>
+            <div class="row mt-1 pb-2 mt-md-3">
+                <div class="col justify-content-center align-items-center d-flex flex-column">
+                    <p class="greencolor fs12" style="cursor: pointer;">Show More Matches <img
+                            src="assets/icons/arrowdown-green.png" style="width: 0.8em"></p>
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+
+<!-- 
+
+    <div class="p-3">
+        <div class="carddiv">
+            <div class="header p-4 row">
+                <p class="table-title careerstatehead fw-bold">Past champions</p>
+
+            </div>
+            <table class="table text-center mb-1 text-nowrap">
+                <thead>
+                    <tr class="text-uppercase text-left bdcolor bbcolor">
+                        <td class="ps-1 ps-md-3 pe-0 py-1"><span class="theadmenu ps-2 py-2">year</span></td>
+                        <td class="px-0 py-1"><span class="theadmenu py-2">champion</span></td>
+                        <td class="px-0 py-1"><span class="theadmenu py-2 empty-span-little"></span></td>
+                        <td class="px-0 py-1"><span class="theadmenu py-2">runner-up</span></td>
+                        <td class="px-0 py-1"><span class="theadmenu py-2">score</span></td>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr *ngFor="let champion of selectedChampions.slice(0, maxShow)" class="align-middle">
+                        <td class="ps-2">{{champion.date.getFullYear()}}</td>
+                        <td class="text-left">
+                            <app-sportsman [hideCountryBySize]="true" [fullname]="champion.player1.name"
+                                [countryCode]="champion.player1.countryAcr"></app-sportsman>
+                        </td>
+                        <td *ngIf="champion.player1.stats && champion.player2.stats; else noStat" class="text-center">
+                            <app-match-stat [winner]="champion.player1" [looser]="champion.player2"></app-match-stat>
+                        </td>
+
+                        <ng-template #noStat>
+                            <td>
+                                No Stat
+                            </td>
+                        </ng-template>
+
+                        <td class="text-left">
+                            <app-sportsman [hideCountryBySize]="true" [fullname]="champion.player2.name"
+                                [countryCode]="champion.player2.countryAcr"></app-sportsman>
+                        </td>
+                        <td class="text-left">{{champion?.result ? champion?.result : "0-0"}}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="row mt-1 pb-2 mt-md-3" *ngIf="maxShow <= selectedChampions.length">
+                <div class="col justify-content-center align-items-center d-flex flex-column">
+                    <p class="greencolor fs12" style="cursor: pointer;" (click)="viewMore()">Show More Matches <img
+                            src="assets/icons/arrowdown-green.png" style="width: 0.8em"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</ol> -->

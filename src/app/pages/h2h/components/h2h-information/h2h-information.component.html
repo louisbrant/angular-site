@@ -1,0 +1,364 @@
+<div class="row pb-3 hr">
+  <div class="col text-center gray-background top-radius">
+    <div class="row profile-pic">
+      <img
+        [src]="playerOne.image"
+        onerror="this.onerror=null; this.src='assets/icons/sportsman-images/noprofile.bmp'"
+        class="w-100 p-0 top-radius"
+        style="object-fit: cover"
+      />
+    </div>
+    <div class="row mt-3 mt-3">
+      <div class="col-4 p-0">
+        <p class="m-0 fw-bold player-info__match-count">
+          {{ statistics1?.totalTitles }}
+        </p>
+        <small class="text-capitalize m-0 player-info__match">Total</small>
+      </div>
+      <div class="col-4"></div>
+      <div class="col-4 p-0">
+        <p class="m-0 fw-bold player-info__match-count">
+          {{ playerOne.playerStat.slamWin }}
+        </p>
+        <small class="text-capitalize m-0 player-info__match">Slam</small>
+      </div>
+    </div>
+
+    <div class="row mt-3">
+      <div class="col-4 p-0">
+        <p class="m-0 fw-bold player-info__match-count">
+          {{ playerOne.playerStat.masterWin }}
+        </p>
+        <small class="text-capitalize m-0 player-info__match">Mast</small>
+      </div>
+      <div class="col-4 d-flex justify-content-center align-items-center">
+        <img src="assets/icons/prize.svg" />
+      </div>
+      <div class="col-4 p-0">
+        <p class="m-0 fw-bold player-info__match-count">
+          {{ playerOne.playerStat.maintourWin }}
+        </p>
+        <small class="text-capitalize m-0 player-info__match">Main</small>
+      </div>
+    </div>
+
+    <div class="row mt-3">
+      <div class="col-4 p-0">
+        <p class="m-0 fw-bold player-info__match-count">
+          {{ playerOne.playerStat.challengersWin }}
+        </p>
+        <small class="text-capitalize m-0 player-info__match">Chall</small>
+      </div>
+      <div class="col-4"></div>
+      <div class="col-4 p-0">
+        <p class="m-0 fw-bold player-info__match-count">
+          {{ playerOne.playerStat.futuresWin }}
+        </p>
+        <small class="text-capitalize m-0 player-info__match">Minor</small>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-3 row text-center user-info">
+    <div class="col-12 p-0">
+      <a
+        class="h5 text-center fw-bold player-name profile-link"
+        [routerLink]="navigateToProfile(playerOne.name)"
+        >{{ playerOne.name }}</a
+      >
+      <app-country-flag
+        [countryCode]="playerOne.contryAcr"
+        [hideCountryBySize]="true"
+      ></app-country-flag>
+    </div>
+
+    <div class="col-12 user-info__container">
+      <div
+        class="user-info__container-item d-flex flex-column justify-content-center align-content-center h-100 mx-0 mx-md-3"
+      >
+        <p class="m-0 fw-bold player-info__match-count">
+          {{ playerOne.currentRank ? playerOne.currentRank : "-" }}
+        </p>
+        <small class="text-capitalize player-info__match">Rank</small>
+      </div>
+    </div>
+
+    <div class="col-12 user-info__container">
+      <div
+        class="user-info__container-item d-flex flex-column justify-content-center align-content-center h-100 mx-0 mx-md-3"
+      >
+        <p class="m-0 fw-bold player-info__match-count">
+          {{ playerOne.bestRank }}
+        </p>
+        <small class="text-capitalize player-info__match">high</small>
+      </div>
+    </div>
+
+    <div class="col-12 user-info__container">
+      <div
+        class="user-info__container-item d-flex flex-column justify-content-center align-content-center h-100 mx-0 mx-md-3"
+      >
+        <p class="m-0 fw-bold player-info__match-count">
+          {{ getAge(playerOne.birthday) }}
+        </p>
+        <small class="text-capitalize player-info__match">age</small>
+      </div>
+    </div>
+
+    <div class="col-12 user-info__container">
+      <div
+        class="user-info__container-item d-flex flex-column justify-content-center align-content-center h-100 mx-0 mx-md-3"
+      >
+        <p class="m-0 fw-bold player-info__match-count">
+          {{ playerOne.plays[0] }}
+        </p>
+        <small class="text-capitalize player-info__match">plays</small>
+      </div>
+    </div>
+  </div>
+
+  <div class="col d-flex flex-column justify-content-center d-none d-md-block">
+    <div class="row text-nowrap mt-5">
+      <div class="col-3 pe-3 ps-0 fw-bold">
+        <p class="text-center text-nowrap">{{ surfaceData.total1 }}</p>
+      </div>
+      <div class="col-6 p-0 text-capitalize text-center fw-bold">
+        <p>total</p>
+      </div>
+      <div class="col-3 pe-0 ps-3 fw-bold">
+        <p class="text-center">{{ surfaceData.total2 }}</p>
+      </div>
+    </div>
+
+    <div class="row text-nowrap mt-3">
+      <div class="col-3 pe-3 ps-0 fw-bold">
+        <p class="text-center text-nowrap">{{ surfaceData.hard1 }}</p>
+      </div>
+      <div class="col-6 p-0 text-capitalize text-center">
+        <p class="text-white dark-blue">hard</p>
+      </div>
+      <div class="col-3 pe-0 ps-3 fw-bold">
+        <p class="text-center">{{ surfaceData.hard2 }}</p>
+      </div>
+    </div>
+
+    <div class="row text-nowrap mt-3">
+      <div class="col-3 pe-3 ps-0 fw-bold">
+        <p class="text-center text-nowrap">{{ surfaceData.clay1 }}</p>
+      </div>
+      <div class="col-6 p-0 text-capitalize text-center">
+        <p class="text-white orange">clay</p>
+      </div>
+      <div class="col-3 pe-0 ps-3 fw-bold">
+        <p class="text-center">{{ surfaceData.clay2 }}</p>
+      </div>
+    </div>
+
+    <div class="row text-nowrap mt-3">
+      <div class="col-3 pe-3 ps-0 fw-bold">
+        <p class="text-center text-nowrap">{{ surfaceData.iHard1 }}</p>
+      </div>
+      <div class="col-6 p-0 text-capitalize text-center">
+        <p class="text-white blue">indoor</p>
+      </div>
+      <div class="col-3 pe-0 ps-3 fw-bold">
+        <p class="text-center">{{ surfaceData.iHard2 }}</p>
+      </div>
+    </div>
+
+    <div class="row text-nowrap mt-3">
+      <div class="col-3 pe-3 ps-0 fw-bold">
+        <p class="text-center text-nowrap">{{ surfaceData.grass1 }}</p>
+      </div>
+      <div class="col-6 p-0 text-capitalize text-center">
+        <p class="text-white green">grass</p>
+      </div>
+      <div class="col-3 pe-0 ps-3 fw-bold">
+        <p class="text-center">{{ surfaceData.grass2 }}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-3 row text-center user-info">
+    <div class="col-12 p-0">
+      <a
+        class="h5 text-center fw-bold player-name profile-link"
+        [routerLink]="navigateToProfile(playerTwo.name)"
+        >{{ playerTwo.name }}</a
+      >
+      <app-country-flag
+        [countryCode]="playerTwo.contryAcr"
+        [hideCountryBySize]="true"
+      ></app-country-flag>
+    </div>
+
+    <div class="col-12 user-info__container">
+      <div
+        class="user-info__container-item d-flex flex-column justify-content-center align-content-center h-100 mx-0 mx-md-3"
+      >
+        <p class="m-0 fw-bold player-info__match-count">
+          {{ playerTwo.currentRank ? playerTwo.currentRank : "-" }}
+        </p>
+        <small class="text-capitalize player-info__match">Rank</small>
+      </div>
+    </div>
+
+    <div class="col-12 user-info__container">
+      <div
+        class="user-info__container-item d-flex flex-column justify-content-center align-content-center h-100 mx-0 mx-md-3"
+      >
+        <p class="m-0 fw-bold player-info__match-count">
+          {{ playerTwo.bestRank }}
+        </p>
+        <small class="text-capitalize player-info__match">high</small>
+      </div>
+    </div>
+
+    <div class="col-12 user-info__container">
+      <div
+        class="user-info__container-item d-flex flex-column justify-content-center align-content-center h-100 mx-0 mx-md-3"
+      >
+        <p class="m-0 fw-bold player-info__match-count">
+          {{ getAge(playerTwo.birthday) }}
+        </p>
+        <small class="text-capitalize player-info__match">age</small>
+      </div>
+    </div>
+
+    <div class="col-12 user-info__container">
+      <div
+        class="user-info__container-item d-flex flex-column justify-content-center align-content-center h-100 mx-0 mx-md-3"
+      >
+        <p class="m-0 fw-bold player-info__match-count">
+          {{ playerTwo &&  playerTwo.plays &&  playerTwo.plays[0] }}
+        </p>
+        <small class="text-capitalize player-info__match">plays</small>
+      </div>
+    </div>
+  </div>
+
+  <div class="col text-center gray-background pb-3">
+    <div class="row profile-pic">
+      <img
+        [src]="playerTwo.image"
+        onerror="this.onerror=null; this.src='assets/icons/sportsman-images/noprofile.bmp'"
+        class="w-100 p-0 top-radius"
+        style="object-fit: cover"
+      />
+    </div>
+
+    <div class="row mt-3">
+      <div class="col-4 p-0">
+        <p class="m-0 fw-bold player-info__match-count">
+          {{ statistics2?.totalTitles }}
+        </p>
+        <small class="text-capitalize m-0 player-info__match">Total</small>
+      </div>
+      <div class="col-4"></div>
+      <div class="col-4 p-0">
+        <p class="m-0 fw-bold player-info__match-count">
+          {{ playerTwo.playerStat.slamWin }}
+        </p>
+        <small class="text-capitalize m-0 player-info__match">Slam</small>
+      </div>
+    </div>
+
+    <div class="row mt-3">
+      <div class="col-4 p-0">
+        <p class="m-0 fw-bold player-info__match-count">
+          {{ playerTwo.playerStat.masterWin }}
+        </p>
+        <small class="text-capitalize m-0 player-info__match">Mast</small>
+      </div>
+      <div class="col-4 d-flex justify-content-center align-items-center">
+        <img src="assets/icons/prize.svg" />
+      </div>
+      <div class="col-4 p-0">
+        <p class="m-0 fw-bold player-info__match-count">
+          {{ playerTwo.playerStat.maintourWin }}
+        </p>
+        <small class="text-capitalize m-0 player-info__match">Main</small>
+      </div>
+    </div>
+
+    <div class="row mt-3">
+      <div class="col-4 p-0">
+        <p class="m-0 fw-bold player-info__match-count">
+          {{ playerTwo.playerStat.challengersWin }}
+        </p>
+        <small class="text-capitalize m-0 player-info__match">Chall</small>
+      </div>
+      <div class="col-4"></div>
+      <div class="col-4 p-0">
+        <p class="m-0 fw-bold player-info__match-count">
+          {{ playerTwo.playerStat.futuresWin }}
+        </p>
+        <small class="text-capitalize m-0 player-info__match">Minor</small>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row d-md-none d-flex justify-content-center">
+  <div class="col-8 d-flex flex-column justify-content-center">
+    <div class="row text-nowrap mt-3">
+      <div class="col-3 pe-3 ps-0 fw-bold">
+        <p class="text-center text-nowrap">{{ surfaceData.total1 }}</p>
+      </div>
+      <div class="col-6 p-0 text-capitalize text-center fw-bold">
+        <p>total</p>
+      </div>
+      <div class="col-3 pe-0 ps-3 fw-bold">
+        <p class="text-center">{{ surfaceData.total2 }}</p>
+      </div>
+    </div>
+
+    <div class="row text-nowrap mt-3">
+      <div class="col-3 pe-3 ps-0 fw-bold">
+        <p class="text-center text-nowrap">{{ surfaceData.hard1 }}</p>
+      </div>
+      <div class="col-6 p-0 text-capitalize text-center">
+        <p class="text-white dark-blue">hard</p>
+      </div>
+      <div class="col-3 pe-0 ps-3 fw-bold">
+        <p class="text-center">{{ surfaceData.hard2 }}</p>
+      </div>
+    </div>
+
+    <div class="row text-nowrap mt-3">
+      <div class="col-3 pe-3 ps-0 fw-bold">
+        <p class="text-center text-nowrap">{{ surfaceData.clay1 }}</p>
+      </div>
+      <div class="col-6 p-0 text-capitalize text-center">
+        <p class="text-white orange">clay</p>
+      </div>
+      <div class="col-3 pe-0 ps-3 fw-bold">
+        <p class="text-center">{{ surfaceData.clay2 }}</p>
+      </div>
+    </div>
+
+    <div class="row text-nowrap mt-3">
+      <div class="col-3 pe-3 ps-0 fw-bold">
+        <p class="text-center text-nowrap">{{ surfaceData.iHard1 }}</p>
+      </div>
+      <div class="col-6 p-0 text-capitalize text-center">
+        <p class="text-white blue">indoor</p>
+      </div>
+      <div class="col-3 pe-0 ps-3 fw-bold">
+        <p class="text-center">{{ surfaceData.iHard2 }}</p>
+      </div>
+    </div>
+
+    <div class="row text-nowrap mt-3">
+      <div class="col-3 pe-3 ps-0 fw-bold">
+        <p class="text-center text-nowrap">{{ surfaceData.grass1 }}</p>
+      </div>
+      <div class="col-6 p-0 text-capitalize text-center">
+        <p class="text-white green">grass</p>
+      </div>
+      <div class="col-3 pe-0 ps-3 fw-bold">
+        <p class="text-center">{{ surfaceData.grass2 }}</p>
+      </div>
+    </div>
+  </div>
+</div>

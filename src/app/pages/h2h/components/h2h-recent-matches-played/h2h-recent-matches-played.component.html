@@ -1,0 +1,33 @@
+<div class="row mt-5 align-items-center">
+    <div class="col-12 col-md-5">
+      <h5 class="text-capitalize text-nowrap fw-bold p-0 m-0">{{name ? name.split(' ')[1] : null}} Recent Matches Played</h5>
+    </div>
+    <div class="col-12 col-md-7 d-flex justify-content-md-end justify-content-start align-items-center mt-2 mt-md-0">
+      <app-selector class="ms-md-1 me-1 me-md-0" [options]="surfaceFilters" [formControl]="getFormControl('court')"></app-selector>
+
+      <app-selector class="ms-md-1 me-1 me-md-0" [options]="roundFilters" [formControl]="getFormControl('round')" ></app-selector>
+      <span class="ms-3 me-1">Before:</span>
+      <app-selector class="ms-md-1 me-1 me-md-0" [defaultValue]="yearFilters[0].value" [options]="yearFilters" [formControl]="getFormControl('year')"></app-selector>
+      <app-selector class="ms-md-1 me-1 me-md-0" [options]="weekFilters" [formControl]="getFormControl('week')"></app-selector>
+    </div>
+  </div>
+
+  <div class="row mt-3">
+    <div class="col p-1 p-md-2">
+      <ng-container *ngIf="recentMatches.length; else noStat">
+      <div class="bg-white border-radius text-nowrap overflow-x-auto pb-1">
+          <app-h2h-recent-matches-played-table [matches]="recentMatches"></app-h2h-recent-matches-played-table>
+      </div>
+    </ng-container>
+    </div>
+  </div>
+
+  <div class="row mt-1 mt-md-3" *ngIf="currentPage * 10 <= matchesCount">
+    <div class="col justify-content-center align-items-center d-flex flex-column">
+      <button class="btn btn-primary" (click)="nextPage()">View more <img src="assets/icons/arrowdown_white.svg" style="width: 0.8em"></button>
+    </div>
+  </div>
+
+  <ng-template #noStat>
+      No Stat
+  </ng-template>

@@ -1,0 +1,33 @@
+.number {
+  border-radius: 5px;
+  background: #888888;
+  color: white;
+}
+
+@media (max-width: 992px) {
+  p {
+    font-size: 10px;
+  }
+}
+
+.profile-link {
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+.link {
+  display: block;
+  text-decoration: none;
+  color: black;
+}
+
+.profile-link:hover {
+  color: #777;
+}
+
+.blackwhitediv {
+  background: #A4A6BF;
+  border-radius: 4px;
+  font-size: 7px;
+  color: white;
+}

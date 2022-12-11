@@ -1,0 +1,8 @@
+<div class="select-wrapper">
+  <img class="me-1" src="assets/icons/header-user.png" style="width: 22px;">
+  <select [formControl]="control" (change)="onChange(control.value)" class="w-100">
+    <option *ngFor="let option of options" [value]="option.value">
+      {{option.name}}
+    </option>
+  </select>
+</div>

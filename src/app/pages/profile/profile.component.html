@@ -1,0 +1,32 @@
+<div class="container mt-1">
+  <div class="row p-2">
+    <div class="col-12 col-md-8 pt-2">
+      <div *ngIf="statistics && profile; else profileEmpty">
+        <app-profile-stats [info]="profile" [statistics]="statistics"></app-profile-stats>
+        <app-profile-upcoming-matchs [type]="profile.type"></app-profile-upcoming-matchs>
+        <app-h2h-with [info]="profile" [statistics]="statistics"></app-h2h-with>
+        <app-profile-match-stats [info]="profile" [type]="profile.type"></app-profile-match-stats>
+        <app-profile-matches-played [type]="profile.type"></app-profile-matches-played>
+        <app-profile-performance-breakdown [type]="profile.type"></app-profile-performance-breakdown>
+        <app-profile-match-stats-summary></app-profile-match-stats-summary>
+        <app-profile-single-titles-finals [years]="profile.finalYears" [type]="profile.type">
+        </app-profile-single-titles-finals>
+        <app-profile-match-stats-h2h [type]="type"></app-profile-match-stats-h2h>
+
+      </div>
+
+      <ng-template #profileEmpty>
+        <div *ngIf="profileLoadError && profileInfoIsLoad && profileStatsIsLoad">
+          <h1 class="fw-bold text-center">Profile not found!</h1>
+        </div>
+
+        <div *ngIf="!profileLoadError && (!profileInfoIsLoad || !profileStatsIsLoad)">
+          <h1 class="fw-bold text-center">Profile is loading...</h1>
+        </div>
+      </ng-template>
+    </div>
+    <div class="col col-md-4 d-none d-md-block">
+      <app-sidebar [showInterestingH2h]="false"></app-sidebar>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,36 @@
+<div class="row">
+  <div class="col mt-3 mt-md-5 p-0">
+    <h5 class="text-capitalize fw-bold p-0">{{playerOneName}} vs {{playerTwoName}} H2H Stats</h5>
+  </div>
+</div>
+
+<div class="row justify-content-start">
+  <div class="col col-md-3 ps-0" *ngIf="filtersFormGroup.controls?.level">
+    <app-selector [options]="levelFilters" [formControl]="getFormControl('level')" ></app-selector>
+  </div>
+  <div class="col col-md-3">
+    <app-selector [options]="surfaceFilters" [formControl]="getFormControl('court')" ></app-selector>
+  </div>
+  <div class="col col-md-3">
+    <app-selector [options]="roundFilters" [formControl]="getFormControl('round')" ></app-selector>
+  </div>
+  <div class="col col-md-3 pe-0">
+    <app-selector [options]="tournamentFilters" [formControl]="getFormControl('tournament')" ></app-selector>
+  </div>
+</div>
+
+<div class="row mt-2">
+  <ng-container *ngIf="h2hStats && !errorMessage; else noStat">
+    <div class="col-12 p-0">
+      <app-short-table
+        [showHeader]="true"
+        [headers]="headers"
+        [data]="playerEventStats"
+      ></app-short-table>
+    </div>
+  </ng-container>
+</div>
+
+<ng-template #noStat>
+  No Stat
+</ng-template>

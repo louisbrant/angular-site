@@ -1,0 +1,40 @@
+<div class="row">
+  <div class="col mt-3 mt-md-5 p-0">
+    <h5 class="text-capitalize fw-bold p-0">Upcoming Match</h5>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col p-0">
+    <div class="bg-white mt-1 mt-md-3 border-radius pb-1 text-nowrap">
+      <table class="table text-center mb-1">
+        <thead>
+        <tr class="text-uppercase text-start">
+          <td class="ps-2 ps-md-3 pe-0 py-2 py-md-3"><span class="ps-2 py-1 py-md-2">round</span></td>
+          <td class="px-0 py-2 py-md-3"><span class="py-1 py-md-2 px-0">event</span></td>
+          <td class="text-center px-0 py-2 py-md-3"><span class="py-1 py-md-2 px-0 text-capitalize">{{match.player1.name}}</span></td>
+          <td class="text-center px-0 py-2 py-md-3"><span class="pe-2 py-1 py-md-2 text-capitalize">{{match.player2.name}}</span></td>
+          <td class="text-center pe-2 pe-md-3 ps-0 py-2 py-md-3"><span class="pe-2 py-1 py-md-2 empty-span-little"></span></td>
+        </tr>
+        </thead>
+
+        <tbody>
+
+        <tr  class="align-middle text-center">
+          <td class="text-start text-uppercase ps-3 ps-md-4">{{match.round && match.round.name}}</td>
+          <td class="text-start p-0" tournamentInfo [tournamentName]="match.tournament.name" [court]="match.tournament.court.name"></td>
+          
+          <td>{{match.odd1}}</td>
+
+          <td>{{match.odd2}}</td>
+ 
+          <td>
+            <button class="text-capitalize btn-primary border-radius">bet now</button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+

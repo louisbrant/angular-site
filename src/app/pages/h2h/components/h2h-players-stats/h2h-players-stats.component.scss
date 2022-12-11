@@ -1,0 +1,14 @@
+:host::ng-deep {
+  thead {
+    border-bottom: 1px solid #ddd;
+  }
+}
+
+@media (max-width: 992px) {
+  h5 {
+    font-size: 12px !important;
+  }
+  ::ng-deep span {
+    font-size: 8px !important;
+  }
+}

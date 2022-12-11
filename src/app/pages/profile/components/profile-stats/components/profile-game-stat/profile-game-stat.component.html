@@ -1,0 +1,121 @@
+<div class="information-wrap border-radius bg-white overflow-hidden h-100">
+  <div class="row information-wrap__header p-4" *ngIf="info && statistics">
+    <div class="col-6">
+      <div class="row">
+        <div class="col-3">
+          <img [src]="info?.image" onerror="this.onerror=null; this.src='assets/icons/sportsman-images/noprofile.bmp'"
+            class="w-100 playerimg">
+          <!-- style="height: 8em; object-fit: cover; object-position: 0 30%;" -->
+        </div>
+        <div class="col-9">
+          <div class="row">
+            <div class="col-12">
+              <div class="row ">
+                <div class="col-12 divflex blackcolor"
+                  style="font-family: 'Montserrat';font-style: normal;font-weight: 500;font-size: 25px;line-height: 43px;">
+                  {{info?.name ?? 'Not Found'}}
+                  <img src="assets/icons/Vector.png" style="height: 1rem;padding-left: 3%;margin-top: 12px;">
+                  <p class="m-0 text-nowrap overflow-visible greencolor">Stats</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="row">
+                <div class="col-5">
+                  <div class="row" style="font-size: 12px;">
+                    <div class="col-10 nonepd" style="padding-left: calc(var(--bs-gutter-x) * 0.5) !important;">
+                      Current Rank
+                    </div>
+                    <div class="col-2 nonepd greencolor">
+                      #{{info?.currentRank || '-'}}
+                    </div>
+                  </div>
+                </div>
+                <div class="col-1 nonepd">
+                  |
+                </div>
+                <div class="col-6 nonepd row" style="font-size: 12px;">
+                  <div class="col-6 nonepd" style="font-size: 12px;">
+                    Best Rank
+                  </div>
+                  <div class="col-6 nonepd">
+                    <div class="row" *ngIf="statistics.bestRank?.position; else noRank">
+                      <div class="col-2 nonepd greencolor">
+                        #{{statistics.bestRank.position}}
+                      </div>
+                      <div class="col-10 nonepd" style="font-size: 9px;padding-top: 3px !important;">
+                        ({{statistics.bestRank.date | date : 'yyyy'}})
+                      </div>
+                    </div>
+                    <ng-template #noRank>
+                      <div class="px-0 py-1 text-end">
+                        {{formatBestRank(statistics.bestRank)}}
+                      </div>
+                    </ng-template>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="col-12 nonepd">
+        <div class="divflex">
+          <div class="col-4 nonepd">
+            <div class="col-12 px-0 py-1 nonepd fs12">
+              Total Titles
+            </div>
+            <div class="col-12">
+              {{statistics?.totalTitles}}
+            </div>
+          </div>
+          <div class="col-4 nonepd">
+            <div class="col-12 nonepd fs12">
+              Grand Slams
+            </div>
+            <div class="col-12 nonepd">
+              {{statistics?.grandSlam?.split('-')![0]}}
+            </div>
+          </div>
+          <div class="col-2 nonepd">
+            <div class="col-12 nonepd fs12">
+              Masters
+            </div>
+            <div class="col-12 nonepd">
+              {{statistics?.master?.split('-')![0]}}
+            </div>
+          </div>
+          <div class="col-2 nonepd">
+            <div class="col-12 nonepd fs12">
+              Other
+            </div>
+            <div class="col-12 nonepd">
+              {{other}}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12">
+        <div class="d-flex match-result">
+          <div *ngFor="let result of recentForm" class="text-center me-1" style="padding: 0 1px"
+            [class.result-win]="result" [class.result-loose]="!result">
+            {{result ? 'W' : 'L'}}
+          </div>
+          <div *ngIf="!recentForm.length">
+            No matches
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="px-2 px-md-3" *ngIf="info && statistics">
+    <div class="recent-form mb-3">
+      <app-profile-information [info]="info" [statistics]="statistics"></app-profile-information>
+    </div>
+  </div>
+</div>

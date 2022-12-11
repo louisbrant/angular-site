@@ -1,0 +1,53 @@
+<div class="p-3">
+  <div class="carddiv">
+    <div class="header p-4 row">
+      <div class="col-10">
+        <p class="table-title careerstatehead fw-bold">{{tournamentName + "Men's Singles Draw"}}</p>
+      </div>
+      <div class="col-2" *ngIf="yearFilters.length">
+        <app-selector [defaultValue]="yearFilters[1].value" [options]="yearFilters"
+          [formControl]="getFormControl('year')">
+        </app-selector>
+      </div>
+    </div>
+    <div class="content_header ">
+      <div class="arrowbuttongroup row">
+        <button class="btn-h2h border-radius arrowbtn text-nowrap px-2 py-1">Mem's Singles</button>
+        <div class="arrowmenudiv leftdiv"></div>
+        <button class="btn-h2h border-radius arrowbtn rightbtn text-nowrap px-2 py-1">Men's Singles</button>
+        <div class="arrowmenudiv rightdiv"></div>
+        <button class="btn-h2h border-radius arrowbtn rightbtn text-nowrap px-2 py-1">Men's Qualifying</button>
+        <div class="arrowmenudiv rightdiv"></div>
+      </div>
+    </div>
+    <div class="content_header p-2 pt-1 pb-1 row">
+      <div class="col-9"> </div>
+      <div class="col-2 text-left"> ODDS / SCR </div>
+      <div class="col-1 text-center"> H2H </div>
+    </div>
+    <div class="content">
+      <div class="row contenttable">
+        <div class="border-radius pb-1 text-nowrap overflow-x-auto" drawTable [draws]="selectedDraw">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- <div class="container mt-3 mt-md-5 p-1 p-md-2" *ngIf="selectedDraw.length">
+  <div class="row">
+    <h5 class="text-capitalize fw-bold p-0">{{tournamentName}}
+      <app-tournament-year-picker [selectedYear]="currentYear">
+      </app-tournament-year-picker>
+    </h5>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <app-tab [actives]="actives" (activeChanged)="changeActive($event)"></app-tab>
+    </div>
+  </div>
+
+</div> -->

@@ -1,0 +1,29 @@
+<div class="row header-title">
+  <h2 class="title">{{title}}</h2>
+</div>
+
+<div class="card">
+  <div class="card-bdy">
+    <app-search
+      [listResult]="firstPlayerProfiles"
+      [showBorder]="true"
+      [placeholder]="'Player 1'"
+      [size]="'short'"
+      [isDebounce]="true"
+      (eventSubmit)="searchPlayer($event, 'player 1')"
+      (teamName) = "selectPlayer($event, 'player 1')"
+    ></app-search>
+    <span class="vs">vs</span>
+    <app-search
+      [listResult]="secondPlayerProfiles"
+      [showBorder]="true"
+      [placeholder]="'Player 2'"
+      [size]="'short'"
+      [isDebounce]="true"
+      (eventSubmit)="searchPlayer($event, 'player 2')"
+      (teamName) = "selectPlayer($event, 'player 2')"
+    ></app-search>
+
+    <button (click)="navigateToH2h()" class="btn btn-search" [disabled]="!firstPlayer || !secondPlayer">Search</button>
+  </div>
+</div>

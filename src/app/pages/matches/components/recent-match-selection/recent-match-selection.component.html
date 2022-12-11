@@ -1,0 +1,189 @@
+<div class="col pt-4 pb-2">
+  <div class="carddiv">
+    <div class="header p-4 row">
+      <p class="table-title careerstatehead fw-bold">Nadal vs Federer H2H Matches Only</p>
+    </div>
+    <div class="content_header p-3 pt-2 pb-2 d-flex" *ngIf="surfaceFilters.length&&roundFilters.length">
+      <div class="p-2 pt-1 pb-1">
+        <app-selector [type]="'rankingsel'" [options]="surfaceFilters" [formControl]="getFormControl('surface')"
+          name="surface" [defaultValue]="surfaceFilters[0].value"></app-selector>
+      </div>
+      <div class="p-2 pt-1 pb-1">
+        <app-selector [type]="'rankingsel'" [options]="roundFilters" [formControl]="getFormControl('round')"
+          name="round" [defaultValue]="roundFilters[0].value"></app-selector>
+      </div>
+      <div class="p-2 pt-1 pb-1">
+        <div class="beforediv">
+          Before:
+        </div>
+      </div>
+      <div class="p-2 pt-1 pb-1">
+        <app-selector [type]="'rankingsel'" [options]="yearFilters" [formControl]="getFormControl('year')" name="year"
+          [defaultValue]="yearFilters[0].value"></app-selector>
+      </div>
+      <div class="p-2 pt-1 pb-1">
+        <app-selector [type]="'rankingsel'" [options]="weekFilters" [formControl]="getFormControl('week')" name="week"
+          [defaultValue]="weekFilters[0].value"></app-selector>
+      </div>
+    </div>
+    <div class="content">
+      <table class="table text-center">
+        <tbody>
+          <tr class="text-uppercase text-start table-header">
+            <td class=" pt-1 pb-1 text-left"><span class="py-1 py-md-2 px-0">
+
+              </span>
+            </td>
+            <td class=" pt-1 pb-1 text-left"><span class="py-1 py-md-2 px-0">
+                Opponent
+              </span>
+            </td>
+            <td class=" pt-1 pb-1 text-left"><span class="py-1 py-md-2 px-0">
+
+              </span>
+            </td>
+            <td class=" pt-1 pb-1 text-left"><span class="py-1 py-md-2 px-0">
+                Result
+              </span>
+            </td>
+            <td class=" pt-1 pb-1 text-left"><span class="py-1 py-md-2 px-0">
+                SCORE
+              </span>
+            </td>
+            <td class=" pt-1 pb-1 text-left"><span class="py-1 py-md-2 px-0">
+                H2H
+              </span>
+            </td>
+          </tr>
+
+          <tr class="text-start ">
+            <td class=" pt-1 pb-1 text-left">
+              <span class="py- py-md-2 px-0 greencolor">
+              </span>
+            </td>
+            <td class=" pt-1 pb-1 text-left">
+              <span class="py- py-md-2 px-0 greencolor">Wimbledon 14/7/2021
+              </span>
+            </td>
+            <td class=" pt-1 pb-1 text-left">
+              <span class="py- py-md-2 px-0 greencolor">
+              </span>
+            </td>
+            <td class=" pt-1 pb-1 text-left">
+              <span class="py- py-md-2 px-0 greencolor">
+              </span>
+            </td>
+            <td class=" pt-1 pb-1 text-left">
+              <span class="py- py-md-2 px-0 greencolor">
+              </span>
+            </td>
+            <td class=" pt-1 pb-1 text-left">
+              <span class="py- py-md-2 px-0 greencolor">
+              </span>
+            </td>
+          </tr>
+          <tr class="text-start ">
+            <td class=" pt-3 pb-1 text-center"><span class="py- py-md-2 p-2 rounddiv ">
+                F
+              </span>
+            </td>
+            <td class=" pt-3 pb-1 text-left "><span class="py- py-md-2 px-0 ">
+                <app-sportsman [number]="1" [isShortName]="false" [fullname]="'Egypt'" [countryCode]="'EGY'">
+                </app-sportsman>
+              </span>
+            </td>
+            <td class=" pt-3 pb-1 text-left"><span class="py-1 py-md-2 px-0 d-flex">
+                <img src="assets/icons/Vector.png" class="statsimg">
+                <p class="m-0 text-nowrap overflow-visible greencolor">Stats</p>
+              </span>
+            </td>
+            <td class=" pt-3 pb-1 text-left"><span class="py-1 py-md-2 px-0 ">
+                <!-- <div *ngFor="let result of recentForm" class="text-center me-1" style="padding: 0 1px"
+                  [class.result-win]="result" [class.result-loose]="!result">
+                  {{result ? 'W' : 'L'}}
+                </div> -->
+                <div _ngcontent-jbx-c123="" class="text-center me-1 result-loose loosediv" style="padding: 0 1px;"> L
+                </div>
+                <!-- <div *ngIf="!recentForm.length">
+                  No matches
+                </div> -->
+              </span>
+            </td>
+            <td class=" pt-3 pb-1 text-left"><span class="py-1 py-md-2 px-0 ">
+                6<sup>1</sup> 3<sup>5</sup> 1<sup>6</sup> 3<sup>5</sup> 3<sup>6</sup>
+              </span>
+            </td>
+            <td class=" pt-3 pb-1 text-left"><span class="py-1 py-md-2 px-0 ">H2H 16-21
+              </span>
+            </td>
+          </tr>
+          <tr class="text-start ">
+            <td class=" pt-3 pb-1 text-center"><span class="py- py-md-2 p-2 rounddiv ">
+                F
+              </span>
+            </td>
+            <td class=" pt-3 pb-1 text-left "><span class="py- py-md-2 px-0 ">
+                <app-sportsman [number]="1" [isShortName]="false" [fullname]="'Egypt'" [countryCode]="'EGY'">
+                </app-sportsman>
+              </span>
+            </td>
+            <td class=" pt-3 pb-1 text-left"><span class="py-1 py-md-2 px-0 d-flex">
+                <img src="assets/icons/Vector.png" class="statsimg">
+                <p class="m-0 text-nowrap overflow-visible greencolor">Stats</p>
+              </span>
+            </td>
+            <td class=" pt-3 pb-1 text-left"><span class="py-1 py-md-2 px-0 ">
+                <!-- <div *ngFor="let result of recentForm" class="text-center me-1" style="padding: 0 1px"
+                            [class.result-win]="result" [class.result-loose]="!result">
+                            {{result ? 'W' : 'L'}}
+                          </div> -->
+                <div _ngcontent-jbx-c123="" class="text-center me-1 result-loose loosediv" style="padding: 0 1px;"> L
+                </div>
+                <!-- <div *ngIf="!recentForm.length">
+                            No matches
+                          </div> -->
+              </span>
+            </td>
+            <td class=" pt-3 pb-1 text-left"><span class="py-1 py-md-2 px-0 ">
+                6<sup>1</sup> 3<sup>5</sup> 1<sup>6</sup> 3<sup>5</sup> 3<sup>6</sup>
+              </span>
+            </td>
+            <td class=" pt-3 pb-1 text-left"><span class="py-1 py-md-2 px-0 ">H2H 16-21
+              </span>
+            </td>
+          </tr>
+          <!-- <tr class="text-start ">
+            <td class=" pt-3 pb-1 text-left d-flex"><span class="py- py-md-2 px-0 ">
+                <app-sportsman [number]="1" [isShortName]="false" [fullname]="'Egypt'" [countryCode]="'EGY'">
+                </app-sportsman>
+              </span>
+            </td>
+            <td class=" pt-3 pb-1 text-left ">
+              <span class="py- py-md-2 px-0 ">
+                <app-sportsman [number]="1" [isShortName]="false" [fullname]="'Egypt'" [countryCode]="'EGY'">
+                </app-sportsman>
+              </span>
+            </td>
+            <td class=" pt-3 pb-1 text-left"><span class="py-1 py-md-2 px-0 ">
+                6<sup>1</sup>3<sup>5</sup>1<sup>6</sup>3<sup>5</sup> 3<sup>6</sup>
+              </span>
+            </td>
+            <td class=" pt-3 pb-1 text-left"><span class="py-1 py-md-2 px-0 ">
+                <img src="assets/icons/Vector.png" class="statsimg">
+                <p class="m-0 text-nowrap overflow-visible greencolor">Stats</p>
+              </span>
+            </td>
+          </tr> -->
+        </tbody>
+      </table>
+
+      <div class="row mt-1 pb-2 mt-md-3">
+        <div class="col justify-content-center align-items-center d-flex flex-column">
+          <p class="greencolor fs12" style="cursor: pointer;">Show More Matches <img
+              src="assets/icons/arrowdown-green.png" style="width: 0.8em"></p>
+        </div>
+      </div>
+      <div class="p-1 table-wrap"></div>
+    </div>
+  </div>
+</div>

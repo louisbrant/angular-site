@@ -1,0 +1,47 @@
+<div class="bg-white px-2 py-1 table-wrap overflow-auto" [style.max-height]="maxHeight" [style.height]="height">
+  <table class="table my-0">
+    <thead *ngIf="showHeader">
+    <tr>
+      <th *ngFor="let header of headers" class="px-0 px-sm-2" [ngClass]="dark ? 'header-dark' : 'header-white'">{{header.value}}</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr
+      *ngFor="let row of data"
+      class="text-nowrap"
+      (click)="clickEvent ? clickEvent(row.params) : ''"
+      [class.click-event]="clickEvent"
+    >
+      <td *ngFor="let header of headers; let i = index" [style]="header?.styles" class="px-1 px-sm-2 py-0 py-md-2">
+        <img
+          [src]="row?.icon" *ngIf="row?.icon && i == 1"
+          onerror="this.onerror=null; this.src='assets/icons/sportsman-images/noprofile.bmp'"
+          style="width: 1.9em"
+          class="me-1">
+        <img
+          [src]="row[header.name].search('/api') != -1 ? row[header.name] : 'assets/icons/sportsman-images/' + row[header.name] + '.png'"
+          onerror="this.onerror=null; this.src='assets/icons/sportsman-images/noprofile.bmp'"
+          style="width: 1.5em; height: 1.5em; object-position: top; object-fit: cover"
+          *ngIf="header.name == 'image'"
+          class="me-1 border-radius">
+        <span
+          *ngIf="!header?.template && header.name != 'countryCode' && header.name != 'image'"
+        >{{row[header.name]}}</span>
+        <span *ngIf="header.template == 'money'">{{row[header.name] ? (row[header.name] | money) : ''}}</span>
+        <span *ngIf="header.template == 'pts'">{{row[header.name] ? row[header.name] + ' PTS' : ''}}</span>
+        <span *ngIf="header.template == 'percent' && isNumber(row[header.name])">
+          {{(row[header.name] | number : '1.1-1') || 0}}%
+        </span>
+        <span *ngIf="header.template == 'percent' && !isNumber(row[header.name])">
+          {{row[header.name]}}
+        </span>
+        <img
+          [src]="'assets/icons/flags/' + row[header.name] + '.svg'"
+          style="width: 1.9em"
+          *ngIf="header.name == 'countryCode'">
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

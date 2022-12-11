@@ -1,0 +1,20 @@
+<div (focusin)="focusIn($event)" (focusout)="focusOut($event)" (mouseleave)="!focus ? focusOut($event) : ''"
+  id="search">
+  <div class="text-nowrap" *ngIf="placeholder.length">
+    <input *ngIf="placeholder == 'Search by name';else elsesearch" placeholder='Search by name'
+      class="search-input px-1 px-md-3 w-100" [class.p-0]="size == 'short'" [class.p-md-1]="size == 'short'"
+      [class.p-1]="size == 'medium'" [class.p-md-2]="size == 'medium'" [class.search-input-border]="showBorder"
+      (click)="focusIn($event)" [formControl]="searchControl">
+    <ng-template #elsesearch>
+      <input placeholder='Search' class="search-input px-1 px-md-3 w-100" [class.p-0]="size == 'short'"
+        [class.p-md-1]="size == 'short'" [class.p-1]="size == 'medium'" [class.p-md-2]="size == 'medium'"
+        [class.search-input-border]="showBorder" (click)="focusIn($event)" [formControl]="searchControl">
+    </ng-template>
+    <img src="assets/icons/search.svg" class="search-icon p-1 p-md-2 d-inline-block" (click)="search()">
+  </div>
+  <div class="list-modal px-3 py-1" *ngIf="showListResult && listResult?.length">
+    <div *ngFor="let element of listResult">
+      <a class="link" [routerLink]="h2hLink(element)">{{element}}</a>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+<div class="row">
+  <div class="col pe-0 d-flex align-items-center" [class.p-0]="padding">
+    <app-country-flag [countryCode]="countryCode" [hideCountryBySize]="hideCountryBySize"></app-country-flag>
+    <div class="d-flex">
+      <a [class.ms-0]="hideCountryBySize" class="col-4 m-0 link p-2" [class.profile-link]="!isUnknown && hasLink"
+        [class.ms-md-2]="hideCountryBySize" [class.ms-2]="!hideCountryBySize"
+        [href]="!this.isUnknown && this.hasLink ? '/tennis' + '/profile/' + fullnameFirstPerson : '#'"
+        (click)="scrollToTop()">{{this.firstPerson}}</a>
+      <a [class.ms-0]="hideCountryBySize" class="col-4 d-block m-0 profile-link link"
+        [class.ms-md-2]="hideCountryBySize" [class.ms-2]="!hideCountryBySize"
+        [href]="!this.isUnknown && this.hasLink ? '/tennis' + '/profile/' + fullnameSecondPerson : '#'"
+        (click)="scrollToTop()">{{this.secondPerson}}</a>
+      <div *ngIf="number" class="p-2 col-4">
+        <span class="p-1 blackwhitediv">{{number}}</span>
+      </div>
+    </div>
+  </div>
+  <div class="col ps-0 d-flex align-items-center">
+    <span class="number px-2 ms-0 ms-md-2" *ngIf="idkLeague">{{idkLeague}}</span>
+  </div>
+</div>

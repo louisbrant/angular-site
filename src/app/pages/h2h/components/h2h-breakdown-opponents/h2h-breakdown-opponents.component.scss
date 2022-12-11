@@ -1,0 +1,26 @@
+:host::ng-deep {
+  th {
+    border: 1px solid black;
+  }
+  tr:first-child {
+    border-top: 1px solid black;
+  }
+  tr:last-child {
+    border-bottom: 1px solid black;
+  }
+  tr, td {
+    border-top: none;
+    border-bottom: none;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+  }
+}
+
+@media (max-width: 992px) {
+  h5 {
+    font-size: 12px !important;
+  }
+  ::ng-deep span {
+    font-size: 8px !important;
+  }
+}

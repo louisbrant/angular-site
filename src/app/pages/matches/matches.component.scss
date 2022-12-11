@@ -1,0 +1,177 @@
+@media (max-width: 992px) {
+    h6 {
+        font-size: 12px;
+    }
+}
+
+.teniscard {
+    padding: 3em;
+    display: flex;
+    width: 100%;
+    height: 13rem;
+    justify-content: center;
+    align-items: center;
+    padding-left: 6rem;
+    padding-right: 6rem;
+}
+
+.teniscarddiv {
+    border-right: 1px solid #F1F1F1;
+}
+
+.divflex {
+    display: flex;
+}
+
+.playerimg {
+    border-radius: 100%;
+    object-fit: cover;
+    height: 80%;
+    width: 110% !important;
+}
+
+.greencolor {
+    color: #6DC47F;
+}
+
+.blackcolor {
+    color: #04071E;
+}
+
+.nonepd {
+    padding: 0% !important;
+}
+
+.fs12 {
+    font-size: 12px;
+}
+
+.information-wrap__header {
+    padding-bottom: 0% !important;
+}
+
+.information-wrap {
+    border-radius: 20px !important;
+}
+
+
+.careerstatehead {
+    font-size: 26px !important;
+}
+
+.arrowbtn {
+    width: 100px;
+    border-radius: 0%;
+}
+
+.rightbtn {
+    background: #ffff;
+}
+
+.rightdiv {
+    background: #ffff;
+    margin-left: -12px;
+}
+
+.arrowbuttongroup {
+    border-top: 1px solid #F1F1F1;
+    --bs-gutter-x: 0rem;
+    border-bottom: 1px solid #F1F1F1;
+}
+
+.arrowmenudiv {
+    width: 23px;
+    transform: rotate(45deg);
+    border-top-right-radius: 10px;
+    border-top: 1px solid #F1F1F1;
+    height: 23px;
+    border-right: 1px solid #F1F1F1;
+    margin-top: 4px;
+    margin-left: -11px;
+}
+
+.leftdiv {
+    background: buttonface;
+}
+
+.carddiv {
+    background: white;
+    border-radius: 20px;
+}
+
+.headertext {
+    font-family: "Source Code Pro", sans-serif;
+    font-size: 35px;
+    font-weight: 400 !important;
+}
+
+.content_header {
+    background: #FBFBFB;
+    border-top: 1px solid #F1F1F1;
+    border-bottom: 1px solid #F1F1F1;
+    font-weight: 500;
+    font-size: 20px;
+}
+
+.content {
+    border-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.table-wrap {
+    border-radius: 20px;
+}
+
+.bigselect {
+    width: 100% !important;
+}
+
+
+
+.greencolor {
+    color: #6DC47F;
+}
+
+.blackcolor {
+    color: #04071E;
+}
+
+.nonepd {
+    padding: 0% !important;
+}
+
+.leftpd {
+    padding-left: calc(var(--bs-gutter-x) * 0.5) !important;
+}
+
+.leftlpd {
+    padding-left: calc(var(--bs-gutter-x) * 0.3) !important;
+}
+
+
+.fs12 {
+    font-size: 12px;
+}
+
+.inforhead {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    color: #04071E;
+    padding-top: 1em;
+}
+
+.inforfooter {
+    color: #4C535F;
+    padding-bottom: 0.5em;
+}
+
+
+.pr-2 {
+    padding-right: 1rem !important;
+}
+
+.pl-2 {
+    padding-left: 1rem !important;
+}

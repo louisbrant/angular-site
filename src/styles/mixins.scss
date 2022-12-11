@@ -1,0 +1,18 @@
+@mixin cross-browser($style, $value) {
+  -webkit-#{$style}: #{$value};
+  -moz-#{$style}: #{$value};
+  -o-#{$style}: #{$value};
+  -ms-#{$style}: #{$value};
+  #{$style}: #{$value};
+}
+
+@mixin font-params($fontSize, $color, $fontWeight, $lineHeight) {
+  font-weight: #{$fontWeight};
+  font-size: #{$fontSize};
+  line-height: #{$lineHeight};
+  color: #{$color};
+}
+
+@mixin for-phone-only {
+  @media (max-width: 768px) { @content; }
+}

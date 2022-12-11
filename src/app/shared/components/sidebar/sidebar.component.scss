@@ -1,0 +1,104 @@
+tbody {
+  border-top: none !important;
+}
+
+:host .sticky-top {
+  top: 5%;
+}
+
+td p {
+  margin: 0
+}
+
+.skip-paragraph {
+  margin-bottom: 1.3rem !important;
+}
+
+thead>tr>th {
+  color: black;
+  border-radius: 5px;
+}
+
+table td,
+table th {
+  font-size: 14px;
+}
+
+.image-container {
+  vertical-align: middle;
+}
+
+.text-description {
+  font-size: 12px;
+  color: #888
+}
+
+tr:last-child>td,
+tr:last-child>th {
+  border-bottom-width: 0;
+}
+
+.table-wrap {
+  border-radius: 5px;
+}
+
+.profile-link {
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.profile-link:hover {
+  color: #777
+}
+
+.tournament-link {
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.tournament-link:hover {
+  color: #777;
+}
+
+.h2h-link {
+  transition: 0.2s;
+  cursor: pointer;
+
+  &:hover {
+    color: #777 !important;
+  }
+}
+
+.nonepdlr {
+  padding-left: 0% !important;
+  padding-right: 0% !important;
+}
+
+.br20 {
+  border-radius: 10px;
+}
+
+.sideunselbtn {
+  background: #e5e5e5;
+  border-radius: 0% !important;
+}
+
+.sidectselbtn {
+  background: white;
+  border-top-left-radius: 10px !important;
+  border-top-right-radius: 10px !important;
+}
+
+.upcomingthead {
+  background: #e5e5e5;
+}
+
+.upcomingdiv {
+  padding-left: 0.8em !important;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+// .bgset {
+//   background: #e5e5e5 !important;
+// }

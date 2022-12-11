@@ -1,0 +1,136 @@
+<div class="wrap">
+  <div class=" mt-4 bg-white table-wrap br20 bgset" *ngIf="showLiveEvents">
+    <table class="table my-0 fs-6">
+      <thead class="upcomingthead">
+        <div class="row upcomingdiv">
+          <div class="nonepdlr text-center pt-2 pb-2 col-6 px-4 sidectselbtn">Upcoming Match</div>
+          <div class="nonepdlr text-center pt-2 pb-2 col-5 px-4 sideunselbtn">Live Events</div>
+          <div class="nonepdlr text-center pt-2 pb-2 col-1 px-4 sideunselbtn"></div>
+        </div>
+      </thead>
+      <tbody>
+        <div class="bg-white mt-1 mt-md-3 border-radius pb-1 text-nowrap"
+          *ngIf="upcomingMatches.length; else noMatches">
+          <tr *ngFor="let match of upcomingMatches" class="align-middle">
+            <td class="text-start text-uppercase ps-3 ps-md-4">{{match.roundId | shortRound :
+              match.tournament.name}}</td>
+            <td class="text-start p-0 tournament-link text-decoration-none"
+              (click)="navigateToTournament(match.tournament.name, match.tournament.date!)">
+              {{match.tournament.name}}</td>
+
+            <td class="text-start ps-md-4 ps-3">
+              <app-match-stat [winner]="match.player1" [looser]="match.player2"></app-match-stat>
+            </td>
+
+            <ng-template #noStat>
+              <td>
+                No Stat
+              </td>
+            </ng-template>
+
+            <td class="text-center">
+              <app-sportsman [fullname]="match.player1.name == selectedName ? match.player2.name : match.player1.name"
+                [idkLeague]="match.player1.name == selectedName ? match.player2.seed : match.player1.seed"
+                [countryCode]="match.player1.name == selectedName ? match.player2.countryAcr : match.player1.countryAcr"
+                [hideCountryBySize]="true"></app-sportsman>
+            </td>
+
+            <td class="p-0">
+              <div *ngIf="!match.player1.odd && !match.player2.odd; else coef">
+                <span>n/a</span>
+              </div>
+
+              <ng-template #coef>
+                <div [coef]="match.player1.odd!" class="d-inline"></div> - <div [coef]="match.player2.odd!"
+                  class="d-inline"></div>
+              </ng-template>
+            </td>
+
+            <td class="pe-md-4 pe-2 h2h-link"
+              [class.h2h-link]="match.player1.name != 'Unknown Player' && match.player2.name != 'Unknown Player'"
+              (click)="navigateToH2h(match.player1.name, match.player2.name)">H2H {{match.h2h}}</td>
+          </tr>
+        </div>
+        <ng-template #noMatches>
+          <h5 class="p-2">No upcoming matches!</h5>
+        </ng-template>
+        <!-- <tr class="tournament-link p-2" (click)="navigateToTournament(liveEvent.name, liveEvent.date)"
+          *ngFor="let liveEvent of liveEvents; let i = index">
+          <td class="col-1 p-0 pe-2 image-container p-2">
+            <img [src]="liveEvent.image" style="width: 3em"
+              onerror="this.onerror=null; this.src='assets/icons/sportsman-images/noprofile.bmp'" />
+          </td>
+          <td>
+            <p class="m-0 p-0">{{ liveEvent.name }}</p>
+            <p class="m-0 p-0 text-description">{{ liveEvent.country }}</p>
+          </td>
+          <td>
+            <p class="m-0 p-0">{{ liveEvent.name }}</p>
+            <p class="m-0 p-0 text-description">{{ liveEvent.country }}</p>
+          </td>
+        </tr> -->
+      </tbody>
+    </table>
+  </div>
+
+
+  <div class="p-3 mt-3 bg-white table-wrap br20" *ngIf="showAtpRanking">
+    <table class="table my-0 fs-6">
+      <thead>
+        <tr>
+          <th colspan="4" class="px-4 ">
+            <img [src]="'assets/icons/blackstar.png'" style="width: 1em;padding-bottom: 1%;" />&nbsp;&nbsp;ATP Rankings
+          </th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr class="profile-link" *ngFor="let row of atpRankings; let i = index"
+          (click)="navigateToProfile(row.player.name)" href="/asdf">
+          <td class="col-1 px-0">{{ i + 1 }}</td>
+          <td>
+            <img [src]="'assets/icons/flags/' + row.player.countryAcr + '.svg'" style="width: 1.9em" />
+          </td>
+          <td>
+            <span>{{ row.player.name }}</span>
+          </td>
+          <td class="text-end">
+            <span>{{ row.point }} PTS</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="p-3 mt-4 bg-white table-wrap text-nowrap" *ngIf="showInterestingH2h">
+    <table class="table my-0 fs-6">
+      <thead>
+        <tr>
+          <th colspan="4" class="px-4">Interesting H2H's</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let row of interestingH2h; let i = index" class="align-middle">
+          <td class="">
+            <app-sportsman [isShortName]="false" [fullname]="row.player1.name" [countryCode]="row.player1.countryAcr"
+              [hasLink]="true"></app-sportsman>
+            <p class="text-center h2h-link" (click)="navigateToH2h(row.player1.name, row.player2.name)">
+              vs
+            </p>
+            <app-sportsman [isShortName]="false" [fullname]="row.player2.name" [countryCode]="row.player2.countryAcr"
+              [hasLink]="true"></app-sportsman>
+          </td>
+
+          <td class="">
+            <p class="text-end">{{ row.player1Wins }}</p>
+            <p class="h2h-link" (click)="navigateToH2h(row.player1.name, row.player2.name)">
+              H2H
+            </p>
+            <p class="text-end">{{ row.player2Wins }}</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

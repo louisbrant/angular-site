@@ -1,0 +1,37 @@
+<div class="container mt-1">
+  <div class="row d-flex">
+    <div class="col-12 col-md-8  pt-2" *ngIf="currentTournament; else tournamentEmpty">
+      <!-- <h1 class="fw-bold text-center">{{currentTournament.name ? currentTournament.name : 'match not found'}}
+        <app-tournament-year-picker [selectedYear]="currentYear"></app-tournament-year-picker>
+      </h1> -->
+      <div class="col-12" *ngIf="currentTournament">
+        <app-tournament-short-stats [pastChampions]="singlesPastChampions" [tournament]="currentTournament"
+          [tournamentName]="currentTournament.name" [tournamentYear]="currentYear?.year || 0">
+        </app-tournament-short-stats>
+
+        <app-draws [tournamentName]="currentTournament.name"></app-draws>
+        <app-champions [singlesChampions]="singlesPastChampions" [doublesChampions]="doublesPastChampions">
+        </app-champions>
+      </div>
+    </div>
+
+    <ng-template #tournamentEmpty>
+      <div class="col-12 col-md-8">
+        <div *ngIf="tournamentLoadError && tournamentIsLoad">
+          <h1 class="fw-bold text-center">Tournament not found!</h1>
+          <h3 class="text-center">Choose other year <app-tournament-year-picker [selectedYear]="currentYear">
+            </app-tournament-year-picker>
+          </h3>
+        </div>
+
+        <div *ngIf="!tournamentLoadError && !tournamentIsLoad">
+          <h1 class="fw-bold text-center">Tournament is loading...</h1>
+        </div>
+      </div>
+    </ng-template>
+
+    <div class="d-none d-md-block col-md-4 ">
+      <app-sidebar [showInterestingH2h]="false"></app-sidebar>
+    </div>
+  </div>
+</div>

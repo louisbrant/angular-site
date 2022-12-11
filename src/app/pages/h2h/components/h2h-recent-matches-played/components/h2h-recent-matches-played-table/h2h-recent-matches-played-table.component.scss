@@ -1,0 +1,14 @@
+:host::ng-deep {
+  select, option, span {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 992px) {
+  .container, span, td, button, .result-loose, .result-win {
+    font-size: 10px;
+  }
+  h5 {
+    font-size: 14px;
+  }
+}

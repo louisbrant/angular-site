@@ -1,0 +1,22 @@
+@media (max-width: 992px) {
+  .result-win, .result-loose {
+    font-size: 8px;
+  }
+  .text {
+    font-size: 12px;
+  }
+}
+
+.table tr:last-child > td {
+  border-bottom-width: 0;
+}
+
+.table-striped {
+  > tbody > tr:nth-of-type(odd) > * {
+    --bs-table-accent-bg: inherit;
+  }
+  > tbody > tr:nth-of-type(even) > * {
+    --bs-table-accent-bg: var(--bs-table-striped-bg);
+    color: var(--bs-table-striped-color);
+  }
+}

@@ -1,0 +1,93 @@
+<div class="row mt-3 mt-md-5">
+  <div class="col">
+    <h5 class="text-capitalize fw-bold p-0"> {{playerOneName}} vs {{playerTwoName}} Matches Played</h5>
+  </div>
+  <div class="col-12 col-md-7 d-flex justify-content-md-end justify-content-start align-items-center mt-2 mt-md-0">
+    <app-selector
+      class="ms-md-1 me-1 me-md-0"
+      [options]="surfaceFilters"
+      [formControl]="getFormControl('court')"
+    ></app-selector>
+    <app-selector
+      class="ms-md-1 me-1 me-md-0"
+      [options]="roundFilters"
+      [formControl]="getFormControl('round')"
+    ></app-selector>
+  </div>
+</div>
+
+<div class="row mt-3">
+  <div class="col p-1 p-md-2">
+    <div class="  bg-white border-radius text-nowrap overflow-x-auto pb-1"  *ngIf="matches.length; else noMatchGroups">
+      <table class="table text-center">
+        <thead>
+        <tr class="text-uppercase text-start">
+          <td class="ps-2 ps-md-3 pe-0 py-2 py-md-3"><span class="ps-2 py-2">winning player</span></td>
+          <td class="px-0 py-2 py-md-3"><span class="py-1 py-md-2 px-0">losing player</span></td>
+          <td class="text-center px-0 py-2 py-md-3"><span class="py-1 py-md-2 px-2">score</span></td>
+          <td class="text-center pe-2 pe-md-3 ps-0 py-2 py-md-3"><span class="py-1 py-md-2 px-0 empty-span"></span></td>
+        </tr>
+        </thead>
+
+        <tbody>
+          <ng-container *ngFor="let match of matches" >
+        <tr class="align-middle">
+          <td colspan="4" class="text-start text-uppercase ps-3 ps-md-4 draw-quartal">
+            <img [src]="'assets/icons/' + match.tournament.court.name.toLowerCase() + '.svg'">
+            <a class="m-0 tournament-link text-decoration-none fw-bold" [routerLink]="navigateToTournament(match.tournament.name, match.date)">{{match.roundId | shortRound : match.tournament.name }} - {{match.tournament.name}} {{match.date | date: 'dd MMM yyyy'}}</a>
+          </td>
+        </tr>
+        <tr class="align-middle">
+          <td class="ps-3 ps-md-4 text-start">
+            <app-sportsman
+              [fullname]="match.player1.name"
+              [idkLeague]="match.seed1"
+              [countryCode]="match.player1.countryAcr"
+              [hideCountryBySize]="true"
+              [padding]="false"
+            ></app-sportsman>
+          </td>
+
+          <td class="ps-3 ps-md-4 text-start" >
+            <app-sportsman
+              [fullname]="match.player2.name"
+              [idkLeague]="match.seed2"
+              [countryCode]="match.player2.countryAcr"
+              [hideCountryBySize]="true"
+              [padding]="false"
+            ></app-sportsman>
+          </td>
+
+          <td *ngIf="match?.result">{{match.result}}</td>
+
+          <td *ngIf="match?.player1?.stats && match?.player2?.stats; else noStat">
+            <app-match-stat
+              [winner]="match.player1"
+              [looser]="match.player2"
+            ></app-match-stat>
+          </td>
+
+
+        </tr>
+          </ng-container>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="row mt-1 mt-md-3" *ngIf="currentPage * 10 <= matchesCount">
+  <div class="col justify-content-center align-items-center d-flex flex-column">
+    <button class="btn btn-primary" (click)="nextPage()">View more <img src="assets/icons/arrowdown_white.svg" style="width: 0.8em"></button>
+  </div>
+</div>
+
+<ng-template #noStat>
+  <td>
+    No Stat
+  </td>
+</ng-template>
+
+<ng-template #noMatchGroups>
+  <h5>No information...</h5>
+</ng-template>

@@ -1,0 +1,118 @@
+<div class="row information-wrap__header p-4">
+    <div class="col-12">
+        <div class="row">
+            <div class="col-3">
+                <img [src]="'assets/icons/sportsman-images/noprofile.bmp'" class="w-100 playerimg">
+                <!-- style="height: 8em; object-fit: cover; object-position: 0 30%;" -->
+            </div>
+            <div class="col-9">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="row ">
+                            <div class="col-12 divflex blackcolor profname">
+                                {{"Rafa Nadal"}}
+                                <div class="statediv d-flex p-3 pt-1 pb-1">
+                                    <img src="assets/icons/Vector.png" class="statsimg">
+                                    <p class="m-0 text-nowrap overflow-visible greencolor">Stats</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="row rankdiv">
+                            <div class="col-5">
+                                <div class="row ">
+                                    <div class="col-10 nonepd"
+                                        style="padding-left: calc(var(--bs-gutter-x) * 0.5) !important;">
+                                        Current Rank
+                                    </div>
+                                    <div class="col-2 nonepd greencolor">
+                                        #{{02}}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-1 nonepd">
+                                |
+                            </div>
+                            <div class="col-6 nonepd row">
+                                <div class="col-7 nonepd">
+                                    {{"Best Rank"}}
+                                </div>
+                                <div class="col-5 nonepd">
+                                    <div class="row">
+                                        <div class="col-2 nonepd greencolor">
+                                            #{{02}}
+                                        </div>
+                                        <div class="col-10 yeardiv">
+                                            {{2022}}
+                                        </div>
+                                    </div>
+                                    <!-- <ng-template #noRank>
+                                        <div class="px-0 py-1 text-end">
+                                            {{formatBestRank(statistics.bestRank)}}
+                                        </div>
+                                    </ng-template> -->
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-12">
+        <div class="col-12 nonepd">
+            <div class="divflex">
+                <div class="col-6 nonepd">
+                    <div class="col-12 px-0 py-1 nonepd fsmiddle">
+                        Total Titles
+                    </div>
+                    <div class="fssmall col-12">
+                        {{56}}
+                    </div>
+                </div>
+                <div class="col-6 nonepd">
+                    <div class="col-12 nonepd fsmiddle">
+                        Grand Slams
+                    </div>
+                    <div class="fssmall col-12 nonepd">
+                        {{23}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 nonepd">
+            <div class="divflex">
+                <div class="col-6 nonepd">
+                    <div class="col-12 nonepd fsmiddle">
+                        Masters
+                    </div>
+                    <div class="fssmall col-12 nonepd">
+                        {{54}}
+                    </div>
+                </div>
+                <div class="col-6 nonepd">
+                    <div class="col-12 nonepd fsmiddle">
+                        Other
+                    </div>
+                    <div class="fssmall col-12 nonepd">
+                        {{43}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="d-flex match-result">
+                <div *ngFor="let result of recentForm" class="text-center me-1" style="padding: 0 1px"
+                    [class.result-win]="result" [class.result-loose]="!result">
+                    {{result ? 'W' : 'L'}}
+                </div>
+                <div *ngIf="!recentForm.length">
+                    No matches
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

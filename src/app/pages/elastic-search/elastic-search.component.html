@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="row mt-3 p-2">
+    <div class="col-12">
+      <div
+        searchInput
+        [isDebounce]="true"
+        (eventSubmit)="search($event)"
+        (control)="searchControl = $event"
+      ></div>
+    </div>
+  </div>
+
+  <div class="row mt-3">
+    <div *ngFor="let search of elasticSearch">
+      <div *ngIf="search?.category == 'player_atp' || search?.category == 'player_wta'" >
+        <ng-container [ngTemplateOutlet]="playerTemplate" [ngTemplateOutletContext]="{ $implicit: search }"></ng-container>
+      </div>
+      <div *ngIf="search?.category == 'tournament_atp' || search?.category == 'tournament_wta'" >
+        <ng-container [ngTemplateOutlet]="tournamentTemplate" [ngTemplateOutletContext]="{ $implicit: search }"></ng-container>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #playerTemplate let-player>
+    <div *ngIf="player?.result?.length > 0">
+      <h3>{{player.category == 'player_atp' ? 'ATP' : 'WTA'}} Players</h3>
+      <div class="m-3">
+        <div *ngFor="let player of player?.result" class="text-nowrap">
+          <app-sportsman [isShortName]="false" [fullname]="player.name" [countryCode]="player.countryAcr"></app-sportsman>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+
+  <ng-template #tournamentTemplate let-tournament>
+    <div *ngIf="tournament?.result?.length > 0">
+      <h3>{{tournament.category == 'tournament_atp' ? 'ATP' : 'WTA'}} Tournaments</h3>
+      <div>
+        <div *ngFor="let tournament of tournament?.result">
+          <a [routerLink]="'/tennis/tournaments/atp/' + tournament.name + '/' + getYear(tournament.date)">{{getYear(tournament.date)}} {{tournament.name}}</a>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</div>

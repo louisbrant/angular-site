@@ -1,0 +1,103 @@
+@import "../../../../styles/mixins";
+
+.footer {
+  background: #04071E;
+  color: white;
+}
+
+img {
+  width: 1.4em;
+}
+
+a {
+  color: white;
+
+  &:hover {
+    color: #ddd
+  }
+}
+
+.s-select-bottom {
+  margin-left: auto;
+  min-width: 160px;
+}
+
+@media (max-width: 992px) {
+  .footer-logo>span {
+    font-size: 14px !important;
+  }
+
+  .footer-discipline>a {
+    font-size: 14px;
+  }
+}
+
+.footer-menu {
+  line-height: 0.5em;
+}
+
+
+.nav-link {
+  color: white;
+  cursor: pointer;
+  transition: 0.2s;
+
+  &:hover {
+    color: #bbb;
+  }
+}
+
+.navbar {
+  z-index: 1200;
+}
+
+.nav-item-select {
+  min-width: 160px;
+}
+
+@media (max-width: 992px) {
+  .navbar {
+    .nav-link {
+      padding: 0;
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  .s-select-bottom {
+    display: none !important;
+  }
+}
+
+.search-footer-container {
+  width: 33%;
+
+  @include for-phone-only {
+    width: 40%;
+    padding-right: 0;
+  }
+}
+
+.select-footer-container {
+  @include font-params(15px, #ffff, 600, 16px);
+  width: 30%;
+}
+
+
+.statetext {
+  font-size: 1.6rem;
+}
+
+.footermenu {
+  font-size: 15px;
+  justify-content: center !important;
+}
+
+
+.footer-center {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}

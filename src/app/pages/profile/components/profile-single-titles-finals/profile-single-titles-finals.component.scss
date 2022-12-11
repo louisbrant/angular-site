@@ -1,0 +1,206 @@
+.single-table {
+  img {
+    height: 1.1em;
+  }
+
+  &-row {
+    border-bottom: 1px solid #ddd;
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+}
+
+@media (max-width: 992px) {
+
+  p,
+  span {
+    font-size: 8px;
+  }
+
+  img {
+    font-size: 10px;
+  }
+
+  h5 {
+    font-size: 12px !important;
+  }
+
+  h3 {
+    font-size: 14px !important;
+  }
+}
+
+
+.tournament-link {
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.tournament-link:hover {
+  color: #777;
+}
+
+
+:host::ng-deep {
+
+  select,
+  option,
+  span {
+    font-size: 14px;
+  }
+}
+
+a,
+a:hover,
+a:link {
+  color: #5f94da
+}
+
+
+@media (max-width: 992px) {
+
+  .container,
+  span,
+  td,
+  button,
+  .result-loose,
+  .result-win {
+    font-size: 10px;
+  }
+
+  h5 {
+    font-size: 14px;
+  }
+
+  .empty-span-little {
+    height: 2.5em
+  }
+}
+
+.tournament-link {
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.tournament-link:hover {
+  color: black;
+}
+
+.greencolor {
+  color: #6DC47F !important;
+}
+
+.h2h-link {
+  transition: 0.2s;
+  cursor: pointer;
+
+  &:hover {
+    color: #777 !important;
+  }
+}
+
+.careerstatehead {
+  font-size: 26px !important;
+}
+
+.arrowbtn {
+  width: 100px;
+  border-radius: 0%;
+}
+
+.rightbtn {
+  background: #ffff;
+}
+
+.rightdiv {
+  background: #ffff;
+  margin-left: -12px;
+}
+
+.arrowbuttongroup {
+  border-top: 1px solid #F1F1F1;
+  --bs-gutter-x: 0rem;
+  border-bottom: 1px solid #F1F1F1;
+}
+
+.arrowmenudiv {
+  width: 23px;
+  transform: rotate(45deg);
+  border-top-right-radius: 10px;
+  border-top: 1px solid #F1F1F1;
+  height: 23px;
+  border-right: 1px solid #F1F1F1;
+  margin-top: 4px;
+  margin-left: -11px;
+}
+
+.leftdiv {
+  background: buttonface;
+}
+
+.information-wrap {
+  &__header {
+    border-bottom: 1px solid #ddd;
+  }
+
+  border-radius: 20px;
+}
+
+.table-wrap {
+  padding: 0% !important;
+}
+
+.tablehead {
+  border-bottom: 1px solid #F1F1F1;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 24px;
+  border-top: 1px solid #F1F1F1;
+  background: #FBFBFB;
+  --bs-gutter-x: 0rem;
+}
+
+.itemheader {
+  color: #6DC47F;
+  font-size: 15px;
+}
+
+.fs12 {
+  font-size: 12px;
+}
+
+.lefttext {
+  text-align: left;
+}
+
+
+.menubtn {
+  display: flex;
+  width: 85%;
+}
+
+.menufilter {
+  width: 15%;
+}
+
+.bsguttor {
+  --bs-gutter-x: 0rem;
+}
+
+.bdzero {
+  border-radius: 0px !important;
+}
+
+
+.lefttprow {
+  text-align: left;
+  padding-left: 2% !important;
+  display: flex;
+}
+
+.p1 {
+  padding: 1%;
+}

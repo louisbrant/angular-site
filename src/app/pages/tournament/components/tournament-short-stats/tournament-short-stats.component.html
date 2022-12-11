@@ -1,0 +1,99 @@
+<div class="p-3">
+  <div class="carddiv">
+    <div class="header p-4 row">
+      <div class="col-10">
+        <p class="table-title careerstatehead fw-bold">{{"ATP "+tournamentName}}</p>
+      </div>
+      <div class="col-2" *ngIf="yearFilters.length">
+        <app-selector [defaultValue]="yearFilters[1].value" [options]="yearFilters"
+          [formControl]="getFormControl('year')">
+        </app-selector>
+      </div>
+    </div>
+    <div class="content_header p-2 pt-1 pb-1">
+      Tournament info
+    </div>
+    <div class="content">
+      <div class="row">
+        <div class="col-5 teniscarddiv">
+          <img [src]="'assets/icons/teniscard.png'" class="teniscard">
+        </div>
+        <div class="col-7">
+          <app-short-table [height]="tableHeight" [data]="tournamentInfoTable" [headers]="tournamentInfoHeaders">
+          </app-short-table>
+        </div>
+      </div>
+      <div>
+      </div>
+    </div>
+    <div class="content_header p-2 pt-1 pb-1">
+      Tournament points
+    </div>
+    <div class="content">
+      <div class="row">
+        <app-short-table class="overflow-auto" [height]="tableHeight" [data]="tournamentPointsTable"
+          [headers]="newTournamentPointsHeaders"></app-short-table>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+<!-- 
+
+
+
+
+
+<div class="information-wrap bg-white overflow-hidden h-100">
+  <div class="row information-wrap__header pt-2">
+    <div class="container mt-4 p-1 p-md-2">
+      <div class="row">
+        <div class="row p-3 align-items-center">
+          <div class="col-10">
+            <p class="table-title careerstatehead fw-bold">{{tournamentName}}</p>
+          </div>
+          <div class="col-2">
+            <app-selector [defaultValue]="yearFilters[1].value" [options]="yearFilters"
+              [formControl]="getFormControl('year')">
+            </app-selector>
+          </div>
+        </div>
+        <div class="tablehead p-3 pt-2 pb-2">
+          Tournament Info
+        </div>
+        <div class="col-6 pe-1 ps-0 pe-md-2">
+          <h6 class="text-capitalize fw-bold">tournament info</h6>
+          <app-short-table [height]="tableHeight" [data]="tournamentInfoTable" [headers]="tournamentInfoHeaders">
+          </app-short-table>
+        </div>
+
+        <div class="col-6 pe-0 ps-1 ps-md-2" *ngIf="tournamentPointsTable.length">
+          <h6 class="text-capitalize fw-bold">tournament points</h6>
+          <app-short-table class="overflow-auto" [height]="tableHeight" [data]="tournamentPointsTable"
+            [headers]="newTournamentPointsHeaders"></app-short-table>
+        </div>
+      </div>
+
+      <div class="row mt-3" *ngIf="pastChampionsTable.length">
+        <div class="col-6 pe-1 ps-0 pe-md-2">
+          <h6 class="text-capitalize fw-bold">past champions</h6>
+          <app-short-table [height]="tableHeight" [data]="pastChampionsTable" [headers]="pastChampionsHeaders"
+            [clickEvent]="navigateToProfile.bind(this)"></app-short-table>
+        </div>
+
+        <div class="col-6 pe-0 ps-1 ps-md-2" *ngIf="mostVictoriesTable.length">
+          <h6 class="text-capitalize fw-bold">most victories</h6>
+          <app-short-table [height]="tableHeight" [data]="mostVictoriesTable" [headers]="newMostVictoriesHeaders"
+            [clickEvent]="navigateToProfile.bind(this)"></app-short-table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->

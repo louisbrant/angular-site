@@ -1,0 +1,16 @@
+<div *ngIf="formControl" class="bigselect">
+  <select *ngIf="type=='canendersel';else othersel" [(ngModel)]='selectedVal' [formControl]="formControl"
+    (ngModelChange)="change()" class="bg-white p-1 w-100 canendersel">
+    <option *ngFor="let option of options" [value]="option.value">
+      {{option.name}}
+    </option>
+  </select>
+  <ng-template #othersel>
+    <select [(ngModel)]='selectedVal' [formControl]="formControl" (ngModelChange)="change()"
+      class="bg-white p-1 w-100 rankingsel">
+      <option *ngFor="let option of options" [value]="option.value">
+        {{option.name}}
+      </option>
+    </select>
+  </ng-template>
+</div>

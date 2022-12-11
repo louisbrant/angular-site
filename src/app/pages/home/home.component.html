@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row p-2">
+    <div class="col-12 col-md-8">
+      <div class="row mt-5">
+        <div class="col">
+          <app-h2h-search-football-clubs></app-h2h-search-football-clubs>
+        </div>
+      </div>
+      <div class="row mt-5">
+        <div class="col">
+          <app-h2h-search-tennis-atp [title]="'Tennis ATP H2H Search'"></app-h2h-search-tennis-atp>
+        </div>
+      </div>
+      <div class="row mt-5">
+        <div class="col">
+          <app-h2h-search-tennis-atp [title]="'Tennis WTA H2H Search'" [type]="'wta'"></app-h2h-search-tennis-atp>
+        </div>
+      </div>
+    </div>
+
+    <div class="col col-md-4 d-none d-md-block">
+      <app-sidebar [showAtpRanking]="false" [activeType]="'atp'"></app-sidebar>
+    </div>
+  </div>
+</div>

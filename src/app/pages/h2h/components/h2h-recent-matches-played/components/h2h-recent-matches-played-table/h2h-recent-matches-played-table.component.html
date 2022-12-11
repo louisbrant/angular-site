@@ -1,0 +1,76 @@
+<table class="table text-center">
+  <thead>
+  <tr class="text-uppercase text-start">
+    <td class="text-center ps-2 ps-md-3 pe-0 py-2 py-md-3"><span class="ps-2 py-2 empty-span"></span></td>
+    <td class="text-center px-0 py-2 py-md-3"><span class="py-1 py-md-2 px-0">opponent</span></td>
+    <td class="text-center px-0 py-2 py-md-3"><span class="py-1 py-md-2 px-2 empty-span"></span></td>
+    <td class="text-center px-0 py-2 py-md-3"><span class="py-1 py-md-2 px-0">result</span></td>
+    <td class="text-center px-0 py-2 py-md-3"><span class="py-1 py-md-2 px-0">score</span></td>
+    <td class="text-center pe-2 pe-md-3 ps-0 py-2 py-md-3"><span class="pe-2 py-1 py-md-2">h2h</span></td>
+  </tr>
+  </thead>
+
+  <tbody>
+    <ng-container *ngFor="let match of matches">
+      <tr  class="align-middle">
+        <td colspan="6" class="text-start text-uppercase ps-3 ps-md-4 draw-quartal">
+          {{match.tournament.name}} {{match.date | date: 'shortDate'}}
+        </td>
+      </tr>
+      <tr>
+        <td class="ps-3 ps-md-4 text-start" >{{match.stats && match.stat.round | shortRound : ""}}</td>
+        <td class="text-start">
+          <app-sportsman
+            *ngIf="!match.isWin; else secondPlayer"
+            [fullname]="match.player1.name"
+            [idkLeague]="match.seed1"
+            [countryCode]="match.player1.countryAcr"
+            [hideCountryBySize]="true"
+            [padding]="false"
+            
+          ></app-sportsman>
+          <ng-template #secondPlayer>
+            <app-sportsman
+              [fullname]="match.player2.name"
+              [idkLeague]="match.seed2"
+              [countryCode]="match.player2.countryAcr"
+              [hideCountryBySize]="true"
+              [padding]="false"
+            ></app-sportsman>
+          </ng-template>
+        </td>
+    
+        <td *ngIf="match.stat; else noStat">
+          <app-match-stat
+                  [oldWinnerInformation]="match.matchPlayed!.stat!.player_1"
+                  [oldLooserInformation]="match.matchPlayed!.stat!.player_2"
+                  [oldWinner]="match.matchPlayed!.player_1"
+                  [oldLooser]="match.matchPlayed!.player_2"
+          ></app-match-stat>
+        </td>
+    
+        <ng-template #noStat>
+          <td >
+            No Stat
+          </td>
+        </ng-template>
+    
+        <td class="match-result text-center">
+          <div *ngIf="match.isWin; else lose" class="result-win mx-auto">W</div>
+          <ng-template #lose>
+            <div class="result-loose mx-auto">L</div>
+          </ng-template>
+        </td>
+    
+        <td class="pe-md-4 pe-2">{{match.result}}</td>
+        <ng-container *ngIf="match.h2h; else noH2H">
+          <td class="pe-md-4 pe-2" > H2H {{match.h2h.player1Wins}}-{{match.h2h?.player2Wins}}</td>
+        </ng-container>
+        <ng-template #noH2H>
+          <td class="pe-md-4 pe-2" > No H2H </td>
+        </ng-template>
+      </tr>
+    </ng-container>
+    
+  </tbody>
+</table>

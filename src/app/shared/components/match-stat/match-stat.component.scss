@@ -1,0 +1,53 @@
+.wrap>p {
+  color: #376BB2;
+  line-height: 0.5em;
+}
+
+.stats-modal {
+  position: absolute;
+  min-width: 130px;
+  top: 0px;
+  background: white;
+  box-shadow: rgba(100, 100, 111, 0.6) 0px 7px 19px 0px;
+  font-size: 14px;
+  transform: translate(-45%)
+}
+
+@media (max-width: 600px) {
+  .stats-modal {
+    transform: none;
+    left: 5%;
+    right: 5%;
+  }
+}
+
+.info-line {
+  p {
+    white-space: nowrap
+  }
+
+  >.col {
+    border-bottom: 1px solid #ddd;
+  }
+}
+
+.text-left-red {
+  color: #F25D45
+}
+
+.text-right-green {
+  color: #30AF36
+}
+
+.profile-link {
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.profile-link:hover {
+  color: #777
+}
+
+.greencolor {
+  color: #6DC47F !important;
+}

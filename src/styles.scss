@@ -1,0 +1,196 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "styles/icons";
+
+html,
+body {
+  // height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+body {
+  margin: 0;
+  font-family: '"Source Code Pro", sans-serif';
+  background: #E5E5E5 !important;
+}
+
+* {
+  font-family: "Source Code Pro", sans-serif;
+}
+
+.border-radius {
+  border-radius: 5px;
+}
+
+a {
+  text-decoration: none;
+}
+
+.coef-0,
+.coef-1,
+.coef-2,
+.coef-3 {
+  border-radius: 5px;
+  padding: 3px 8px;
+  color: white;
+}
+
+.coef-0 {
+  background: #BB654D;
+}
+
+.coef-1 {
+  background: #C99E57;
+}
+
+.coef-2 {
+  background: #7CBF7F;
+}
+
+.coef-3 {
+  background: #4B975B;
+}
+
+.grass,
+.clay,
+.hard,
+.indoor {
+  color: white
+}
+
+.hard,
+.grass {
+  background: #019633;
+}
+
+.empty-span-little {
+  height: 2.5em;
+}
+
+.empty-span {
+  height: 2.6em;
+}
+
+.table>tbody {
+  border-top: none !important;
+}
+
+table tr:last-child td {
+  border-bottom-width: 0;
+}
+
+.table-title {
+  font-size: 16px;
+}
+
+.table-header {
+  padding-right: 16px;
+}
+
+.bg-light-gray {
+  background: #F1F2F5;
+}
+
+
+.table>thead>tr>td {
+  span {
+    background: #F1F2F5;
+    color: black;
+    width: 100%;
+    display: block;
+  }
+
+  &:first-child span {
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
+  }
+
+  &:last-child span {
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+  }
+}
+
+.overflow-x-auto {
+  overflow-x: auto;
+}
+
+.draw-quartal {
+  color: #5986c9;
+}
+
+tr:last-child>td,
+tr:last-child>th {
+  border-bottom: none !important;
+}
+
+button {
+  border: none
+}
+
+a:hover,
+.link,
+.link-primary {
+  cursor: pointer;
+}
+
+.match-result {
+  font-size: 14px;
+
+  &:last-child {
+    margin: 0 !important;
+  }
+
+  .result {
+    &-win {
+      background: #7CBF7F;
+    }
+
+    &-loose {
+      background: #F25D45;
+    }
+
+    &-win,
+    &-loose {
+      color: white;
+      width: 1.5em;
+      height: 1.5em;
+      border-radius: 3px;
+    }
+  }
+}
+
+.description {
+  color: #697077
+}
+
+.icon {
+  &-win {
+    width: 0.9em;
+    height: 0.9em;
+  }
+}
+
+.releative {
+  position: relative;
+}
+
+.put-forward {
+  z-index: 99999 !important;
+}
+
+p {
+  font-family: 'Montserrat';
+}
+
+.mat-dialog-container {
+  background: white !important;
+  padding: 0% !important;
+  margin-left: 14vw !important;
+  border-radius: 20px !important;
+}
+
+.cdk-global-overlay-wrapper {
+  justify-content: left !important;
+}

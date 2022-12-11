@@ -1,0 +1,116 @@
+<!-- <div class="container my-3 my-md-5 p-1 p-md-2" *ngIf="selectedChampions.length">
+  <div class="row">
+    <h5 class="text-capitalize fw-bold p-0">Past champions</h5>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <app-tab [actives]="actives" (activeChanged)="changeActive($event)"></app-tab>
+    </div>
+  </div>
+
+  <div class="row bg-white mt-1 mt-md-3 border-radius pb-1 overflow-x-auto">
+    <table class="table text-center mb-1 text-nowrap">
+      <thead>
+        <tr class="text-uppercase text-center">
+          <td class="ps-1 ps-md-3 pe-0 py-3"><span class="ps-2 py-2">year</span></td>
+          <td class="px-0 py-3"><span class="py-2">champion</span></td>
+          <td class="px-0 py-3"><span class="py-2 empty-span-little"></span></td>
+          <td class="px-0 py-3"><span class="py-2">runner-up</span></td>
+          <td class="px-0 py-3"><span class="py-2">score</span></td>
+          <td class="pe-1 pe-md-3 ps-0 py-3"><span class="pe-2 py-2">h2h</span></td>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let champion of selectedChampions.slice(0, maxShow)" class="align-middle">
+          <td class="ps-4">{{champion.date.getFullYear()}}</td>
+          <td class="text-start px-4">
+            <app-sportsman [hideCountryBySize]="true" [fullname]="champion.player1.name"
+              [countryCode]="champion.player1.countryAcr"></app-sportsman>
+          </td>
+          <td *ngIf="champion.player1.stats && champion.player2.stats; else noStat">
+            <app-match-stat [winner]="champion.player1" [looser]="champion.player2"></app-match-stat>
+          </td>
+
+          <ng-template #noStat>
+            <td>
+              No Stat
+            </td>
+          </ng-template>
+
+          <td class="text-start px-4">
+            <app-sportsman [hideCountryBySize]="true" [fullname]="champion.player2.name"
+              [countryCode]="champion.player2.countryAcr"></app-sportsman>
+          </td>
+          <td class="px-4">{{champion?.result ? champion?.result : "0-0"}}</td>
+          <td class="pe-4">{{champion?.h2h}}</td>
+
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="row mt-3" *ngIf="maxShow <= selectedChampions.length">
+    <div class="col d-flex justify-content-center">
+      <button class="btn btn-primary" (click)="viewMore()">
+        View more <img src="assets/icons/arrowdown_white.svg" style="width: 0.8em">
+      </button>
+    </div>
+  </div>
+</div> -->
+
+
+
+
+<div class="p-3">
+  <div class="carddiv">
+    <div class="header p-4 row">
+      <p class="table-title careerstatehead fw-bold">Past champions</p>
+
+    </div>
+    <table class="table text-center mb-1 text-nowrap">
+      <thead>
+        <tr class="text-uppercase text-left bdcolor bbcolor">
+          <td class="ps-1 ps-md-3 pe-0 py-1"><span class="theadmenu ps-2 py-2">year</span></td>
+          <td class="px-0 py-1"><span class="theadmenu py-2">champion</span></td>
+          <td class="px-0 py-1"><span class="theadmenu py-2 empty-span-little"></span></td>
+          <td class="px-0 py-1"><span class="theadmenu py-2">runner-up</span></td>
+          <td class="px-0 py-1"><span class="theadmenu py-2">score</span></td>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let champion of selectedChampions.slice(0, maxShow)" class="align-middle">
+          <td class="ps-2">{{champion.date.getFullYear()}}</td>
+          <td class="text-left">
+            <app-sportsman [hideCountryBySize]="true" [fullname]="champion.player1.name"
+              [countryCode]="champion.player1.countryAcr"></app-sportsman>
+          </td>
+          <td *ngIf="champion.player1.stats && champion.player2.stats; else noStat" class="text-center">
+            <app-match-stat [winner]="champion.player1" [looser]="champion.player2"></app-match-stat>
+          </td>
+
+          <ng-template #noStat>
+            <td>
+              No Stat
+            </td>
+          </ng-template>
+
+          <td class="text-left">
+            <app-sportsman [hideCountryBySize]="true" [fullname]="champion.player2.name"
+              [countryCode]="champion.player2.countryAcr"></app-sportsman>
+          </td>
+          <td class="text-left">{{champion?.result ? champion?.result : "0-0"}}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="row mt-1 pb-2 mt-md-3" *ngIf="maxShow <= selectedChampions.length">
+      <div class="col justify-content-center align-items-center d-flex flex-column">
+        <p class="greencolor fs12" style="cursor: pointer;" (click)="viewMore()">Show More Matches <img
+            src="assets/icons/arrowdown-green.png" style="width: 0.8em"></p>
+      </div>
+    </div>
+  </div>
+</div>

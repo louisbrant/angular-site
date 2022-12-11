@@ -1,0 +1,73 @@
+@import "../../../../styles/mixins";
+
+.card {
+  width: 100%;
+  padding: 20px;
+  @include for-phone-only {
+    padding: 10px;
+    margin: 0;
+  }
+  &-bdy {
+    display: flex;
+    align-items: center;
+  }
+}
+
+app-search {
+  max-width: 253px;
+  width: 100%;
+
+  @include for-phone-only {
+    max-width: 134px !important;
+  }
+}
+
+.header-title {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.title {
+  @include font-params(20px, #21272A, 600, 24px);
+  margin-right: auto;
+
+  @include for-phone-only {
+    font-size: 10px;
+  }
+}
+
+.vs {
+  margin: 0 20px;
+  font-weight: 600;
+
+  @include for-phone-only {
+    font-size: 8px;
+    margin: 0 10px;
+  }
+}
+
+.btn-search {
+  margin-left: 16px;
+  background: #376BB2;
+  padding: 0 27px;
+  color: white;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  height: 37px;
+
+  @include for-phone-only {
+    font-size: 11px;
+    height: 20px;
+    padding: 0 9px;
+    margin-left: 7px;
+    margin-top: 4px;
+  }
+}
+
+@include for-phone-only {
+  .title {
+    margin-bottom: 10px;
+  }
+}

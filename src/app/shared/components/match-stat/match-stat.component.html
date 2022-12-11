@@ -1,0 +1,109 @@
+<div class="wrap" (click)="showStats()"
+  *ngIf="winner?.stats && looser?.stats && winner?.stats && looser?.stats; else noPlayers">
+  <img src="assets/icons/Vector.png" style="height: 0.6rem;padding-left: 3%;float: left;">
+  <p class="m-0 text-nowrap overflow-visible greencolor ">Stats</p>
+</div>
+
+<ng-template #noPlayers>
+  <div>
+    <p class="m-0 text-nowrap overflow-visible">No Stats</p>
+  </div>
+</ng-template>
+
+<div class="stats-modal p-3" *ngIf="show && winner?.stats && looser?.stats" (mouseleave)="show = false"
+  style="z-index: 2000">
+  <div class="row">
+    <div class="col text-end pb-2 d-block d-md-none" (click)="closeTab()">
+      <mat-icon>close</mat-icon>
+    </div>
+  </div>
+  <div class="row" *ngIf="looser?.image && winner?.image && !isDoubles(looser?.name!)">
+    <div class="col mx-2 px-0 text-nowrap" *ngIf="winner?.image">
+      <img [src]="winner?.image" onerror="this.onerror=null; this.src='assets/icons/sportsman-images/noprofile.bmp'"
+        style="width: 10em">
+    </div>
+    <div class="col mx-2 px-0" *ngIf="looser?.image">
+      <img [src]="looser?.image" onerror="this.onerror=null; this.src='assets/icons/sportsman-images/noprofile.bmp'"
+        style="width: 10em">
+    </div>
+  </div>
+  <div class="row info-line">
+    <div class="col mx-2 py-2 px-0 text-start text-nowrap profile-link" (click)="navigateToProfile(winner?.name)">
+      {{winner?.name}}</div>
+    <div class="col mx-2 py-2 px-0 text-center text-nowrap overflow-visible">Player</div>
+    <div class="col mx-2 py-2 px-0 text-end text-nowrap profile-link" (click)="navigateToProfile(looser?.name)">
+      {{looser?.name}}</div>
+  </div>
+  <div class="row info-line">
+    <div class="col mx-2 py-2 px-0 text-start text-nowrap">{{percents(winner?.stats?.firstServe,
+      winner?.stats?.firstServeOf)}}% ({{winner?.stats?.firstServe }} of {{winner?.stats?.firstServeOf}})</div>
+    <div class="col mx-2 py-2 px-0 text-center text-nowrap overflow-visible">1st Serve %</div>
+    <div class="col mx-2 py-2 px-0 text-end text-nowrap">{{percents(looser?.stats?.firstServe,
+      looser?.stats?.firstServeOf)}}% ({{looser?.stats?.firstServe}} of {{looser?.stats?.firstServeOf}})</div>
+  </div>
+  <div class="row info-line">
+    <div class="col mx-2 py-2 px-0 text-start text-nowrap">{{winner?.stats?.aces}}</div>
+    <div class="col mx-2 py-2 px-0 text-center text-nowrap overflow-visible">Aces</div>
+    <div class="col mx-2 py-2 px-0 text-end text-nowrap">{{looser?.stats?.aces}}</div>
+  </div>
+  <div class="row info-line">
+    <div class="col mx-2 py-2 px-0 text-start text-left-red text-nowrap">{{winner?.stats?.doubleFaults}}</div>
+    <div class="col mx-2 py-2 px-0 text-center text-nowrap overflow-visible">Double Faults</div>
+    <div class="col mx-2 py-2 px-0 text-end text-right-green text-nowrap">{{looser?.stats?.doubleFaults}}</div>
+  </div>
+  <div class="row info-line">
+    <div class="col mx-2 py-2 px-0 text-start text-left-red text-nowrap">{{percents(winner?.stats?.winningOnFirstServe,
+      winner?.stats?.winningOnFirstServeOf)}}% ({{winner?.stats?.winningOnFirstServe}} of
+      {{winner?.stats?.winningOnFirstServeOf}})</div>
+    <div class="col mx-2 py-2 px-0 text-center text-nowrap overflow-visible">1st Serve Won</div>
+    <div class="col mx-2 py-2 px-0 text-end text-right-green text-nowrap">{{percents(looser?.stats?.winningOnFirstServe,
+      looser?.stats?.winningOnFirstServeOf)}}% ({{looser?.stats?.winningOnFirstServe}} of
+      {{looser?.stats?.winningOnFirstServeOf}})</div>
+  </div>
+  <div class="row info-line">
+    <div class="col mx-2 py-2 px-0 text-start text-left-red text-nowrap">{{percents(winner?.stats?.winningOnSecondServe,
+      winner?.stats?.winningOnSecondServeOf)}}% ({{winner?.stats?.winningOnSecondServe}} of
+      {{winner?.stats?.winningOnSecondServeOf}})</div>
+    <div class="col mx-2 py-2 px-0 text-center text-nowrap overflow-visible">2nd Serve Won</div>
+    <div class="col mx-2 py-2 px-0 text-end text-right-green text-nowrap">
+      {{percents(looser?.stats?.winningOnSecondServe, looser?.stats?.winningOnSecondServeOf)}}%
+      ({{looser?.stats?.winningOnSecondServe}} of {{looser?.stats?.winningOnSecondServeOf}})</div>
+  </div>
+  <div class="row info-line">
+    <div class="col mx-2 py-2 px-0 text-start text-left-red text-nowrap">{{percents(winner?.stats?.breakPointsConverted,
+      winner?.stats?.breakPointsConvertedOf)}}% ({{winner?.stats?.breakPointsConverted}} of
+      {{winner?.stats?.breakPointsConvertedOf}})</div>
+    <div class="col mx-2 py-2 px-0 text-center text-nowrap overflow-visible">Break Points Won</div>
+    <div class="col mx-2 py-2 px-0 text-end text-right-green text-nowrap">
+      {{percents(looser?.stats?.breakPointsConverted, looser?.stats?.breakPointsConvertedOf)}}%
+      ({{looser?.stats?.breakPointsConverted}} of {{looser?.stats?.breakPointsConvertedOf}})</div>
+  </div>
+  <div class="row info-line">
+    <div class="col mx-2 py-2 px-0 text-start text-left-red text-nowrap">
+      {{percents(((looser?.stats?.winningOnFirstServeOf || 0) - (looser?.stats?.winningOnFirstServe || 0)) +
+      (((looser?.stats?.winningOnSecondServeOf || 0) - (looser?.stats?.winningOnSecondServe || 0))),
+      (looser?.stats?.winningOnFirstServeOf || 0) + (looser?.stats?.winningOnSecondServeOf || 0))}}%
+      ({{((looser?.stats?.winningOnFirstServeOf || 0) - (looser?.stats?.winningOnFirstServe || 0)) +
+      (((looser?.stats?.winningOnSecondServeOf || 0) - (looser?.stats?.winningOnSecondServe || 0)))}} of
+      {{(looser?.stats?.winningOnFirstServeOf || 0) + (looser?.stats?.winningOnSecondServeOf || 0)}})</div>
+    <div class="col mx-2 py-2 px-0 text-center text-nowrap overflow-visible">Rtn Points Won</div>
+    <div class="col mx-2 py-2 px-0 text-end text-right-green text-nowrap">
+      {{percents(((winner?.stats?.winningOnFirstServeOf || 0) - (winner?.stats?.winningOnFirstServe || 0)) +
+      (((winner?.stats?.winningOnSecondServeOf || 0) - (winner?.stats?.winningOnSecondServe || 0))),
+      (winner?.stats?.winningOnFirstServeOf || 0) + (winner?.stats?.winningOnSecondServeOf || 0))}}%
+      ({{((winner?.stats?.winningOnFirstServeOf || 0) - (winner?.stats?.winningOnFirstServe || 0)) +
+      (((winner?.stats?.winningOnSecondServeOf || 0) - (winner?.stats?.winningOnSecondServe || 0)))}} of
+      {{(winner?.stats?.winningOnFirstServeOf || 0) + (winner?.stats?.winningOnSecondServeOf || 0)}})</div>
+  </div>
+  <div class="row info-line">
+    <div class="col mx-2 py-2 px-0 text-start text-left-red text-nowrap">{{winner?.stats?.totalPointsWon}}</div>
+    <div class="col mx-2 py-2 px-0 text-center text-nowrap overflow-visible">Total Points Won</div>
+    <div class="col mx-2 py-2 px-0 text-end text-right-green text-nowrap">{{looser?.stats?.totalPointsWon}}</div>
+  </div>
+  <div class="row mt-2">
+    <div class="col mx-2 py-2 px-0 text-start text-nowrap d-flex justify-content-center">
+      <button class="btn btn-primary" (click)="navigateToH2h(winner?.name!, looser?.name!)">View more <img
+          src="assets/icons/arrowright_white.svg" style="height: 0.8em"></button>
+    </div>
+  </div>
+</div>

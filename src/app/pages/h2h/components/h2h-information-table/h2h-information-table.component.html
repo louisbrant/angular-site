@@ -1,0 +1,50 @@
+<div class="row">
+  <table class="text-center table table-striped">
+    <tbody>
+    <tr>
+      <td class="text"><ng-container *ngTemplateOutlet="recentGames; context: {$implicit: playerOne.recentGames}"></ng-container></td>
+      <td class="fw-bold text">Form</td>
+      <td class="text"><ng-container *ngTemplateOutlet="recentGames; context: {$implicit: playerTwo.recentGames}"></ng-container></td>
+    </tr>
+
+    <tr>
+      <td class="text">{{playerOne.careerWLPercentage}}% ({{playerOne.careerWin}}-{{playerOne.careerLose}})</td>
+      <td class="fw-bold text">Career W/L</td>
+      <td class="text">{{playerTwo.careerWLPercentage}}% ({{playerTwo.careerWin}}-{{playerTwo.careerLose}})</td>
+    </tr>
+
+    <tr>
+      <td class="text">{{playerOne.ytdWLPercentage}}%  ({{playerOne.ytdWon}}-{{playerOne.ytdLost}})</td>
+      <td class="fw-bold text">YTD W/L</td>
+      <td class="text">{{playerTwo.ytdWLPercentage}}%  ({{playerTwo.ytdWon}}-{{playerTwo.ytdLost}})</td>
+    </tr>
+
+    <tr>
+      <td class="text">${{playerOne.careerMoney}} </td>
+      <td class="fw-bold text">Career Prize Money</td>
+      <td class="text">${{playerTwo.careerMoney}}</td>
+    </tr>
+
+    <tr>
+      <td class="text">{{playerOne.ytdTitles}}</td>
+      <td class="fw-bold text">YTD Titles</td>
+      <td class="text">{{playerTwo.ytdTitles}}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<ng-template #recentGames let-recent>
+  <div class="d-flex match-result justify-content-around">
+    <div *ngFor="let result of recent"
+         class="text-center"
+         style="padding: 0 1px"
+         [class.result-win]="result === 'w'"
+         [class.result-loose]="result ==='l'">
+      {{result | uppercase}}
+    </div>
+    <div *ngIf="!recent.length">
+      No matches
+    </div>
+  </div>
+</ng-template>

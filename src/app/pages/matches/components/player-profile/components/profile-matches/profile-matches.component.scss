@@ -1,0 +1,58 @@
+.table>tbody>tr:nth-of-type(odd) {
+  background: #FBFBFB;
+}
+
+tr {
+  border-top: 1px solid #F1F1F1;
+  border-bottom: 1px solid #F1F1F1;
+}
+
+.playerimg {
+  width: 1em;
+  height: 1em;
+  border-radius: 100%;
+}
+
+.harddiv {
+  background: #006CC1;
+  border-radius: 4px;
+  font-size: 13px;
+  padding-left: 1rem !important;
+  padding-right: 1rem !important;
+  color: white;
+}
+
+.claydiv {
+  background: #DB8C00;
+  border-radius: 4px;
+  font-size: 13px;
+  padding-left: 1rem !important;
+  padding-right: 1rem !important;
+  color: white;
+}
+
+.indoordiv {
+  background: #259CFA;
+  border-radius: 4px;
+  font-size: 13px;
+  padding-left: 1rem !important;
+  padding-right: 1rem !important;
+  color: white;
+}
+
+.grassdiv {
+  background: #019633;
+  border-radius: 4px;
+  font-size: 13px;
+  padding-left: 1rem !important;
+  padding-right: 1rem !important;
+  color: white;
+}
+
+.rounddiv {
+  padding: 0.5rem !important;
+  background: #F1F1F1;
+  border: 1px solid #DADADA;
+  border-radius: 7px;
+  font-size: 12px;
+}

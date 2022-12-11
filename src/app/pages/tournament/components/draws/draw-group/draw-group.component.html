@@ -1,0 +1,96 @@
+<table class="table text-center mb-1">
+  <!-- <thead>
+    <tr class="text-uppercase text-start">
+      <td colspan="2" class="ps-2 ps-md-3 pe-0 py-3"><span class="ps-2 py-2">player 1</span></td>
+      <td class="px-0 py-3"><span class="py-2 px-1">player 2</span></td>
+      <td class="text-center px-0 py-3"><span class="py-2 px-1">odds/scr</span></td>
+      <td class="text-center pe-2 pe-md-3 ps-0 py-3"><span class="pe-2 py-2">h2h</span></td>
+    </tr>
+  </thead> -->
+
+  <tbody>
+    <tr *ngFor="let draw of groupDraws" class="align-middle">
+      <td class="text-start greencolor fs20 ps-3 ps-md-4 draw-quartal col-12" *ngIf="draw?.group">
+        {{getGroupName(draw.group)}}
+      </td>
+      <td class="text-start ps-md-4 ps-3" *ngIf="draw?.player1 && !draw.group">
+        <div class="col-12">
+          <app-sportsman [fullname]="draw.player1.name" [idkLeague]="draw.player1.seed"
+            [countryCode]="draw.player1.countryAcr" [hideCountryBySize]="true"></app-sportsman>
+
+        </div>
+        <div class="col-12">
+          <app-sportsman [fullname]="draw.player2.name" [idkLeague]="draw.player2.seed"
+            [countryCode]="draw.player2.countryAcr" [hideCountryBySize]="true"></app-sportsman>
+
+        </div>
+      </td>
+
+      <td *ngIf="draw?.player1?.stats && draw?.player2?.stats; else noStat" class="bdcolor">
+        View stats
+      </td>
+      <ng-template #noStat class="bdcolor">
+        <td *ngIf="draw?.player1 && draw.result!='bye'">
+          No Stat
+        </td>
+        <td *ngIf="draw.result=='bye'">
+        </td>
+      </ng-template>
+      <td *ngIf="draw?.odd1 && draw?.odd2; else noOdd" class="bdcolor">
+        <div class="p-1">
+          <div *ngIf="draw?.odd1?.split('-')![1] != ''" class="col-12 {{draw?.odd1?.split('-')![1]}}">
+            {{draw?.odd1?.split('-')![0]}}
+          </div>
+        </div>
+        <div class="p-1">
+          <div *ngIf="draw?.odd2?.split('-')![1] != ''" class="col-12 {{draw?.odd2?.split('-')![1]}}">
+            {{draw?.odd2?.split('-')![0]}}
+          </div>
+        </div>
+      </td>
+      <ng-template #noOdd class="bdcolor">
+        <td *ngIf="draw?.player1 && draw.result!='bye'" class="bdcolor">
+
+        </td>
+      </ng-template>
+
+      <td class="text-start ps-md-4 ps-3 bdcolor" *ngIf="draw?.player2 && !draw.group; else noPlayer">
+
+      </td>
+
+      <ng-template #noPlayer>
+        <td *ngIf="draw?.player1">
+          Bye
+        </td>
+      </ng-template>
+
+      <td *ngIf="draw?.player1" class="bdcolor">
+        <div *ngIf="draw?.result; else coef">
+          <div *ngIf="draw?.draw == 'list';else text">
+            <button (click)="playersshow(draw)" class="predictionbtn">Prediction -></button>
+          </div>
+          <ng-template #text>
+            <span>{{draw.result}}</span>
+          </ng-template>
+        </div>
+
+        <ng-template #coef>
+          <!--{{draw.date | date:'dd.MM.yyyy HH:mm'}}-->
+          <div *ngIf="draw?.player2?.odd != null && draw?.player1?.odd != null">
+            <span [ngClass]="'coef-' + draw.player1.odd!.toString()[0]">{{draw.player1.odd | number : '1.2'}}</span> -
+            <span [ngClass]="'coef-' + draw.player2.odd!.toString()[0]">{{draw.player2.odd | number : '1.2'}}</span>
+          </div>
+        </ng-template>
+      </td>
+
+      <td class="pe-md-4 pe-2 bdcolor"
+        *ngIf="draw?.player1 && draw.player2  && draw?.player1?.name && draw?.player2?.name"
+        [class.h2h-link]="draw?.player1?.name != 'Unknown Player' && draw?.player2?.name != 'Unknown Player'"
+        (click)="navigateToH2h(draw?.player1?.name, draw?.player2?.name)">{{draw?.h2h ? 'H2H ' + draw.h2h : (!draw?.h2h
+        && draw?.player1?.name !=="Unknown Player" && draw?.player2?.name !=="Unknown Player")? 'H2H 0-0' : ''}}</td>
+      <td *ngIf="draw.result=='bye'">
+      </td>
+
+    </tr>
+  </tbody>
+</table>

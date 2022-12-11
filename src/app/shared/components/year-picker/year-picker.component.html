@@ -1,0 +1,14 @@
+<div class="d-inline-block releative" (clickOutside)="onClickedOutside()">
+  <a class="link-primary text-decoration-none" (click)="showStats()">{{selectedYear}} <img src="assets/icons/arrowdown.svg" style="width: 0.8em"></a>
+  <div class="stats-modal p-3" *ngIf="show">
+    <div class="row" *ngIf="years.length">
+      <div class="col-12 max-scroll">
+        <ul class="list-group">
+          <li *ngFor="let year of years" class="list-group-item py-1 text-center">
+            <a class="link-primary text-decoration-none h4 text-center" (click)="selectYear(year)">{{year}}</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

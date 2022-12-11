@@ -1,0 +1,91 @@
+<!-- <div class="row justify-content-center" *ngIf="yearFilters.length>1">
+  <div class="col col-md-2 p-1 p-md-2">
+    <app-selector [defaultValue]="yearFilters[1].value" [options]="yearFilters" [formControl]="getFormControl('year')"></app-selector>
+  </div>
+  <div class="col col-md-2 p-1 p-md-2">
+    <app-selector [options]="levelFilters" [formControl]="getFormControl('level')"></app-selector>
+  </div>
+  <div class="col col-md-2 p-1 p-md-2">
+    <app-selector [options]="surfaceFilters" [formControl]="getFormControl('court')"></app-selector>
+  </div>
+  <div class="col col-md-2 p-1 p-md-2">
+    <app-selector [options]="roundFilters" [formControl]="getFormControl('round')"></app-selector>
+  </div>
+</div> -->
+
+<div class="row information-wrap">
+  <div class="col-12 pb-3">
+    <div class="information-wrap bg-white h-100">
+      <div class="row pt-3 p-3 align-items-center">
+        <div class="row p-3 align-items-center">
+          <div class="col-10">
+            <p class="table-title careerstatehead fw-bold">{{info?.name ?? 'Not Found'}} Career Stats</p>
+          </div>
+          <div class="col-2">
+            <app-selector [defaultValue]="yearFilters[1].value" [options]="yearFilters"
+              [formControl]="getFormControl('year')">
+            </app-selector>
+          </div>
+        </div>
+      </div>
+      <div class="arrowbuttongroup row">
+        <button class="btn-h2h border-radius arrowbtn text-nowrap px-2 py-1">All</button>
+        <div class="arrowmenudiv leftdiv"></div>
+        <button class="btn-h2h border-radius arrowbtn rightbtn text-nowrap px-2 py-1">Hard</button>
+        <div class="arrowmenudiv rightdiv"></div>
+        <button class="btn-h2h border-radius arrowbtn rightbtn text-nowrap px-2 py-1">Clay</button>
+        <div class="arrowmenudiv rightdiv"></div>
+        <button class="btn-h2h border-radius arrowbtn rightbtn text-nowrap px-2 py-1">Grass</button>
+        <div class="arrowmenudiv rightdiv"></div>
+        <button class="btn-h2h border-radius arrowbtn rightbtn text-nowrap px-2 py-1">Indoor</button>
+        <div class="arrowmenudiv rightdiv"></div>
+      </div>
+      <div class="tablehead p-3 pt-2 pb-2">
+        Service Stats
+      </div>
+      <div *ngIf="serveStats && returnStats && breakServe && breakRtn">
+        <app-short-table class="menubottom" [headers]="headers" [data]="serveStats"></app-short-table>
+      </div>
+      <div class="tablehead p-3 pt-2 pb-2">
+        Return Stats
+      </div>
+      <div *ngIf="serveStats && returnStats">
+        <app-short-table class="menubottom" [headers]="headers" [data]="returnStats"></app-short-table>
+      </div>
+      <div class="tablehead p-3 pt-2 pb-2">
+        Break Points (Serve)
+      </div>
+      <div *ngIf="serveStats && returnStats">
+        <app-short-table class="menubottom" [headers]="headers" [data]="breakServe"></app-short-table>
+      </div>
+      <div class="tablehead p-3 pt-2 pb-2">
+        Break Points (Rtn)
+      </div>
+      <div *ngIf="serveStats && returnStats">
+        <app-short-table class="menubottom" [headers]="headers" [data]="breakRtn"></app-short-table>
+      </div>
+    </div>
+  </div>
+  <!-- <div class="row mt-3 mt-md-4" *ngIf="serveStats && returnStats">
+    <div class="col-6 p-1 p-md-2">
+      <h5 class="table-title fw-bold">Service Stats</h5>
+      <app-short-table [headers]="headers" [data]="serveStats"></app-short-table>
+    </div>
+
+    <div class="col-6 p-1 p-md-2">
+      <h5 class="table-title fw-bold">Return Stats</h5>
+      <app-short-table [headers]="headers" [data]="returnStats"></app-short-table>
+    </div>
+  </div>
+
+  <div class="row mt-3 mt-md-4" *ngIf="breakServe && breakRtn">
+    <div class="col-6 p-1 p-md-2">
+      <h5 class="table-title fw-bold">Break Points (Serve)</h5>
+      <app-short-table [headers]="headers" [data]="breakServe"></app-short-table>
+    </div>
+
+    <div class="col-6 p-1 p-md-2">
+      <h5 class="table-title fw-bold">Break Points (Rtn)</h5>
+      <app-short-table [headers]="headers" [data]="breakRtn"></app-short-table>
+    </div>
+  </div> -->

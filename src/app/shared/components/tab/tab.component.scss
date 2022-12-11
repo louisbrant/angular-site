@@ -1,0 +1,22 @@
+.active-tab {
+  background: #376BB2;
+  color: white;
+  font-weight: normal;
+  border-right: none !important;
+}
+
+.not-active-tab {
+  font-weight: normal;
+  color: #888888;
+  cursor: not-allowed;
+}
+
+.tab-container {
+  .tab {
+    border-right: 1px solid #ddd;
+    cursor: pointer;
+    &:last-child {
+      border-right: none;
+    }
+  }
+}

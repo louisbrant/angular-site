@@ -1,0 +1,110 @@
+<div class="information-wrap border-radius bg-white h-100">
+  <div class="row pt-3 p-3 align-items-center">
+    <div class="row p-3 align-items-center">
+      <div class="col-10">
+        <p class="table-title careerstatehead fw-bold">{{profileName}} Matches Played</p>
+      </div>
+      <div class="col-2">
+        <app-selector [defaultValue]="yearFilters[1].value" [options]="yearFilters"
+          [formControl]="getFormControl('year')">
+        </app-selector>
+      </div>
+    </div>
+  </div>
+  <div class="arrowbuttongroup row">
+    <button class="btn-h2h border-radius arrowbtn text-nowrap px-2 py-1">All</button>
+    <div class="arrowmenudiv leftdiv"></div>
+    <button class="btn-h2h border-radius arrowbtn rightbtn text-nowrap px-2 py-1">Hard</button>
+    <div class="arrowmenudiv rightdiv"></div>
+    <button class="btn-h2h border-radius arrowbtn rightbtn text-nowrap px-2 py-1">Clay</button>
+    <div class="arrowmenudiv rightdiv"></div>
+    <button class="btn-h2h border-radius arrowbtn rightbtn text-nowrap px-2 py-1">Grass</button>
+    <div class="arrowmenudiv rightdiv"></div>
+    <button class="btn-h2h border-radius arrowbtn rightbtn text-nowrap px-2 py-1">Indoor</button>
+    <div class="arrowmenudiv rightdiv"></div>
+  </div>
+  <div class="row">
+    <div class="">
+      <div class="bg-white border-radius text-nowrap overflow-x-auto pb-1"
+        *ngIf="matchGrouped.length; else noMatchGroups">
+        <table class="table text-center">
+          <tbody>
+            <tr *ngFor="let match of matchGrouped" class="align-middle">
+              <td colspan="6" class="text-start text-uppercase ps-3 ps-md-4 draw-quartal" *ngIf="match?.group">
+                <div class="col-10 lefttext" style="float:left">
+                  <img [src]="'assets/icons/profileuser.png'" style="color: black;"> ATP - SINGLES:
+                  <a class="m-0 itemheader tournament-link text-decoration-none greencolor fw-bold"
+                    [routerLink]="navigateToTournament(match.tourName!, match.date!)">
+                    {{match!.group}}
+                  </a>
+                </div>
+                <div class="col-2 greencolor fs12">
+                  View Draw
+                </div>
+              </td>
+
+              <td class="ps-3 ps-md-4 text-start" *ngIf="match?.matchPlayed">
+                {{match.matchPlayed?.date?.split('-')![2].split("T")[0]+"."+match.matchPlayed?.date?.split('-')![1]+"."+match.matchPlayed?.date?.split('-')![0]?.split("20")![1]}}
+              </td>
+              <td class="text-start" *ngIf="match?.matchPlayed">
+                <button class="btn-h2h bg-green-gray border-radius text-nowrap px-2 py-1">{{match.matchPlayed!.roundId
+                  |
+                  shortRound : match.matchPlayed!.tournament.name}}
+                </button>
+              </td>
+
+              <td *ngIf="match?.matchPlayed">
+                <div class="col-12">
+                  <app-sportsman [fullname]="match.matchPlayed!.player1.name"
+                    [idkLeague]="match.matchPlayed!.player1.seed" [countryCode]="match.matchPlayed!.player1.countryAcr"
+                    [hideCountryBySize]="true" [padding]="false"
+                    *ngIf="match.matchPlayed!.player1.name != profileName;">
+                  </app-sportsman>
+                </div>
+                <div class="col-12">
+                  <app-sportsman [fullname]="match.matchPlayed!.player2.name"
+                    [idkLeague]="match.matchPlayed!.player2.seed" [countryCode]="match.matchPlayed!.player2.countryAcr"
+                    [hideCountryBySize]="true" [padding]="false">
+                  </app-sportsman>
+                </div>
+              </td>
+
+
+              <td *ngIf="match?.matchPlayed?.player1?.stats && match?.matchPlayed?.player2?.stats; else noStat"
+                class="match-result text-center">
+                <app-match-stat [winner]="match.matchPlayed!.player1" [looser]="match.matchPlayed!.player2">
+                </app-match-stat>
+              </td>
+              <ng-template #noStat>
+                <td *ngIf="match?.matchPlayed">
+                  No Stat
+                </td>
+              </ng-template>
+              <td *ngIf="match?.matchPlayed">{{match.matchPlayed!.result}}</td>
+
+              <td class="pe-md-4 pe-2 h2h-link" *ngIf="match?.matchPlayed"
+                (click)="navigateToH2h(match.matchPlayed!.player1.name, match.matchPlayed!.player2.name)">
+                <div *ngIf="match.matchPlayed!.player1!.name == profileName; else lose" class="result-win mx-auto">W
+                </div>
+                <ng-template #lose>
+                  <div class="result-loose mx-auto">L</div>
+                </ng-template>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <ng-template #noMatchGroups>
+        <h5>No information...</h5>
+      </ng-template>
+    </div>
+  </div>
+
+  <div class="row mt-1 pb-2 mt-md-3" *ngIf="currentPage * limit <= matchesCount">
+    <div class="col justify-content-center align-items-center d-flex flex-column">
+      <p class="greencolor fs12" style="cursor: pointer;" (click)="nextPage()">Show More Matches <img
+          src="assets/icons/arrowdown.svg" style="width: 0.8em"></p>
+    </div>
+  </div>
+</div>

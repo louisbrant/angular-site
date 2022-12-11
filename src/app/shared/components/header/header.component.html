@@ -1,0 +1,47 @@
+<div class="navbar navbar-expand-lg header justify-content-center sticky-top">
+  <div class="container-sm row align-items-center align-content-center justify-content-center px-1 px-md-3">
+    <div class="logo col-md-2 col-3 header-logo link" routerLink="/">
+      <span class="text-uppercase fw-bold h3">match</span><span class="text-uppercase statetext h3">stat</span>
+    </div>
+    <div class="search-header-container put-forward">
+      <app-search-input-header сlass="col-md-4 col-7 header_search" [listResult]="elasticSearch" [showBorder]="true"
+        [size]="'short'" [isDebounce]="true" (eventSubmit)="searchProfilesHeader($event)" clickOutside
+        (clickOutside)="clearSearchResult($event)">
+      </app-search-input-header>
+    </div>
+    <div class="text-nowrap select-header-container d-flex d-lg-none">
+      <div class="nav-item d-flex align-items-center">
+        <app-old-selector [options]="testNavigation" (change)="navigation()"></app-old-selector>
+      </div>
+    </div>
+    <!--    <div class="col-2 d-block d-md-none">-->
+    <!--      <mat-icon class="nav-link d-xl-none d-block p-2 mr-4 header-menu" (click)="showMenu()">reorder</mat-icon>-->
+    <!--    </div>-->
+
+    <div class="col d-md-block" *ngIf="isShowMenu">
+      <div class="row text-nowrap">
+        <nav class="navbar navbar-expand-lg col-12 pt-2 pb-0 pt-md-0">
+          <ul class="navbar-nav text-nowrap flex-row justify-content-between headermenu w-100">
+            <li class="nav-item me-2"><a routerLink="/tennis/matches" class="py-0 py-md-2 nav-link"><img class="me-1"
+                  src="assets/icons/matches.svg">Matches</a></li>
+            <li class="nav-item me-2"><a routerLink="/tennis/calendar" class="py-0 py-md-2 nav-link"><img class="me-1"
+                  src="assets/icons/header-calender.png">Calendar</a></li>
+            <li class="nav-item"><a routerLink="/tennis/h2h" class="py-0 py-md-2 nav-link"><img class="me-1"
+                  src="assets/icons/header-h2h.png">H2H</a></li>
+            <li class="nav-item d-flex align-items-center s-select-bottom">
+              <app-old-selector [options]="testNavigation" (change)="navigation()"></app-old-selector>
+            </li>
+          </ul>
+        </nav>
+
+        <!-- <nav class="navbar navbar-expand-lg col justify-content-end col-md-4 d-none d-md-block"> -->
+        <!-- <a class="nav-link text-end"><img src="assets/icons/tennis-ball.svg" class="me-2" style="width: 1em">Tennis</a> -->
+        <!-- <div class="nav-item dropdown header-discipline">
+          <a class="nav-link dropdown-toggle text-end"><img src="assets/icons/tennis-ball.svg" class="me-2" style="width: 1em">Tennis</a>
+          <button (click)="nextTournamentNav()" style="font-size: 8px; padding: 0">Next Tournament</button>-->
+        <!-- </div> -->
+        <!-- </nav> -->
+      </div>
+    </div>
+  </div>
+</div>

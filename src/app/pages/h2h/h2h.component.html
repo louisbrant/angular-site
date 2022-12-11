@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row p-2">
+    <div class="col">
+      <div class="row mt-2 mt-md-5 py-3 px-2 px-md-4 bg-white border-radius"  *ngIf="(profiles$ | async) as profiles" >
+        <app-h2h-information [playerOne]="profiles.player1" [playerTwo]="profiles.player2" [surfaceData]="profiles.surfaceData" [statistics1]="statistics1" [statistics2]="statistics2"></app-h2h-information>
+        <app-h2h-information-table [playerOne]="profiles.player1" [playerTwo]="profiles.player2" ></app-h2h-information-table>
+      </div>
+
+      <ng-container *ngIf="(upcomingMatch$ | async) as upcomingMatch">
+        <div class="row">
+          <app-h2h-upcoming-matches [match]="upcomingMatch"></app-h2h-upcoming-matches>
+        </div>
+      </ng-container>
+
+      <app-h2h-predictions></app-h2h-predictions>
+
+      <ng-container *ngIf="currentStatsPlayerOne && currentStatsPlayerTwo">
+        <app-h2h-event-stats [player1]="currentStatsPlayerOne" [player2]="currentStatsPlayerTwo"></app-h2h-event-stats>
+      </ng-container>
+
+      <app-h2h-players-stats></app-h2h-players-stats>
+
+      <app-h2h-matches-played></app-h2h-matches-played>
+
+      <app-h2h-breakdown-opponents></app-h2h-breakdown-opponents>
+
+      <app-profile-matches-played  [name]="playerOne" [limit]=10 [type]="type">
+      </app-profile-matches-played>
+
+      <app-profile-matches-played  [name]="playerTwo" [limit]=10 class="mb-5" [type]="type">
+      </app-profile-matches-played>
+
+    </div>
+
+    <div class="col col-md-4 d-none d-md-block">
+      <app-sidebar [showAtpRanking]="false" [activeType]="type"></app-sidebar>
+    </div>
+  </div>
+</div>
+
+<ng-template #loading>
+  Loading stuff...
+</ng-template>

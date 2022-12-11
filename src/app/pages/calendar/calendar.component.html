@@ -1,0 +1,153 @@
+<div class="container">
+  <div class="row p-2">
+    <div class="col col-md-8 pt-4">
+      <div class="carddiv">
+        <div class="header p-4 row">
+          <p class="table-title careerstatehead fw-bold">ATP / WTA Calendars</p>
+        </div>
+        <div class="content_header ">
+          <div class="arrowbuttongroup row">
+            <button class="btn-h2h border-radius arrowbtn text-nowrap px-2 py-1 currentsel">ATP Calendar</button>
+            <div class="arrowmenudiv leftdiv"></div>
+            <button class="btn-h2h border-radius arrowbtn rightbtn text-nowrap px-2 py-1 unsel">WTA Calendar</button>
+            <div class="arrowmenudiv rightdiv"></div>
+          </div>
+        </div>
+        <div class="content_header p-2 pt-1 pb-1 row">
+          <div class="col-6 ">
+            <div class="col-8 pt-2" [placeholder]="'Search by name'" searchInput [showBorder]="true" [size]="'short'"
+              (eventSubmit)="searchTournaments($event)" [isDebounce]="true">
+            </div>
+          </div>
+          <div class="col-6 ">
+            <form class="divflex" [formGroup]="filterFormGroup">
+              <div class="col p-1 p-md-2" *ngIf="yearFilter[0]!=undefined&&yearFilter.length">
+                <app-selector [type]="'canendersel'" [options]=" yearFilter" [formControl]="getFormControl('year')"
+                  [defaultValue]="yearFilter[0].value"></app-selector>
+              </div>
+              <div class="col p-1 p-md-2">
+                <app-selector [type]="'canendersel'" [options]="levelFilter"
+                  [formControl]="getFormControl('level')"></app-selector>
+              </div>
+              <div class="col p-1 p-md-2">
+                <app-selector [type]="'canendersel'" [options]="surfacesFilter"
+                  [formControl]="getFormControl('surfaces')"></app-selector>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="content">
+          <app-calendar-table [matches]="matchGrouped" [type]="type"></app-calendar-table>
+        </div>
+      </div>
+    </div>
+    <div class="col col-md-4 d-none d-md-block">
+      <app-sidebar [showAtpRanking]="false"></app-sidebar>
+    </div>
+  </div>
+</div>
+
+<!-- 
+<div class="p-3">
+  <div class="carddiv">
+    <div class="header p-4 row">
+      <div class="col-10">
+        <p class="table-title careerstatehead fw-bold">{{tournamentName + "Men's Singles Draw"}}</p>
+      </div>
+      <div class="col-2" *ngIf="yearFilters.length">
+        <app-selector [defaultValue]="yearFilters[1].value" [options]="yearFilters"
+          [formControl]="getFormControl('year')">
+        </app-selector>
+      </div>
+    </div>
+    <div class="content_header ">
+      <div class="arrowbuttongroup row">
+        <button class="btn-h2h border-radius arrowbtn text-nowrap px-2 py-1">Mem's Singles</button>
+        <div class="arrowmenudiv leftdiv"></div>
+        <button class="btn-h2h border-radius arrowbtn rightbtn text-nowrap px-2 py-1">Men's Singles</button>
+        <div class="arrowmenudiv rightdiv"></div>
+        <button class="btn-h2h border-radius arrowbtn rightbtn text-nowrap px-2 py-1">Men's Qualifying</button>
+        <div class="arrowmenudiv rightdiv"></div>
+      </div>
+    </div>
+    <div class="content_header p-2 pt-1 pb-1 row">
+      <div class="col-9"> </div>
+      <div class="col-2 text-left"> ODDS / SCR </div>
+      <div class="col-1 text-center"> H2H </div>
+    </div>
+    <div class="content">
+      <div class="row contenttable">
+        <div class="border-radius pb-1 text-nowrap overflow-x-auto" drawTable [draws]="selectedDraw">
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+
+
+<!-- <div class="container mt-3 mt-md-5 p-1 p-md-2" *ngIf="selectedDraw.length">
+  <div class="row">
+    <h5 class="text-capitalize fw-bold p-0">{{tournamentName}}
+      <app-tournament-year-picker [selectedYear]="currentYear">
+      </app-tournament-year-picker>
+    </h5>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <app-tab [actives]="actives" (activeChanged)="changeActive($event)"></app-tab>
+    </div>
+  </div>
+
+</div> -->
+
+
+
+<!-- 
+
+
+<div class="container">
+  <div class="row p-2">
+    <div class="col col-md-8 pt-2">
+      <div class="row mt-3 mt-md-5">
+        <div class="col px-1 px-md-2">
+          <h3 class="text-center m-0">ATP / WTA Calendars</h3>
+        </div>
+      </div>
+
+      <div class="row mt-2 mt-md-0">
+        <div class="col px-3 px-md-2">
+          <app-tab [actives]="actives" (activeChanged)="changeActive($event)"></app-tab>
+        </div>
+      </div>
+
+      <div class="row align-items-center justify-content-between mt-1 mt-md-3 p-1 p-md-0">
+        <form class="col-8 col-md-6 row px-2 px-md-0" [formGroup]="filterFormGroup">
+          <div class="col p-1 p-md-2" *ngIf="yearFilter[0]!=undefined">
+            <app-selector [options]="yearFilter" [formControl]="getFormControl('year')"
+              [defaultValue]="yearFilter[0].value"></app-selector>
+          </div>
+          <div class="col p-1 p-md-2">
+            <app-selector [options]="levelFilter" [formControl]="getFormControl('level')"></app-selector>
+          </div>
+          <div class="col p-1 p-md-2">
+            <app-selector [options]="surfacesFilter" [formControl]="getFormControl('surfaces')"></app-selector>
+          </div>
+        </form>
+        <div class="col-4 p-0" searchInput [showBorder]="true" [size]="'short'"
+          (eventSubmit)="searchTournaments($event)" [isDebounce]="true"></div>
+      </div>
+
+      <div class="row mt-2 mt-md-3">
+        <div class="col px-3 px-md-2">
+          <app-calendar-table [matches]="matchGrouped" [type]="type"></app-calendar-table>
+        </div>
+      </div>
+    </div>
+
+    <div class="col col-md-4 d-none d-md-block">
+      <app-sidebar [showAtpRanking]="false"></app-sidebar>
+    </div>
+  </div>
+</div> -->

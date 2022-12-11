@@ -1,0 +1,29 @@
+<div class="row">
+  <div class="col mt-3 mt-md-5 p-0">
+    <h5 class="text-capitalize fw-bold p-0">MatchStat.com Predictions</h5>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-6 ps-0 pe-2">
+    <app-short-table
+      [headers]="headers"
+      [data]="playerStats.slice(0, playerStats.length / 2)"
+    ></app-short-table>
+
+    <div class="d-flex justify-content-end mt-2">
+      <button class="btn-primary text-capitalize border-radius btn">bet now</button>
+    </div>
+  </div>
+
+  <div class="col-6 ps-2 pe-0">
+    <app-short-table
+      [headers]="headers"
+      [data]="playerStats.slice(playerStats.length / 2, playerStats.length)"
+    ></app-short-table>
+
+    <div class="d-flex justify-content-end mt-2">
+      <button class="btn-primary text-capitalize border-radius btn">bet now</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,53 @@
+<div class="" *ngFor="let week of matches">
+
+  <div class="divflex text-uppercase bg-white calendar_header col-12 ">
+    <div class="p-1 divflex p-md-2 ps-2 ps-md-3 col-2 font-bold">
+      <div class="col-8">
+        week {{week.week}}
+      </div>
+      <div class="col-4">
+        ->
+      </div>
+    </div>
+    <div class="p-1 p-md-2 ps-md-4  col greencolor">{{ ConvertToDate(week.date) | date:"dd.MM.YY" }}</div>
+    <div class="p-1 p-md-2 col">winner</div>
+  </div>
+
+  <div class="divflex align-items-center col-12 calendar_element p-2 pt-1 pb-1"
+    *ngFor="let tournament of week.tournaments">
+    <div class="col-2 divflex">
+      <div class="col-4 p-1">
+        <div [ngClass]="'status-' + tournament.colorStatus">
+        </div>
+      </div>
+      <div class="col-4 p-1">
+        <img class="calendarcourtimg" [src]="'assets/icons/' + tournament.court + '.svg'" alt="">
+      </div>
+      <div class="col-4 p-1">
+        <app-country-flag [countryCode]="tournament.country" [height]="sizeOfCalendarImages"
+          [width]="sizeOfCalendarImages" [borderRadius]="'5px'"></app-country-flag>
+      </div>
+    </div>
+    <div class="col-6 text-nowrap">
+      <div class="tournament-column ms-1 ps-3">
+        <a class="m-0 tournament-column_name link d-inline-block"
+          (click)="navigateToTournament(tournament.name, tournament.date)">{{tournament.name}}</a>
+        <div class="m-0 tournament-column_information d-flex">
+          <p class="m-0">{{ ConvertToDate(tournament.date) | date:"dd.MM.YY" }}</p>
+          <p class="m-0 ms-3">{{tournament.prize}}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-2 text-nowrap flag-mobile greencolor" *ngIf="tournament.winner.name"><app-sportsman
+        [countryCode]="tournament.winner.countryAcr" [fullname]="tournament.winner.name"></app-sportsman></div>
+    <div class="col-2 text-center">
+      <span *ngIf="!tournament?.final; else finalStat" style="font-size: 14px;"
+        class="text-capitalize text-nowrap greencolor">No
+        Stat</span>
+      <ng-template #finalStat>
+        <app-match-stat [winner]="tournament.final!.player1" [looser]="tournament.final!.player2"></app-match-stat>
+      </ng-template>
+    </div>
+  </div>
+</div>

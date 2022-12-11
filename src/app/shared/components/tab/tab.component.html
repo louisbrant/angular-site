@@ -1,0 +1,10 @@
+<div class="row text-capitalize text-center bg-white p-1 p-md-2 px-1 px-md-4 border-radius fw-bold tab-container mt-1 mt-md-3 text-nowrap">
+  <div class="col tab m-0 p-1 border-radius align-middle"
+       *ngFor="let active of actives"
+       [class.active-tab]="currentActive?.active == active.active"
+       [class.not-active-tab]="!active.isActive">
+    <p class="tab-content m-0" (click)="active.isActive ? changeActive(active) : ''">{{active.name}}</p>
+  </div>
+
+  <ng-content></ng-content>
+</div>

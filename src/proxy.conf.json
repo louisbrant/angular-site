@@ -1,0 +1,7 @@
+{
+  "/tennis/api2": {
+    "target": "http://51.250.11.98/",
+    "secure": true,
+    "changeOrigin": true
+  }
+}

@@ -1,0 +1,26 @@
+<div class="row header-title">
+  <h2 class="title">H2H Search For Football Clubs</h2>
+</div>
+
+<div class="card">
+  <div class="card-bdy">
+    <app-search
+      [listResult]="firstTeamProfiles"
+      [showBorder]="true"
+      [size]="'short'"
+      [isDebounce]="true"
+      (eventSubmit)="searchTeams($event, 'firstTeam')"
+      (teamName) = "selectTeam($event, 'firstTeam')"
+    ></app-search>
+    <span class="vs">vs</span>
+    <app-search
+      [listResult]="secondTeamProfiles"
+      [showBorder]="true"
+      [size]="'short'"
+      [isDebounce]="true"
+      (eventSubmit)="searchTeams($event, 'secondTeam')"
+      (teamName) = "selectTeam($event, 'secondTeam')"
+    ></app-search>
+    <button (click)="navigateToH2h()" class="btn btn-search" [disabled]="!firstTeam || !secondTeam">Search</button>
+  </div>
+</div>

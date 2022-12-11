@@ -1,0 +1,21 @@
+<div class="col pt-3">
+  <div class="carddiv">
+    <div class="content">
+      <div class="d-flex">
+        <div class="col-6 r-bd">
+          <app-profile></app-profile>
+        </div>
+        <div class="col-6">
+          <app-profile></app-profile>
+        </div>
+      </div>
+      <div class="content_header ">
+        <app-arrow-tab [actives]="activeGroups" [width]="sizeOfArrowTabGroupwidth" [background]="sizeOfArrowTabGroupbag"
+          (activeChanged)="changeActiveGroup($event)"></app-arrow-tab>
+      </div>
+      <app-h2h-matches *ngIf="!h2hshow"></app-h2h-matches>
+      <app-profile-matches *ngIf="h2hshow"></app-profile-matches>
+      <div class="p-1 table-wrap"></div>
+    </div>
+  </div>
+</div>

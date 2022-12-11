@@ -1,0 +1,15 @@
+<div class="row information-wrap">
+  <div class="col-12 p-3">
+    <div class="information-wrap border-radius bg-white px-2 px-md-3 h-100">
+      <div class="row pt-3 p-3 align-items-center">
+        <div class="col-2 col-md-3 d-flex align-items-center">
+          <button class="btn-h2h bg-green-gray border-radius text-nowrap px-2 py-1" (click)="focusToSearch()">H2H
+            With</button>
+        </div>
+        <div #searchInput class="col-10 col-md-9 search-container" searchInput [type]="info.type"
+          [listResult]="h2hProfiles" [name]="info.name" [showBorder]="true" [size]="'short'"
+          (eventSubmit)="searchProfiles($event)" [isDebounce]="true"></div>
+      </div>
+    </div>
+  </div>
+</div>

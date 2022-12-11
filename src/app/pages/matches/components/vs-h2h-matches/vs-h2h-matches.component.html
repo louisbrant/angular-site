@@ -1,0 +1,482 @@
+<div class="col pt-4">
+  <div class="carddiv">
+    <div class="header p-4 row">
+      <p class="table-title careerstatehead fw-bold">Nadal vs Federer H2H Matches Only</p>
+    </div>
+    <div class="content_header p-3 pt-2 pb-2 d-flex"
+      *ngIf="levelFilters.length&&surfaceFilters.length&&roundFilters.length&&tournamerFilters.length">
+      <div class="p-2 pt-1 pb-1">
+        <app-selector [type]="'rankingsel'" [options]="levelFilters" [formControl]="getFormControl('level')"
+          name="level" [defaultValue]="levelFilters[0].value"></app-selector>
+      </div>
+      <div class="p-2 pt-1 pb-1">
+        <app-selector [type]="'rankingsel'" [options]="surfaceFilters" [formControl]="getFormControl('surface')"
+          name="surface" [defaultValue]="surfaceFilters[0].value"></app-selector>
+      </div>
+      <div class="p-2 pt-1 pb-1">
+        <app-selector [type]="'rankingsel'" [options]="roundFilters" [formControl]="getFormControl('round')"
+          name="round" [defaultValue]="roundFilters[0].value"></app-selector>
+      </div>
+      <div class="p-2 pt-1 pb-1">
+        <app-selector [type]="'rankingsel'" [options]="tournamerFilters" [formControl]="getFormControl('tournamer')"
+          name="tournamer" [defaultValue]="tournamerFilters[0].value"></app-selector>
+      </div>
+    </div>
+    <div class="content">
+      <table class="table text-center">
+        <tbody>
+          <tr class="text-uppercase text-start table-header">
+            <td class=" pt-1 pb-1 text-left"><span class="py-1 py-md-2 px-0">
+                stats
+              </span>
+            </td>
+            <td class=" pt-1 pb-1 text-left"><span class="py-1 py-md-2 px-0">
+                federer
+              </span>
+            </td>
+            <td class=" pt-1 pb-1 text-left"><span class="py-1 py-md-2 px-0">
+                nadal
+              </span>
+            </td>
+          </tr>
+
+          <tr class="text-start ">
+            <td class=" pt-3 pb-1 text-left"><span class="py- py-md-2 px-0 ">
+                H2H All Matches
+              </span>
+            </td>
+            <td class=" pt-3 pb-1 text-left"><span class="py-1 py-md-2 px-0 ">
+                16
+              </span>
+            </td>
+            <td class=" pt-3 pb-1 text-left"><span class="py-1 py-md-2 px-0 ">
+                24
+              </span>
+            </td>
+          </tr>
+          <tr class="text-start ">
+            <td class=" pt-3 pb-1 text-left"><span class="py- py-md-2 px-0 ">
+                Sets Won
+              </span>
+            </td>
+            <td class=" pt-3 pb-1 text-left"><span class="py-1 py-md-2 px-0 ">
+                41
+              </span>
+            </td>
+            <td class=" pt-3 pb-1 text-left"><span class="py-1 py-md-2 px-0 ">
+                52
+              </span>
+            </td>
+          </tr>
+          <tr class="text-start ">
+            <td class=" pt-3 pb-1 text-left"><span class="py- py-md-2 px-0 ">
+                Games Won
+              </span>
+            </td>
+            <td class=" pt-3 pb-1 text-left"><span class="py-1 py-md-2 px-0 ">
+                498
+              </span>
+            </td>
+            <td class=" pt-3 pb-1 text-left"><span class="py-1 py-md-2 px-0 ">
+                575
+              </span>
+            </td>
+          </tr>
+          <tr class="text-start ">
+            <td class=" pt-3 pb-1 text-left"><span class="py- py-md-2 px-0 ">
+                Hard
+              </span>
+            </td>
+            <td class=" pt-3 pb-1 text-left"><span class="py-1 py-md-2 px-0 ">
+                2
+              </span>
+            </td>
+            <td class=" pt-3 pb-1 text-left"><span class="py-1 py-md-2 px-0 ">
+                8
+              </span>
+            </td>
+          </tr>
+          <tr class="text-start ">
+            <td class=" pt-3 pb-1 text-left"><span class="py- py-md-2 px-0 ">
+                Indoor Hard
+              </span>
+            </td>
+            <td class=" pt-3 pb-1 text-left"><span class="py-1 py-md-2 px-0 ">
+                2
+              </span>
+            </td>
+            <td class=" pt-3 pb-1 text-left"><span class="py-1 py-md-2 px-0 ">
+                2
+              </span>
+            </td>
+          </tr>
+          <tr class="text-start ">
+            <td class=" pt-3 pb-1 text-left"><span class="py- py-md-2 px-0 ">
+                Clay
+              </span>
+            </td>
+            <td class=" pt-3 pb-1 text-left"><span class="py-1 py-md-2 px-0 ">
+                2
+              </span>
+            </td>
+            <td class=" pt-3 pb-1 text-left"><span class="py-1 py-md-2 px-0 ">
+                10
+              </span>
+            </td>
+          </tr>
+          <tr class="text-start ">
+            <td class=" pt-3 pb-1 text-left"><span class="py- py-md-2 px-0 ">
+                Grass
+              </span>
+            </td>
+            <td class=" pt-3 pb-1 text-left"><span class="py-1 py-md-2 px-0 ">
+                152
+              </span>
+            </td>
+            <td class=" pt-3 pb-1 text-left"><span class="py-1 py-md-2 px-0 ">
+                4
+              </span>
+            </td>
+          </tr>
+          <tr class="text-start ">
+            <td class=" pt-3 pb-1 text-left"><span class="py- py-md-2 px-0 ">
+                Total Aces
+              </span>
+            </td>
+            <td class=" pt-3 pb-1 text-left"><span class="py-1 py-md-2 px-0 ">
+                32
+              </span>
+            </td>
+            <td class=" pt-3 pb-1 text-left"><span class="py-1 py-md-2 px-0 ">
+                116
+              </span>
+            </td>
+          </tr>
+          <tr class="text-start ">
+            <td class=" pt-3 pb-1 text-left"><span class="py- py-md-2 px-0 ">
+                Total DFs
+              </span>
+            </td>
+            <td class=" pt-3 pb-1 text-left"><span class="py-1 py-md-2 px-0 ">
+                01:54:00
+              </span>
+            </td>
+            <td class=" pt-3 pb-1 text-left"><span class="py-1 py-md-2 px-0 ">
+                38
+              </span>
+            </td>
+          </tr>
+          <tr class="text-start ">
+            <td class=" pt-3 pb-1 text-left"><span class="py- py-md-2 px-0 ">
+                Avg Match Time
+              </span>
+            </td>
+            <td class=" pt-3 pb-1 text-left"><span class="py-1 py-md-2 px-0 ">
+                75% (750/1000)
+              </span>
+            </td>
+            <td class=" pt-3 pb-1 text-left"><span class="py-1 py-md-2 px-0 ">
+                63% (630/1000)
+              </span>
+            </td>
+          </tr>
+          <tr class="text-start ">
+            <td class=" pt-3 pb-1 text-left"><span class="py- py-md-2 px-0 ">
+                1st Serve %
+              </span>
+            </td>
+            <td class=" pt-3 pb-1 text-left"><span class="py-1 py-md-2 px-0 ">
+                80% (600/750)
+              </span>
+            </td>
+            <td class=" pt-3 pb-1 text-left"><span class="py-1 py-md-2 px-0 ">
+                80% (504/630)
+              </span>
+            </td>
+          </tr>
+          <tr class="text-start ">
+            <td class=" pt-3 pb-1 text-left"><span class="py- py-md-2 px-0 ">
+                1st Serve W %
+              </span>
+            </td>
+            <td class=" pt-3 pb-1 text-left"><span class="py-1 py-md-2 px-0 ">
+                50% (125/250)
+              </span>
+            </td>
+            <td class=" pt-3 pb-1 text-left"><span class="py-1 py-md-2 px-0 ">
+                80% (296/370)
+              </span>
+            </td>
+          </tr>
+          <tr class="text-start ">
+            <td class=" pt-3 pb-1 text-left"><span class="py- py-md-2 px-0 ">
+                2nd Serve W %
+              </span>
+            </td>
+            <td class=" pt-3 pb-1 text-left"><span class="py-1 py-md-2 px-0 ">
+                20% (20/100)
+              </span>
+            </td>
+            <td class=" pt-3 pb-1 text-left"><span class="py-1 py-md-2 px-0 ">
+                30% (30/100)
+              </span>
+            </td>
+          </tr>
+          <tr class="text-start ">
+            <td class=" pt-3 pb-1 text-left"><span class="py- py-md-2 px-0 ">
+                Total BPs W %
+              </span>
+            </td>
+            <td class=" pt-3 pb-1 text-left"><span class="py-1 py-md-2 px-0 ">
+                50% (500/1000)
+              </span>
+            </td>
+            <td class=" pt-3 pb-1 text-left"><span class="py-1 py-md-2 px-0 ">
+                60% (600/1000)
+              </span>
+            </td>
+          </tr>
+          <tr class="text-start ">
+            <td class=" pt-3 pb-1 text-left"><span class="py- py-md-2 px-0 ">
+                Return Pts W %
+              </span>
+            </td>
+            <td class=" pt-3 pb-1 text-left"><span class="py-1 py-md-2 px-0 ">
+                52% (520/1000)
+              </span>
+            </td>
+            <td class=" pt-3 pb-1 text-left"><span class="py-1 py-md-2 px-0 ">
+                48% (480/1000)
+              </span>
+            </td>
+          </tr>
+          <tr class="text-start ">
+            <td class=" pt-3 pb-1 text-left"><span class="py- py-md-2 px-0 ">
+                Total Pts Won
+              </span>
+            </td>
+            <td class=" pt-3 pb-1 text-left"><span class="py-1 py-md-2 px-0 ">
+                8
+              </span>
+            </td>
+            <td class=" pt-3 pb-1 text-left"><span class="py-1 py-md-2 px-0 ">
+                12
+              </span>
+            </td>
+          </tr>
+          <tr class="text-start ">
+            <td class=" pt-3 pb-1 text-left"><span class="py- py-md-2 px-0 ">
+                Slam Matches
+              </span>
+            </td>
+            <td class=" pt-3 pb-1 text-left"><span class="py-1 py-md-2 px-0 ">
+                5
+              </span>
+            </td>
+            <td class=" pt-3 pb-1 text-left"><span class="py-1 py-md-2 px-0 ">
+                6
+              </span>
+            </td>
+          </tr>
+          <tr class="text-start ">
+            <td class=" pt-3 pb-1 text-left"><span class="py- py-md-2 px-0 ">
+                Masters Matches
+              </span>
+            </td>
+            <td class=" pt-3 pb-1 text-left"><span class="py-1 py-md-2 px-0 ">
+                1
+              </span>
+            </td>
+            <td class=" pt-3 pb-1 text-left"><span class="py-1 py-md-2 px-0 ">
+                1
+              </span>
+            </td>
+          </tr>
+          <tr class="text-start ">
+            <td class=" pt-3 pb-1 text-left"><span class="py- py-md-2 px-0 ">
+                Tour Finals Matches
+              </span>
+            </td>
+            <td class=" pt-3 pb-1 text-left"><span class="py-1 py-md-2 px-0 ">
+                0
+              </span>
+            </td>
+            <td class=" pt-3 pb-1 text-left"><span class="py-1 py-md-2 px-0 ">
+                0
+              </span>
+            </td>
+          </tr>
+          <tr class="text-start ">
+            <td class=" pt-3 pb-1 text-left"><span class="py- py-md-2 px-0 ">
+                Olympics Matches
+              </span>
+            </td>
+            <td class=" pt-3 pb-1 text-left"><span class="py-1 py-md-2 px-0 ">
+                0
+              </span>
+            </td>
+            <td class=" pt-3 pb-1 text-left"><span class="py-1 py-md-2 px-0 ">
+                0
+              </span>
+            </td>
+          </tr>
+          <tr class="text-start ">
+            <td class=" pt-3 pb-1 text-left"><span class="py- py-md-2 px-0 ">
+                Davis Cup Matches
+              </span>
+            </td>
+            <td class=" pt-3 pb-1 text-left"><span class="py-1 py-md-2 px-0 ">
+                2
+              </span>
+            </td>
+            <td class=" pt-3 pb-1 text-left"><span class="py-1 py-md-2 px-0 ">
+                2
+              </span>
+            </td>
+          </tr>
+          <tr class="text-start ">
+            <td class=" pt-3 pb-1 text-left"><span class="py- py-md-2 px-0 ">
+                500 250 Matches
+              </span>
+            </td>
+            <td class=" pt-3 pb-1 text-left"><span class="py-1 py-md-2 px-0 ">
+                1
+              </span>
+            </td>
+            <td class=" pt-3 pb-1 text-left"><span class="py-1 py-md-2 px-0 ">
+                1
+              </span>
+            </td>
+          </tr>
+          <tr class="text-start ">
+            <td class=" pt-3 pb-1 text-left"><span class="py- py-md-2 px-0 ">
+                Challenger Matches
+              </span>
+            </td>
+            <td class=" pt-3 pb-1 text-left"><span class="py-1 py-md-2 px-0 ">
+                4
+              </span>
+            </td>
+            <td class=" pt-3 pb-1 text-left"><span class="py-1 py-md-2 px-0 ">
+                2
+              </span>
+            </td>
+          </tr>
+          <tr class="text-start ">
+            <td class=" pt-3 pb-1 text-left"><span class="py- py-md-2 px-0 ">
+                Futures Matches
+              </span>
+            </td>
+            <td class=" pt-3 pb-1 text-left"><span class="py-1 py-md-2 px-0 ">
+                12
+              </span>
+            </td>
+            <td class=" pt-3 pb-1 text-left"><span class="py-1 py-md-2 px-0 ">
+                18
+              </span>
+            </td>
+          </tr>
+          <tr class="text-start ">
+            <td class=" pt-3 pb-1 text-left"><span class="py- py-md-2 px-0 ">
+                Best of 3 Sets W %
+              </span>
+            </td>
+            <td class=" pt-3 pb-1 text-left"><span class="py-1 py-md-2 px-0 ">
+                4
+              </span>
+            </td>
+            <td class=" pt-3 pb-1 text-left"><span class="py-1 py-md-2 px-0 ">
+                6
+              </span>
+            </td>
+          </tr>
+          <tr class="text-start ">
+            <td class=" pt-3 pb-1 text-left"><span class="py- py-md-2 px-0 ">
+                Best of 5 Sets W %
+              </span>
+            </td>
+            <td class=" pt-3 pb-1 text-left"><span class="py-1 py-md-2 px-0 ">
+                33.3% (3/9)
+              </span>
+            </td>
+            <td class=" pt-3 pb-1 text-left"><span class="py-1 py-md-2 px-0 ">
+                66.6% (6/9)
+              </span>
+            </td>
+          </tr>
+          <tr class="text-start ">
+            <td class=" pt-3 pb-1 text-left"><span class="py- py-md-2 px-0 ">
+                Total TBs W %
+              </span>
+            </td>
+            <td class=" pt-3 pb-1 text-left"><span class="py-1 py-md-2 px-0 ">
+                40% (4/10)
+              </span>
+            </td>
+            <td class=" pt-3 pb-1 text-left"><span class="py-1 py-md-2 px-0 ">
+                60% (6/10)
+              </span>
+            </td>
+          </tr>
+          <tr class="text-start ">
+            <td class=" pt-3 pb-1 text-left"><span class="py- py-md-2 px-0 ">
+                Deciding Set W %
+              </span>
+            </td>
+            <td class=" pt-3 pb-1 text-left"><span class="py-1 py-md-2 px-0 ">
+                40% (4/10)
+              </span>
+            </td>
+            <td class=" pt-3 pb-1 text-left"><span class="py-1 py-md-2 px-0 ">
+                100%
+              </span>
+            </td>
+          </tr>
+          <tr class="text-start ">
+            <td class=" pt-3 pb-1 text-left"><span class="py- py-md-2 px-0 ">
+                1st Set W, W Match
+              </span>
+            </td>
+            <td class=" pt-3 pb-1 text-left"><span class="py-1 py-md-2 px-0 ">
+                75% (12/16)
+              </span>
+            </td>
+            <td class=" pt-3 pb-1 text-left"><span class="py-1 py-md-2 px-0 ">
+                (20/20)
+              </span>
+            </td>
+          </tr>
+          <tr class="text-start ">
+            <td class=" pt-3 pb-1 text-left"><span class="py- py-md-2 px-0 ">
+                1st Set W, L Match
+              </span>
+            </td>
+            <td class=" pt-3 pb-1 text-left"><span class="py-1 py-md-2 px-0 ">
+                25% (4/16)
+              </span>
+            </td>
+            <td class=" pt-3 pb-1 text-left"><span class="py-1 py-md-2 px-0 ">
+                0% (0/20)
+              </span>
+            </td>
+          </tr>
+          <tr class="text-start ">
+            <td class=" pt-3 pb-1 text-left"><span class="py- py-md-2 px-0 ">
+                1st Set L, W Match
+              </span>
+            </td>
+            <td class=" pt-3 pb-1 text-left"><span class="py-1 py-md-2 px-0 ">
+                0% (0/20)
+              </span>
+            </td>
+            <td class=" pt-3 pb-1 text-left"><span class="py-1 py-md-2 px-0 ">
+                25% (4/16)
+              </span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="p-1 table-wrap"></div>
+    </div>
+  </div>
+</div>

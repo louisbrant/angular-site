@@ -1,0 +1,16 @@
+<div (focusin)="focusIn($event)" (focusout)="focusOut($event)" (mouseleave)="!focus ? focusOut($event) : ''" id="search-header">
+  <div class="search">
+    <input
+      (click)="focusIn($event)"
+      [formControl]="searchControl"
+      class="search-input"
+      [class.search-menu]="isMenu"
+      [placeholder]="placeholder">
+    <i class="icon icon-search" (click)="search()"></i>
+    <div class="list-modal px-3 py-1" *ngIf="showListResult && listResult?.length">
+      <div *ngFor="let element of listResult">
+        <a class="link" (click)="selectTeam(element)">{{element.name ? element.name : element}}</a>
+      </div>
+    </div>
+  </div>
+</div>

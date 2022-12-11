@@ -1,0 +1,22 @@
+<div class="d-inline-block releative" (clickOutside)="onClickedOutside()">
+  <a class="link-primary text-decoration-none" (click)="showStats()">{{selectedYear?.year}} <img
+      src="assets/icons/arrowdown.svg" style="width: 0.8em"></a>
+  <div class="stats-modal p-3" *ngIf="show" [class.stats-modal-left]="!years.length"
+    [class.stats-modal-right]="years.length">
+    <div class="row" *ngIf="years.length; else noOne">
+      <div class="col-12 max-scroll">
+        <ul class="list-group">
+          <li *ngFor="let year of years" class="list-group-item py-1 text-center">
+            <a class="link-primary text-decoration-none h4 text-center"
+              (click)="selectYear(year.year, year.tournamentName)">{{year.year}}</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <ng-template #noOne>
+      <div class="col-8 text-start">
+        <h4>Years not found for "{{selectedTournament}}"</h4>
+      </div>
+    </ng-template>
+  </div>
+</div>

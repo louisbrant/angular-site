@@ -1,0 +1,115 @@
+<!-- <div class="row justify-content-center" *ngIf="yearFilters.length>1">
+  <div class="col col-md-2 p-1 p-md-2">
+    <app-selector [defaultValue]="yearFilters[1].value" [options]="yearFilters" [formControl]="getFormControl('year')"></app-selector>
+  </div>
+  <div class="col col-md-2 p-1 p-md-2">
+    <app-selector [options]="levelFilters" [formControl]="getFormControl('level')"></app-selector>
+  </div>
+  <div class="col col-md-2 p-1 p-md-2">
+    <app-selector [options]="surfaceFilters" [formControl]="getFormControl('court')"></app-selector>
+  </div>
+  <div class="col col-md-2 p-1 p-md-2">
+    <app-selector [options]="roundFilters" [formControl]="getFormControl('round')"></app-selector>
+  </div>
+</div> -->
+
+
+<div class="row information-wrap">
+  <div class="col-12 pb-3">
+    <div class="information-wrap bg-white h-100">
+      <div class="row pt-3 p-3 align-items-center">
+        <div class="row p-3 align-items-center">
+          <p class="table-title careerstatehead fw-bold">Surface Summary</p>
+        </div>
+      </div>
+      <div class="bg-white information-wrap table-wrap pb-1 text-nowrap px-2 px-md-4">
+        <table class="table text-center mb-1">
+          <thead>
+            <tr class="text-uppercase text-start">
+              <td class="text-center px-0 py-2 py-md-3"><span class="py-1 py-md-2 px-0">year</span></td>
+              <td class="text-center px-0 py-2 py-md-3"><span class="py-1 py-md-2 px-0">sum.</span></td>
+              <td class="text-center px-0 py-2 py-md-3"><span class="py-1 py-md-2 px-0">hard</span></td>
+              <td class="text-center px-0 py-2 py-md-3"><span class="py-1 py-md-2 px-0">clay</span></td>
+              <td class="text-center px-0 py-2 py-md-3"><span class="py-1 py-md-2 px-0">i.hard</span></td>
+              <td class="text-center px-0 py-2 py-md-3"><span class="py-1 py-md-2 px-0">grass</span></td>
+            </tr>
+          </thead>
+
+          <tbody>
+
+            <tr *ngFor="let summary of summary" class="align-middle">
+              <td class="text-center px-0">{{summary.year}}</td>
+              <td class="text-center px-0">{{summary.sum.w}}/{{summary.sum.l}}</td>
+              <td class="text-center px-0">{{summary.hard.w}}/{{summary.hard.l}}</td>
+              <td class="text-center px-0">{{summary.clay.w}}/{{summary.clay.l}}</td>
+              <td class="text-center px-0">{{summary.ihard.w}}/{{summary.ihard.l}}</td>
+              <td class="text-center px-0">{{summary.grass.w}}/{{summary.grass.l}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <div class="row mt-3 mt-md-4" *ngIf="serveStats && returnStats">
+    <div class="col-6 p-1 p-md-2">
+      <h5 class="table-title fw-bold">Service Stats</h5>
+      <app-short-table [headers]="headers" [data]="serveStats"></app-short-table>
+    </div>
+
+    <div class="col-6 p-1 p-md-2">
+      <h5 class="table-title fw-bold">Return Stats</h5>
+      <app-short-table [headers]="headers" [data]="returnStats"></app-short-table>
+    </div>
+  </div>
+
+  <div class="row mt-3 mt-md-4" *ngIf="breakServe && breakRtn">
+    <div class="col-6 p-1 p-md-2">
+      <h5 class="table-title fw-bold">Break Points (Serve)</h5>
+      <app-short-table [headers]="headers" [data]="breakServe"></app-short-table>
+    </div>
+
+    <div class="col-6 p-1 p-md-2">
+      <h5 class="table-title fw-bold">Break Points (Rtn)</h5>
+      <app-short-table [headers]="headers" [data]="breakRtn"></app-short-table>
+    </div>
+  </div> -->
+
+<!-- 
+<div class="row mt-3 mt-md-4">
+  <div class="col p-1 p-md-2">
+    <h5 class="table-title fw-bold m-0">Surface Summary</h5>
+  </div>
+</div>
+
+<div class="row mt-0 mt-md-3">
+  <div class="col p-1 p-md-2">
+    <div class="bg-white border-radius pb-1 text-nowrap px-2 px-md-4">
+      <table class="table text-center mb-1">
+        <thead>
+          <tr class="text-uppercase text-start">
+            <td class="text-center px-0 py-2 py-md-3"><span class="py-1 py-md-2 px-0">year</span></td>
+            <td class="text-center px-0 py-2 py-md-3"><span class="py-1 py-md-2 px-0">sum.</span></td>
+            <td class="text-center px-0 py-2 py-md-3"><span class="py-1 py-md-2 px-0">hard</span></td>
+            <td class="text-center px-0 py-2 py-md-3"><span class="py-1 py-md-2 px-0">clay</span></td>
+            <td class="text-center px-0 py-2 py-md-3"><span class="py-1 py-md-2 px-0">i.hard</span></td>
+            <td class="text-center px-0 py-2 py-md-3"><span class="py-1 py-md-2 px-0">grass</span></td>
+          </tr>
+        </thead>
+
+        <tbody>
+
+          <tr *ngFor="let summary of summary" class="align-middle">
+            <td class="text-center px-0">{{summary.year}}</td>
+            <td class="text-center px-0">{{summary.sum.w}}/{{summary.sum.l}}</td>
+            <td class="text-center px-0">{{summary.hard.w}}/{{summary.hard.l}}</td>
+            <td class="text-center px-0">{{summary.clay.w}}/{{summary.clay.l}}</td>
+            <td class="text-center px-0">{{summary.ihard.w}}/{{summary.ihard.l}}</td>
+            <td class="text-center px-0">{{summary.grass.w}}/{{summary.grass.l}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div> -->

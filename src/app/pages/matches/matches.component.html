@@ -1,0 +1,41 @@
+<div class="container mt-1">
+    <div class="row d-flex">
+        <div class="col-12 col-md-8  pt-2">
+            <div class="col-12 divflex">
+                <div>
+                    <app-player-profile></app-player-profile>
+                    <app-upcoming-match></app-upcoming-match>
+                    <div class="d-flex">
+                        <div class="col-6 pr-2">
+                            <app-predictions></app-predictions>
+                        </div>
+                        <div class="col-6 pl-2">
+                            <app-predictions></app-predictions>
+                        </div>
+                    </div>
+                    <app-current-event-stats></app-current-event-stats>
+                    <app-vs-h2h-matches></app-vs-h2h-matches>
+                    <app-vs-h2h-matches-only></app-vs-h2h-matches-only>
+                    <app-career-stats></app-career-stats>
+                    <app-recent-match-selection></app-recent-match-selection>
+                    <app-recent-match-selection></app-recent-match-selection>
+                </div>
+            </div>
+        </div>
+
+        <ng-template #tournamentEmpty>
+            <div class="col-12 col-md-8">
+                <div *ngIf="tournamentLoadError && tournamentIsLoad">
+                    <h1 class="fw-bold text-center">Matches not found!</h1>
+                </div>
+                <div *ngIf="!tournamentLoadError && !tournamentIsLoad">
+                    <h1 class="fw-bold text-center">Matches is loading...</h1>
+                </div>
+            </div>
+        </ng-template>
+
+        <div class="d-none d-md-block col-md-4 ">
+            <app-sidebar [showInterestingH2h]="false"></app-sidebar>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,17 @@
+<td class="ps-4">{{champion?.year}}</td>
+<td class="text-start px-4">
+  <app-sportsman
+    [hideCountryBySize]="true"
+    [fullname]="champion?.champion?.fullname!"
+    [countryCode]="champion?.champion?.countryCode!"
+  ></app-sportsman>
+</td>
+<td>stats</td>
+<td class="text-start px-4">
+  <app-sportsman
+    [hideCountryBySize]="true"
+    [fullname]="champion?.runnerUp?.fullname!"
+    [countryCode]="champion?.runnerUp?.countryCode!"
+  ></app-sportsman>
+</td>
+<td class="pe-4">{{champion?.score}}</td>

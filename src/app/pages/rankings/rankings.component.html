@@ -1,0 +1,346 @@
+<div class="container">
+  <div class="row p-2">
+    <div class="col col-md-8 pt-4">
+      <div class="carddiv">
+        <div class="header p-4 row">
+          <p class="table-title careerstatehead fw-bold">ATP / WTA Rankings</p>
+        </div>
+        <div class="content_header ">
+          <app-arrow-tab [actives]="activeTypes" [width]="sizeOfArrowTabActivewidth"
+            [background]="sizeOfArrowTabActivebag" (activeChanged)="changeActiveType($event)"></app-arrow-tab>
+          <app-arrow-tab [actives]="activeGroups" [width]="sizeOfArrowTabGroupwidth"
+            [background]="sizeOfArrowTabGroupbag" (activeChanged)="changeActiveGroup($event)"></app-arrow-tab>
+        </div>
+        <div class="content_header " *ngIf="currentTable?.filters !=undefined">
+          <form class="col-6 p-4 pt-1 pb-1 row" [formGroup]="formGroupFilters">
+            <ng-container *ngFor="let filter of currentTable?.filters"
+              [ngTemplateOutlet]="filter || null"></ng-container>
+          </form>
+          <ng-template #dateFilter>
+            <div class="col p-0" *ngIf="dateFilters.length > 0">
+              <app-selector [type]="'rankingsel'" [options]="dateFilters" [formControl]="getFormControl('date')"
+                name="date" [defaultValue]="dateFilters[0].value"></app-selector>
+            </div>
+          </ng-template>
+
+          <ng-template #countryFilter>
+            <div class="col p-0">
+              <app-selector [type]="'rankingsel'" [options]="countryFilters" [formControl]="getFormControl('country')"
+                name="country" ngDefaultControl>
+              </app-selector>
+            </div>
+          </ng-template>
+
+          <ng-template #surfaceFilter>
+            <div class="col">
+              <app-selector [type]="'rankingsel'" [options]="surfaceFilters" [formControl]="getFormControl('surface')"
+                name="surface" ngDefaultControl>
+              </app-selector>
+            </div>
+          </ng-template>
+        </div>
+        <div class="content">
+          <table class="table text-center">
+            <thead>
+              <ng-container [ngTemplateOutlet]="currentTable?.header || null"></ng-container>
+            </thead>
+
+            <tbody>
+              <ng-container [ngTemplateOutlet]="currentTable?.body || null"></ng-container>
+            </tbody>
+          </table>
+          <div class="p-1 table-wrap"></div>
+        </div>
+      </div>
+    </div>
+    <div class="col col-md-4 d-none d-md-block">
+      <app-sidebar [showAtpRanking]="false"></app-sidebar>
+    </div>
+  </div>
+</div>
+
+
+<ng-template #dateFilter>
+  <div class="col ps-0" *ngIf="dateFilters.length > 0">
+    <app-selector [options]="dateFilters" [formControl]="getFormControl('date')" name="date"
+      [defaultValue]="dateFilters[0].value"></app-selector>
+  </div>
+</ng-template>
+
+<ng-template #countryFilter>
+  <div class="col p-0">
+    <app-selector [options]="countryFilters" [formControl]="getFormControl('country')" name="country" ngDefaultControl>
+    </app-selector>
+  </div>
+</ng-template>
+
+<ng-template #surfaceFilter>
+  <div class="col p-0">
+    <app-selector [options]="surfaceFilters" [formControl]="getFormControl('surface')" name="surface" ngDefaultControl>
+    </app-selector>
+  </div>
+</ng-template>
+
+
+<ng-template #defaultHeader>
+  <tr class="text-uppercase text-start table-header">
+    <td class=" pt-1 pb-1 text-center"><span class="py-1 py-md-2 px-0">id</span></td>
+    <td class=" pt-1 pb-1 text-left"><span class="py-1 py-md-2 px-0">player</span></td>
+    <td class=" pt-1 pb-1 text-left"><span class="py-1 py-md-2 px-0">pts</span></td>
+    <td class=" pt-1 pb-1 text-left"><span class="pe-2 py-1 py-md-2">wk pts</span></td>
+    <td class=" pt-1 pb-1 text-left"><span class="pe-2 py-1 py-md-2">wk +/-</span></td>
+    <td class=" pt-1 pb-1 text-left"><span class="pe-2 py-1 py-md-2">yr +/-</span></td>
+  </tr>
+</ng-template>
+
+
+<ng-template #doubleHeader>
+  <tr class="text-uppercase text-start table-header">
+    <td class=" pt-1 pb-1 text-center"><span class="py-1 py-md-2 px-0">id</span></td>
+    <td class=" pt-1 pb-1 text-left"><span class="py-1 py-md-2 px-0">player</span></td>
+    <td class=" pt-1 pb-1 text-left"><span class="py-1 py-md-2 px-0">pts</span></td>
+    <td class=" pt-1 pb-1 text-left"><span class="pe-2 py-1 py-md-2">wk pts</span></td>
+    <td class=" pt-1 pb-1 text-left"><span class="pe-2 py-1 py-md-2">wk +/-</span></td>
+    <td class=" pt-1 pb-1 text-left"><span class="pe-2 py-1 py-md-2">yr +/-</span></td>
+  </tr>
+</ng-template>
+
+<ng-template #raceHeader>
+  <tr class="text-uppercase text-start table-header">
+    <td class=" pt-1 pb-1 text-center"><span class="py-1 py-md-2 px-0">id</span></td>
+    <td class=" pt-1 pb-1 text-left"><span class="py-1 py-md-2 px-0">player</span></td>
+    <td class=" pt-1 pb-1 text-left"><span class="py-1 py-md-2 px-0">pts</span></td>
+    <td class=" pt-1 pb-1 text-left"><span class="pe-2 py-1 py-md-2">wk pts</span></td>
+  </tr>
+</ng-template>
+
+<ng-template #prizeHeader>
+  <tr class="text-uppercase text-start table-header">
+    <td class=" pt-1 pb-1 text-center"><span class="py-1 py-md-2 px-0"></span></td>
+    <td class=" pt-1 pb-1 text-left"><span class="py-1 py-md-2 px-0">player</span></td>
+    <td class=" pt-1 pb-1 text-left"><span class="pe-2 py-1 py-md-2">earnings</span></td>
+  </tr>
+</ng-template>
+
+<ng-template #defaultBody>
+  <tr *ngFor="let player of playerStats" class="align-middle">
+    <td>{{player.position}}</td>
+    <td class="text-nowrap">
+      <app-sportsman [isShortName]="false" [fullname]="player.player.name" [countryCode]="player.player.countryAcr">
+      </app-sportsman>
+    </td>
+    <td>{{player.pts}}</td>
+    <td>{{player.wkPts}}</td>
+    <td>{{player.wk > 0 ? '+' : ''}}{{player.wk}}</td>
+    <td>{{player.yr > 0 ? '+' : ''}}{{player.yr}}</td>
+  </tr>
+</ng-template>
+
+<ng-template #doublesBody>
+  <tr *ngFor="let player of playerStats" class="align-middle">
+    <td>{{player.position}}</td>
+    <td class="text-nowrap">
+      <app-sportsman [isShortName]="false" [fullname]="player.player.name" [countryCode]="player.player.countryAcr">
+      </app-sportsman>
+    </td>
+    <td>{{player.pts}}</td>
+    <td>{{player.wkPts}}</td>
+    <td>{{player.wk > 0 ? '+' : ''}}{{player.wk}}</td>
+    <td>{{player.yr > 0 ? '+' : ''}}{{player.yr}}</td>
+  </tr>
+</ng-template>
+
+<ng-template #raceBody>
+  <tr *ngFor="let player of playerStats" class="align-middle">
+    <td>{{player.position}}</td>
+    <td class="text-nowrap">
+      <app-sportsman [isShortName]="false" [fullname]="player.player.name" [countryCode]="player.player.countryAcr">
+      </app-sportsman>
+    </td>
+    <td>{{player.pts}}</td>
+    <td>{{player.wkPts}}</td>
+  </tr>
+</ng-template>
+
+<ng-template #prizeBody>
+  <tr *ngFor="let player of playerStats; let ind = index" class="align-middle">
+    <td>{{ind+1}}</td>
+    <td class="text-nowrap">
+      <app-sportsman [isShortName]="false" [fullname]="player.player.name" [countryCode]="player.player.countryAcr">
+      </app-sportsman>
+    </td>
+    <td class="text-start">{{player.prize}}</td>
+  </tr>
+</ng-template>z
+
+
+
+
+
+
+
+
+<!-- <div class="container">
+  <div class="row p-2">
+    <div class="col">
+      <div class="row mt-5">
+        <div class="col">
+          <h3 class="text-center">ATP / WTA Rankings</h3>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <app-tab [actives]="activeTypes" (activeChanged)="changeActiveType($event)"></app-tab>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <app-tab [actives]="activeGroups" (activeChanged)="changeActiveGroup($event)"></app-tab>
+        </div>
+      </div>
+
+      <div class="row mt-3" *ngIf="currentTable?.filters !=undefined">
+        <form class="col-6 row" [formGroup]="formGroupFilters">
+          <ng-container *ngFor="let filter of currentTable?.filters" [ngTemplateOutlet]="filter || null"></ng-container>
+        </form>
+      </div>
+
+      <div class="row mt-3">
+        <div class="col table-scroll pt-3 bg-white border-radius">
+          <table class="table text-center">
+            <thead>
+              <ng-container [ngTemplateOutlet]="currentTable?.header || null"></ng-container>
+            </thead>
+
+            <tbody>
+              <ng-container [ngTemplateOutlet]="currentTable?.body || null"></ng-container>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="row mt-3 mb-5 justify-content-center" *ngIf="playerStats.length <= 850">
+        <div class="col-sm-3">
+          <button class="btn btn-primary" (click)="nextPage()">View more <img src="assets/icons/arrowdown_white.svg"
+              style="width: 0.8em"></button>
+        </div>
+      </div>
+    </div>
+
+    <div class="col col-md-4 d-none d-md-block">
+      <app-sidebar [showAtpRanking]="false" [activeType]="type"></app-sidebar>
+    </div>
+  </div>
+</div>
+
+
+<ng-template #dateFilter>
+  <div class="col ps-0" *ngIf="dateFilters.length > 0">
+    <app-selector [options]="dateFilters" [formControl]="getFormControl('date')" name="date"
+      [defaultValue]="dateFilters[0].value"></app-selector>
+  </div>
+</ng-template>
+
+<ng-template #countryFilter>
+  <div class="col p-0">
+    <app-selector [options]="countryFilters" [formControl]="getFormControl('country')" name="country" ngDefaultControl>
+    </app-selector>
+  </div>
+</ng-template>
+
+<ng-template #surfaceFilter>
+  <div class="col p-0">
+    <app-selector [options]="surfaceFilters" [formControl]="getFormControl('surface')" name="surface" ngDefaultControl>
+    </app-selector>
+  </div>
+</ng-template>
+
+
+<ng-template #defaultHeader>
+  <tr class="text-uppercase text-start table-header">
+    <td class=""><span class="empty-span-little"></span></td>
+    <td class="text-center"><span class="py-1 py-md-2 px-0">player</span></td>
+    <td class="text-center"><span class="py-1 py-md-2 px-0">pts</span></td>
+    <td class="text-center"><span class="pe-2 py-1 py-md-2">wk pts</span></td>
+    <td class="text-center"><span class="pe-2 py-1 py-md-2">wk +/-</span></td>
+    <td class="text-center"><span class="pe-2 py-1 py-md-2">yr +/-</span></td>
+  </tr>
+</ng-template>
+
+
+<ng-template #doubleHeader>
+  <tr class="text-uppercase text-start table-header">
+    <td class=""><span class="empty-span-little"></span></td>
+    <td class="text-center"><span class="py-1 py-md-2 px-0">player</span></td>
+    <td class="text-center"><span class="py-1 py-md-2 px-0">pts</span></td>
+    <td class="text-center"><span class="pe-2 py-1 py-md-2">wk +/-</span></td>
+  </tr>
+</ng-template>
+
+<ng-template #raceHeader>
+  <tr class="text-uppercase text-start table-header">
+    <td class=""><span class="empty-span-little"></span></td>
+    <td class="text-center"><span class="py-1 py-md-2 px-0">player</span></td>
+    <td class="text-center"><span class="py-1 py-md-2 px-0">pts</span></td>
+    <td class="text-center"><span class="pe-2 py-1 py-md-2">wk pts</span></td>
+  </tr>
+</ng-template>
+
+<ng-template #prizeHeader>
+  <tr class="text-uppercase text-start table-header">
+    <td class=""><span class="empty-span-little"></span></td>
+    <td class="text-center"><span class="py-1 py-md-2 px-0">player</span></td>
+    <td class="text-center"><span class="pe-2 py-1 py-md-2">earnings</span></td>
+  </tr>
+</ng-template>
+
+<ng-template #defaultBody>
+  <tr *ngFor="let player of playerStats" class="align-middle">
+    <td>{{player.position}}</td>
+    <td class="text-nowrap">
+      <app-sportsman [isShortName]="false" [fullname]="player.player.name" [countryCode]="player.player.countryAcr">
+      </app-sportsman>
+    </td>
+    <td>{{player.pts}}</td>
+    <td>{{player.wkPts}}</td>
+    <td>{{player.wk > 0 ? '+' : ''}}{{player.wk}}</td>
+    <td>{{player.yr > 0 ? '+' : ''}}{{player.yr}}</td>
+  </tr>
+</ng-template>
+
+<ng-template #doublesBody>
+  <tr *ngFor="let player of playerStats" class="align-middle">
+    <td>{{player.position}}</td>
+    <td class="text-nowrap">
+      <app-sportsman [isShortName]="false" [fullname]="player.player.name" [countryCode]="player.player.countryAcr">
+      </app-sportsman>
+    </td>
+    <td>{{player.pts}}</td>
+    <td>{{player.wk > 0 ? '+' : ''}}{{player.wk}}</td>
+  </tr>
+</ng-template>
+
+<ng-template #raceBody>
+  <tr *ngFor="let player of playerStats" class="align-middle">
+    <td>{{player.position}}</td>
+    <td class="text-nowrap">
+      <app-sportsman [isShortName]="false" [fullname]="player.player.name" [countryCode]="player.player.countryAcr">
+      </app-sportsman>
+    </td>
+    <td>{{player.pts}}</td>
+    <td>{{player.wkPts}}</td>
+  </tr>
+</ng-template>
+
+<ng-template #prizeBody>
+  <tr *ngFor="let player of playerStats; let ind = index" class="align-middle">
+    <td>{{ind+1}}</td>
+    <td class="text-nowrap">
+      <app-sportsman [isShortName]="false" [fullname]="player.player.name" [countryCode]="player.player.countryAcr">
+      </app-sportsman>
+    </td>
+    <td class="text-start">{{player.prize}}</td>
+  </tr>
+</ng-template> -->

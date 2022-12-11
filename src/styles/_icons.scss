@@ -1,0 +1,104 @@
+@import "mixins";
+@import "colors";
+
+.icon {
+  background-size: auto;
+  background: $white;
+
+  &-search {
+    background: url("../assets/icons/search.svg");
+    width: 16px;
+    height: 16px;
+  }
+
+  &-matches {
+    @include cross-browser('mask', url("../assets/icons/matches.svg"));
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+  }
+
+  &-calendar {
+    @include cross-browser('mask', url("../assets/icons/calendar.svg"));
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+  }
+
+  &-users {
+    @include cross-browser('mask', url("../assets/icons/users.svg"));
+    width: 24px;
+    height: 24px;
+    margin-right: 8px;
+  }
+
+  &-ball {
+    @include cross-browser('mask', url("../assets/icons/tennis-ball.svg"));
+    width: 18px;
+    height: 18px;
+    margin-right: 7px;
+  }
+
+  &-arrow-down {
+    @include cross-browser('mask', url("../assets/icons/arrowdown.svg"));
+    width: 10px;
+    height: 5px;
+    margin-left: 10px;
+  }
+
+  &-stats {
+    @include cross-browser('mask', url("../assets/icons/stats.svg"));
+    width: 14px;
+    height: 12px;
+    margin-bottom: 3px;
+    background: #376BB2;
+
+    @include for-phone-only {
+      width: 7px;
+      height: 6px;
+      mask-size: 7px 6px;
+      margin-bottom: 2px;
+    }
+  }
+
+  &-cup {
+    @include cross-browser('background', url("../assets/icons/win.svg"));
+    width: 12px;
+    height: 12px;
+    margin-left: 6px;
+
+    @include for-phone-only {
+      width: 8px;
+      height: 8px;
+      background-size: 8px;
+    }
+
+  }
+
+  &-more {
+    @include cross-browser('mask', url("../assets/icons/arrowdown.svg"));
+    width: 11px;
+    height: 7px;
+    margin-left: 8px;
+
+    @include for-phone-only {
+      width: 6px;
+      height: 4px;
+      mask-size: 6px 4px;
+      margin-left: 6px;
+    }
+  }
+
+  &-calendar-white {
+    @include cross-browser('background', url("../assets/icons/calendar.svg"));
+    width: 20px;
+    height: 20px;
+
+    @include for-phone-only {
+      width: 10px;
+      height: 10px;
+      background-size: 10px 10px;
+    }
+  }
+
+}

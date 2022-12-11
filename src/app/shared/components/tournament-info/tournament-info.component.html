@@ -1,0 +1,3 @@
+<img *ngIf="country" [src]="'assets/icons/flags/' + country + '.svg'">
+<span [ngClass]="country ? 'ms-2' : ''">{{tournamentName}}</span>
+<span class="px-3 ms-2 text-uppercase" [ngClass]="court.toLowerCase()">{{court}}</span>

@@ -1,0 +1,89 @@
+.tournament-link {
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.tournament-link:hover {
+  color: #777;
+}
+
+.h2h-link {
+  transition: 0.2s;
+  cursor: pointer;
+
+  &:hover {
+    color: #777 !important;
+  }
+}
+
+
+.information-wrap {
+  &__header {
+    border-bottom: 1px solid #ddd;
+  }
+
+  border-radius: 20px;
+}
+
+table,
+p,
+span,
+button,
+::ng-deep .search-container {
+  font-size: 14px;
+}
+
+@media (max-width: 992px) {
+
+  td,
+  span,
+  p,
+  button,
+  input {
+    font-size: 9px;
+  }
+
+  .result-win,
+  .result-loose {
+    font-size: 8px;
+  }
+
+  h4 {
+    font-size: 12px;
+  }
+}
+
+.match-result {
+  flex-direction: row-reverse;
+}
+
+.divflex {
+  display: flex;
+}
+
+.playerimg {
+  border-radius: 100%;
+  object-fit: cover;
+  height: 80%;
+  width: 110% !important;
+}
+
+.greencolor {
+  color: #6DC47F;
+}
+
+.blackcolor {
+  color: #04071E;
+}
+
+.nonepd {
+  padding: 0% !important;
+}
+
+.fs12 {
+  font-size: 12px;
+}
+
+.information-wrap__header {
+  padding-bottom: 0% !important;
+}

@@ -1,0 +1,45 @@
+<div (focusin)="focusIn($event)" (focusout)="focusOut($event)" (mouseleave)="!focus ? focusOut($event) : ''"
+  id="search-header">
+  <div class="text-nowrap">
+    <input placeholder="Search..." class="search-input header_search px-1 px-md-3 w-100" [class.p-0]="size == 'short'"
+      [class.p-md-1]="size == 'short'" [class.p-1]="size == 'medium'" [class.p-md-2]="size == 'medium'"
+      [class.search-input-border]="showBorder" (click)="focusIn($event)" [formControl]="searchControl">
+    <img src="assets/icons/search.svg" class="search-icon p-1 p-md-2 d-inline-block" (click)="search()">
+  </div>
+  <div class="list-modal px-3 py-1" *ngIf="showListResult && listResult?.length">
+    <div *ngFor="let search of listResult">
+      <div *ngIf="search?.category == 'player_atp' || search?.category == 'player_wta'">
+        <ng-container [ngTemplateOutlet]="playerTemplate" [ngTemplateOutletContext]="{ $implicit: search }">
+        </ng-container>
+      </div>
+      <div *ngIf="search?.category == 'tournament_atp' || search?.category == 'tournament_wta'">
+        <ng-container [ngTemplateOutlet]="tournamentTemplate" [ngTemplateOutletContext]="{ $implicit: search }">
+        </ng-container>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #playerTemplate let-player>
+    <div *ngIf="player?.result?.length > 0">
+      <h4 style="color: black">{{player.category == 'player_atp' ? 'ATP' : 'WTA'}} Players</h4>
+      <div class="m-3">
+        <div *ngFor="let player of player?.result" class="text-nowrap">
+          <app-sportsman [isShortName]="false" [fullname]="player.name" [countryCode]="player.countryAcr"
+            [hasLink]="true"></app-sportsman>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+
+  <ng-template #tournamentTemplate let-tournament>
+    <div *ngIf="tournament?.result?.length > 0">
+      <h4 style="color: black">{{tournament.category == 'tournament_atp' ? 'ATP' : 'WTA'}} Tournaments</h4>
+      <div>
+        <div *ngFor="let tournament of tournament?.result">
+          <a [routerLink]="'/tennis/tournaments/atp/' + tournament.name + '/' + getYear(tournament.date)">{{getYear(tournament.date)}}
+            {{tournament.name}}</a>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</div>

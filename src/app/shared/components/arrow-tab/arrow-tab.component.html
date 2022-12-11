@@ -1,0 +1,37 @@
+<div class="arrowbuttongroup row" *ngIf="background=='green';else Fst ">
+  <div class="divflex greenbg" *ngFor="let active of actives"
+    [class.active-tab]="currentActive?.active == active.active" [class.not-active-tab]="!active.isActive"
+    [style]="{width}">
+    <button class="btn-h2h border-radius arrowbtn rightbtn text-nowrap px-2 py-1 unsel"
+      (click)="active.isActive ? changeActive(active) : ''" [style]="{width}">{{active.name}}</button>
+    <div class="arrowmenudiv rightdiv" (click)="active.isActive ? changeActive(active) : ''">
+    </div>
+  </div>
+
+  <ng-content></ng-content>
+</div>
+<ng-template #Fst>
+  <div class="arrowbuttongroup row" *ngIf="width=='10em';else Fstsmall ">
+    <div class="divflex fstbg gerneldiv" *ngFor="let active of actives"
+      [class.active-tab]="currentActive?.active == active.active" [class.not-active-tab]="!active.isActive"
+      [style]="{width}">
+      <button class="btn-h2h border-radius arrowbtn rightbtn text-nowrap px-2 py-1 unsel"
+        (click)="active.isActive ? changeActive(active) : ''" [style]="{width}">{{active.name}}</button>
+      <div class="arrowmenudiv rightdiv" (click)="active.isActive ? changeActive(active) : ''">
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #Fstsmall>
+  <div class="arrowbuttongroup row">
+    <div class="divflex fstbg smalldiv" *ngFor="let active of actives"
+      [class.active-tab]="currentActive?.active == active.active" [class.not-active-tab]="!active.isActive"
+      [style]="{width}">
+      <button class="btn-h2h border-radius arrowbtn rightbtn text-nowrap px-2 py-1 unsel"
+        (click)="active.isActive ? changeActive(active) : ''" [style]="{width}">{{active.name}}</button>
+      <div class="arrowmenudiv rightdiv" (click)="active.isActive ? changeActive(active) : ''">
+      </div>
+    </div>
+  </div>
+</ng-template>

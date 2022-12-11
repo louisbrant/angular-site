@@ -1,0 +1,131 @@
+<!-- <div class="row mt-3 mt-md-5">
+  <div class="col">
+    <h3 class="text-center fw-bold">Singles Titles/Finals </h3>
+  </div>
+</div>
+
+<div class="row mb-5">
+  <div class="col-6 p-1 p-md-2">
+    <h5 class="table-title fw-bold">Titles</h5>
+    <div class="bg-white p-1 p-md-2 single-table border-radius" *ngIf="titles.length; else noTitles">
+      <div *ngFor="let title of titles" class="single-table-row py-0 py-md-1 tournament-link"
+        (click)="navigateToTournament(title.name, title.date)">
+        <div>
+          <img [src]="'assets/icons/' + title.court.toLowerCase() + '.svg'">
+          <img class="ms-2" [src]="'assets/icons/flags/' + title.country.acronym + '.svg'">
+        </div>
+        <p class="m-0">{{title.name}} ({{title.date | date : 'dd MMM yyyy'}})</p>
+      </div>
+    </div>
+
+    <ng-template #noTitles>
+      <h5>No Finals</h5>
+    </ng-template>
+  </div>
+
+  <div class="col-6 p-1 p-md-2">
+    <h5 class="table-title fw-bold">Finals</h5>
+    <div class="bg-white p-1 p-md-2 single-table border-radius" *ngIf="finals.length; else noFinals">
+      <div *ngFor="let final of finals" class="single-table-row py-0 py-md-1 tournament-link"
+        (click)="navigateToTournament(final.name, final.date)">
+        <div>
+          <img [src]="'assets/icons/' + final.court.toLowerCase() + '.svg'">
+          <img class="ms-2" [src]="'assets/icons/flags/' + final.country.acronym + '.svg'">
+        </div>
+        <p class="m-0">{{final.name}} ({{final.date | date : 'dd MMM yyyy'}})</p>
+      </div>
+    </div>
+
+    <ng-template #noFinals>
+      <h5>No Finals</h5>
+    </ng-template>
+  </div>
+</div> -->
+
+
+
+
+
+
+
+
+
+
+
+<div class="row information-wrap">
+  <div class="col-12 pb-3">
+    <div class="information-wrap bg-white h-100">
+      <div class="row pt-3 p-3 align-items-center">
+        <div class="row p-3 align-items-center">
+          <p class="table-title careerstatehead fw-bold">{{profileName}} Singles Titles & Finals</p>
+        </div>
+      </div>
+      <div class="bg-white information-wrap table-wrap pb-1 text-nowrap px-2 px-md-4">
+        <div class="arrowbuttongroup row">
+          <div class="menubtn">
+            <button class="btn-h2h border-radius arrowbtn text-nowrap px-2 py-1">Titles</button>
+            <div class="arrowmenudiv leftdiv"></div>
+            <button class="btn-h2h border-radius arrowbtn rightbtn text-nowrap px-2 py-1">Finals</button>
+            <div class="arrowmenudiv rightdiv"></div>
+          </div>
+          <div class="menufilter">
+            <app-year-picker [years]="years" (changeYear)="changeYear($event)"></app-year-picker>
+          </div>
+        </div>
+        <div class="row bsguttor">
+          <div class="bg-white information-wrap table-wrap pb-1 text-nowrap px-2 px-md-4">
+            <table class="table text-center mb-1">
+              <thead>
+                <tr class="text-uppercase text-start bdzero">
+                  <td class="text-center px-0 py-2 py-md-3 pt-0 table-wrap"><span
+                      class="py-1 py-md-2 px-0">TOURNAMENT</span>
+                  </td>
+                  <td class="text-center px-0 py-2 py-md-3 pt-0 table-wrap"><span
+                      class="py-1 py-md-2 px-0">SURFACE</span>
+                  </td>
+                  <td class="text-center px-0 py-2 py-md-3 pt-0 table-wrap"><span class="py-1 py-md-2 px-0">PRIZE
+                      MONEY</span>
+                  </td>
+                </tr>
+              </thead>
+
+              <tbody *ngIf="titles.length && finals.length; else noDatas ">
+                <tr *ngFor="let title of titles" class="align-middle">
+                  <td class="px-0 py-2 py-md-3 pt-0 table-wrap lefttprow">
+                    <span class="py-1 py-md-2 px-0"><img [src]="'assets/icons/' + title.court.toLowerCase() + '.svg'">
+                      <img class="ms-2" [src]="'assets/icons/flags/' + title.country.acronym + '.svg'">
+                    </span>
+                    <p class="m-0 p1 greencolor">{{title.name}} </p>
+                  </td>
+                  <td class="px-0 py-2 py-md-3 pt-0 table-wrap"><span class="py-1 py-md-2 px-0">
+                      <p class="m-0">{{title.court}}
+                    </span>
+                  </td>
+                  <td class="px-0 py-2 py-md-3 pt-0 table-wrap"><span class="py-1 py-md-2 px-0">$500.000</span>
+                  </td>
+                </tr>
+                <tr *ngFor="let final of finals" class="align-middle">
+                  <td class="px-0 py-2 py-md-3 pt-0 table-wrap lefttprow">
+                    <span class="py-1 py-md-2 px-0"><img [src]="'assets/icons/' + final.court.toLowerCase() + '.svg'">
+                      <img class="ms-2" [src]="'assets/icons/flags/' + final.country.acronym + '.svg'">
+                    </span>
+                    <p class="m-0 greencolor ">{{final.name}} </p>
+                  </td>
+                  <td class="px-0 py-2 py-md-3 pt-0 table-wrap"><span class="py-1 py-md-2 px-0">
+                      <p class="m-0">{{final.court}}
+                    </span>
+                  </td>
+                  <td class="px-0 py-2 py-md-3 pt-0 table-wrap"><span class="py-1 py-md-2 px-0">$500.000</span>
+                  </td>
+                </tr>
+              </tbody>
+              <ng-template #noDatas>
+                <h5>No Datas</h5>
+              </ng-template>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

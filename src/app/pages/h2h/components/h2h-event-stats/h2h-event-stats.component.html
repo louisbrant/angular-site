@@ -1,0 +1,19 @@
+<div class="row">
+  <div class="col mt-3 mt-md-5 p-0">
+    <h5 class="text-capitalize fw-bold p-0">Current Event Stats</h5>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col p-0 h5" tournamentInfo [court]="court" [tournamentName]="tournament" [country]="country"></div>
+</div>
+
+<div class="row">
+  <div class="col-12 p-0">
+    <app-short-table
+      [showHeader]="true"
+      [headers]="headers"
+      [data]="playerEventStats"
+    ></app-short-table>
+  </div>
+</div>

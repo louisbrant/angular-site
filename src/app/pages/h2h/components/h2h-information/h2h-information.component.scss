@@ -1,0 +1,90 @@
+.gray-background {
+  background: #eee;
+}
+
+.country-img {
+  width: 2em
+}
+
+.user-info {
+  &__container:nth-child(2) &__container-item {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+  }
+  &__container:last-child &__container-item {
+    border-bottom: none;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+  }
+  &__container-item {
+    background: #eee;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+  }
+}
+
+small {
+  text-transform: capitalize;
+}
+
+.dark-blue {
+  background: #006CC1;
+}
+
+.orange {
+  background: #DB8C00;
+}
+
+.blue {
+  background: #259CFA;
+}
+
+.green {
+  background: #019633;
+}
+
+.profile-pic {
+  height: 200px;
+  img {
+    object-fit: cover;
+  }
+}
+
+.top-radius {
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+}
+
+@media (max-width: 992px) {
+  .profile-pic {
+    height: 140px;
+  }
+  .player-name {
+    font-size: 12px;
+  }
+  .player-info__match {
+    font-size: 10px;
+    &-count {
+      font-size: 12px;
+    }
+  }
+}
+
+.hr {
+  border-bottom: 1px solid #eee
+}
+
+.profile-link {
+  transition: 0.2s;
+  cursor: pointer;
+  display: block;
+  text-decoration: none;
+  color: black;
+}
+
+.profile-link:hover {
+  color: #777;
+}

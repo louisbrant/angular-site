@@ -1,0 +1,81 @@
+@media (max-width: 992px) {
+  td {
+    font-size: 8px;
+  }
+
+  h5 {
+    font-size: 12px !important;
+  }
+}
+
+.careerstatehead {
+  font-size: 26px !important;
+}
+
+.arrowbtn {
+  width: 100px;
+  border-radius: 0%;
+}
+
+.rightbtn {
+  background: #ffff;
+}
+
+.rightdiv {
+  background: #ffff;
+  margin-left: -12px;
+}
+
+.arrowbuttongroup {
+  border-top: 1px solid #F1F1F1;
+  --bs-gutter-x: 0rem;
+  border-bottom: 1px solid #F1F1F1;
+}
+
+.arrowmenudiv {
+  width: 23px;
+  transform: rotate(45deg);
+  border-top-right-radius: 10px;
+  border-top: 1px solid #F1F1F1;
+  height: 23px;
+  border-right: 1px solid #F1F1F1;
+  margin-top: 4px;
+  margin-left: -11px;
+}
+
+.leftdiv {
+  background: buttonface;
+}
+
+.information-wrap {
+  &__header {
+    border-bottom: 1px solid #ddd;
+  }
+
+  border-radius: 20px;
+}
+
+.table-wrap {
+  padding: 0% !important;
+}
+
+.tablehead {
+  border-bottom: 1px solid #F1F1F1;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 24px;
+  border-top: 1px solid #F1F1F1;
+  background: #FBFBFB;
+}
+
+.inforhead {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  color: #04071E;
+}
+
+.inforfooter {
+  color: #4C535F;
+}

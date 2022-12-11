@@ -1,0 +1,40 @@
+<!-- <div class="row mt-3 mt-md-4">
+  <div class="col p-1 p-md-2">
+    <h5 class="table-title fw-bold m-0">{{name}} interesting Heads to Heads</h5>
+  </div>
+</div>
+
+<div class="row mt-0 mt-md-3">
+
+  <div class="col-6 p-1 p-md-2">
+    <app-short-table [headers]="headers" [data]="leftTable" [clickEvent]="navigateToH2h.bind(this)"></app-short-table>
+  </div>
+  <div class="col-6 p-1 p-md-2">
+    <app-short-table [headers]="headers" [data]="rightTable" [clickEvent]="navigateToH2h.bind(this)"></app-short-table>
+  </div>
+</div> -->
+
+
+<div class="row information-wrap">
+  <div class="col-12 pb-3">
+    <div class=" bg-white information-wrap h-100">
+      <div class="row pt-3 p-3 align-items-center information-wrap__header">
+        <div class="row p-3 align-items-center">
+          <p class="table-title careerstatehead fw-bold">{{name}} Interesting Heads to Heads</p>
+        </div>
+      </div>
+      <div class="bg-white information-wrap table-wrap pb-1 text-nowrap px-2 px-md-4" *ngIf="allTable.length">
+        <div class="row p-3">
+          <div class="col-4 pb-3" *ngFor="let item of allTable">
+            <div class="col-12 inforhead">
+              {{item.opponent}}
+            </div>
+            <div class="col-12 inforfooter">
+              {{item.h2h}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
